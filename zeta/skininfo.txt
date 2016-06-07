@@ -125,7 +125,7 @@ sprite = PFLM
 name = "MarineSniper"
 sprite = PSNP
 }
-
+/* // [SG] Mech classes have +NOSKIN, these only cause problems
 /////////////////////////////////////////MECHS
 {
 name = "RavenMech"
@@ -159,7 +159,7 @@ class = "MadCat"
 hidden = True
 }
 
-/*
+
 {
 name = "OrcaVTOL"
 sprite = ORCV
@@ -167,7 +167,7 @@ scale = 0.5
 class = "Orca"
 hidden = True
 }
-*/
+
 
 {
 name = "Juggernaut"
@@ -176,3 +176,4 @@ scale = 1.8
 class = "Juggernaut"
 hidden = True
 }
+*/

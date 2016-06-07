@@ -112,9 +112,9 @@ actor TimedC4Armed {
 		TC4T R 35 Thing_SetSpecial (0, 226, 328, 0, 1)
 		goto Idle
 	Idle:
-		"----" RRRRRRRRRRRRRRRRRRRRRRRRRRRRRR 18 A_PlaySound ("c4/beep")
+		"----" RRRRRRRRRRRRRRR 35 A_PlaySound ("c4/beep2")
 		"----" R 0 A_JumpIf (waterlevel > 1, "Death.Disarm")
-		"----" RRRRRRRRRRRRRRRRRRRRRRRRRRRRRR 18 A_PlaySound ("c4/beep")
+		"----" RRRRRRRRRRRRR 35 A_PlaySound ("c4/beep2")
 		"----" R 0 A_PlaySound ("c4/detonate", CHAN_WEAPON)
 		"----" R 50 A_PlaySound ("c4/detonate")
 		"----" R 0 A_Die
