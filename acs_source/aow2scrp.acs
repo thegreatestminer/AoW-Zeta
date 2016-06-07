@@ -571,6 +571,8 @@
 #define MK_FLAGS 3
 #define NUM_MECH_KEYS_INT 4
 
+#define EJECT_DUMMY_TID 4600
+
 // [Dusk] How long must clients wait until they ask for another snapshot?
 #define SNAPSHOT_DELAY 15
 
