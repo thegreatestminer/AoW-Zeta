@@ -275,7 +275,8 @@ actor FirepowerUpgrade : PermanentPowerup {
 }
 
 // =============================================================================
-actor HasArmorUpgrade : Inventory {}
+// [SG] already defined in infoitems.txt
+//actor HasArmorUpgrade : Inventory {}
 
 // =============================================================================
 actor PowerGrade2ArmorFactoryPower : PowerProtection {

@@ -113,7 +113,7 @@ actor PlasmaShotBlue {
 	-RANDOMIZE
 	Radius 12
 	Height 8
-	Scale 0.8
+	Scale 0.7
 	Speed 28
 	Damage (15)
 	RenderStyle Add
