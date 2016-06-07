@@ -1,11 +1,11 @@
 actor HHBulletPuff : BulletPuff replaces BulletPuff {
 	+CLIENTSIDEONLY
-	+NOBLOCKMAP
-	+NOGRAVITY
+	+NOINTERACTION
 	+FORCEXYBILLBOARD
 	+PUFFGETSOWNER
 	+PUFFONACTORS
 	-ALLOWPARTICLES
+	vspeed 0
 	states {
 	Spawn:
 		PUFF A 0 bright
@@ -36,10 +36,10 @@ actor BulletPuffTrail {
 
 actor HHMetalHit : BulletPuff {
 	+CLIENTSIDEONLY
-	+NOBLOCKMAP
+	+NOINTERACTION
 	+FORCEXYBILLBOARD
-	+NOGRAVITY
 	-ALLOWPARTICLES
+	vspeed 0
 	bloodcolor "White"
 	states {
 	Spawn:
