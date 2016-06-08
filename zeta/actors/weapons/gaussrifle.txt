@@ -179,8 +179,8 @@ actor GaussPuff : HHBulletPuff {
 	}  
 }
 
+// [TT] Removed blank translation.
 actor GaussPuffBlue : GaussPuff {
-	translation ""
 }
 
 actor AntiArmorPuff : ExplosionPuff {damagetype "AntiArmor"}

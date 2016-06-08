@@ -104,8 +104,8 @@ actor RepairTurretError : RepairTurretSymbol {
 */
 
 // [Dusk] like RepairDisarmPuff but without the trailing
+// [TT] Removed blank translation.
 actor RepairTurretPuff : DisarmPuff {
-	translation ""
 	states {
 	Spawn:
 		CHMX A 0
