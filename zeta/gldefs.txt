@@ -28,10 +28,12 @@ secondarySize 2024
 	chance 0.25
 }
 
+/* [TT] Uncomment this once flash bangs are added back
 Object Flashbang-Flare
 {
     frame PPCX { light FLASHBANG }
 }
+*/
 
 flickerlight VPUFF
 {
@@ -51,10 +53,12 @@ Object VoltagePuff2
     frame VOLX { light VPUFF }
 }
 
+/* // [TT] Deprecated
 Object VoltagePuffBlue
 {
     frame VOLX { light VPUFF }
 }
+*/
 
 //Object VoltageDecay
 //{
@@ -86,11 +90,13 @@ Object HandgunPuff
     frame PUFFB { light BPUFF2 }
 }
 
+/* // [TT] Deprecated
 Object HandgunPuffBlue
 {
     frame PUFFA { light BPUFF1 }
     frame PUFFB { light BPUFF2 }
 }
+*/
 
 Object RiflePuff
 {
@@ -98,11 +104,13 @@ Object RiflePuff
     frame PUFFB { light BPUFF2 }
 }
 
+/* // [TT] Deprecated
 Object RiflePuffBlue
 {
     frame PUFFA { light BPUFF1 }
     frame PUFFB { light BPUFF2 }
 }
+*/
 
 flickerlight LPUFF1
 {
@@ -241,11 +249,13 @@ Object TiberiumDart
 	frame TNT1 { light Chemical }
 }
 
+/* [TT] Deprecated
 Object TiberiumDartBlue
 {
 	frame E21X { light TiberiumShot }
 	frame TNT1 { light Chemical }
 }
+*/
 
 flickerlight Tibcrystalnorm
 {
@@ -279,6 +289,7 @@ Object TiberiumCrystalSitting
 	frame TIBE { light Tibcrystalnorm }
 }
 
+/* [TT] Deprecated
 Object TiberiumCrystalThrownBlue
 {
 	frame TIBW { light Tibcrystalnorm }
@@ -290,6 +301,7 @@ Object TiberiumCrystalSittingBlue
 	frame TIBW { light Tibcrystalnorm }
 	frame TIBE { light Tibcrystalnorm }
 }
+*/
 
 Object TiberiumCrystalDropped
 {
@@ -359,30 +371,36 @@ object ChemicalCorpseFemale
 	frame CURNQ { light Chemical }
 }
 
+/* [TT] Deprecated
 object ChemFireRemains
 {
 	frame TIBX { light Chemical }
 }
+*/
 
 object ChemicalShot
 {
 	frame TIBX { light Chemical }
 }
 
+/* [TT] Deprecated
 object ChemicalShotBlue
 {
 	frame TIBX { light Chemical }
 }
+*/
 
 object AnthraxDecay
 {
 	frame TNT1 { light Anthrax }
 }
 
+/* [TT] Deprecated
 object AnthraxDecayBlue
 {
 	frame TNT1 { light Anthrax }
 }
+*/
 
 object AnthraxDecaySpecial
 {
@@ -410,10 +428,12 @@ object FlameThrowerFire
 	frame FLMX { light Flame }
 }
 
+/* [TT] Deprecated
 object FlameThrowerFireBlue
 {
 	frame FLMX { light Flame }
 }
+*/
 
 flickerlight Burn
 {
@@ -480,30 +500,37 @@ object FlameDecay
 	frame TNT1 { light FlameDecay }
 }
 
+/* [TT] Deprecated
 object FlameDecayBlue
 {
 	frame TNT1 { light FlameDecay }
 }
+*/
 
 object FlameDecayStrong
 {
 	frame TNT1 { light FlameDecay }
 }
 
+/* [TT] Deprecated
 object FlameDecayStrongBlue
 {
 	frame TNT1 { light FlameDecay }
 }
+*/
 
 object FlameWallDecay
 {
 	frame TNT1 { light Burn }
 }
 
+/* [TT] Deprecated
 object FlameWallDecayBlue
 {
 	frame TNT1 { light Burn }
 }
+*/
+
 //object FlameThrowerFireRemains
 //{
 //	frame FLMB { light Burn }
@@ -517,20 +544,24 @@ object HeavyMissile
     frame MISR { light ROCKET }
 }
 
+/* [TT] Deprecated
 object HeavyMissileBlue
 {
     frame MISB { light ROCKET }
 }
+*/
 
 object HeavyHomingMissile
 {
     frame MISR { light ROCKET }
 }
 
+/* [TT] Deprecated
 object HeavyHomingMissileBlue
 {
     frame MISB { light ROCKET }
 }
+*/
 
 ///////Plasma Related stuff
 ///////////////////////////
@@ -627,10 +658,12 @@ Object PlasmaFlameDecay
     frame TNT1A { light PlasmaReds }
 }
 
+/* [TT] Deprecated
 Object PlasmaFlameDecayBlue
 {
     frame TNT1A { light Plasma }
 }
+*/
 
 Object PlasmaCannonBall
 {
@@ -941,6 +974,7 @@ flickerlight GOLD_X4
     chance 0.4
 }
 
+/* [TT] Deprecated
 object GoldenBall1
 {
     frame PLSSA { light GOLDBALL }
@@ -965,6 +999,7 @@ object GoldenBall1Blue
     frame PLSED { light GOLD_X3 }
     frame PLSEE { light GOLD_X4 }
 }
+*/
 
 pointlight GOLDIMPBALL
 {
@@ -1024,6 +1059,7 @@ Object FloatPuffBlue
     frame VOLX { light GOLDPUFF1 }
 }
 
+/* [TT] Deprecated
 Object SlowPuffRed
 {
     frame VOLX { light GOLDPUFF1 }
@@ -1033,6 +1069,7 @@ Object SlowPuffBlue
 {
     frame VOLX { light GOLDPUFF1 }
 }
+
 
 Object WeakenPuffRed
 {
@@ -1063,7 +1100,7 @@ object GoldenBall2Blue
     frame BAL1D { light GOLDIMPBALL_X2 }
     frame BAL1E { light GOLDIMPBALL_X3 }
 }
-
+*/
 
 //Mech Lights
 flickerlight PulseBall
@@ -1079,6 +1116,7 @@ object PulseBall
 	Frame PLGX { light PulseBall }
 }
 
+/* [TT] Deprecated
 object PulseBallBlue
 {
 	Frame PLGX { light PulseBall }
@@ -1088,6 +1126,7 @@ object PulseBallImpact
 {
 	Frame PLGX { light PulseBall }
 }
+*/
 
 Pointlight PPCBALL
 {
@@ -1101,6 +1140,7 @@ Color 1.0 1.0 1.0
 Size 150
 }
 
+/* [TT] Deprecated
 object ShockCannonBallRed
 {
 	frame PPCX { light PPCBALL }
@@ -1110,6 +1150,7 @@ object ShockCannonBallBlue
 {
 	frame PPCX { light PPCBALL }
 }
+*/
 
 object ShockCannonBallImpact
 {
@@ -1124,10 +1165,12 @@ flickerlight GizmoBlue
 	Chance 0.5
 }
 
+/* [TT] Deprecated
 object Utility_PortalBlue
 {
 	Frame TNT1 { light GizmoBlue }
 }
+*/
 
 flickerlight GizmoRed
 {
@@ -1137,10 +1180,12 @@ flickerlight GizmoRed
 	Chance 0.5
 }
 
+/* [TT] Deprecated
 object Utility_PortalRed
 {
 	Frame TNT1 { light GizmoRed }
 }
+*/
 
 flickerlight HealRadiusRed
 {
