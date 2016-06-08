@@ -1511,12 +1511,15 @@ graphic radrbblu,  13,  13 {
 	offset 9, 9
 }
 
+
+/* [TT] Deprecated
 graphic radrbred,  13,  13 {
 	xscale 0.67
 	yscale 0.67
 	patch radrbred, 0, 0
 	offset 9, 9
 }
+*/
 
 // Temporary fixes
 texture ceil5_2b,  64,  64 {patch ceil5_3 , 0, 0}

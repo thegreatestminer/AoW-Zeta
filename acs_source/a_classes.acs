@@ -183,6 +183,9 @@ function int SetClass (int id, int scflags) {
 		
 		ClearInventory ();
 		
+		// [TT] Fix display bug
+		takeinventory("classID", 999);
+		
 		// If he was in the menu, re-activate it now.
 		if (MenuCount)
 			ActivateMenu (MENU_Purchase);
@@ -272,7 +275,7 @@ function int SetClass (int id, int scflags) {
 	// The essentials
 	GiveInventory ("HasClass", 1);
 	GiveInventory ("Refunds", Classes_int[id][CK_COST] / 2);
-	GiveInventory ("ClassID", id);
+	GiveInventory ("ClassID", id+1);
 	
 	// Speed and armor
 	SetActorProperty (0, APROP_SPEED, Classes_int[id][CK_SPEED]);
@@ -443,10 +446,10 @@ function int GetClass (void) {
 }
 
 function int GetPlayerClass (int i) {
-	if (!PlayerInGame (i) || !CheckActorInventory (3800 + i, "HasClass"))
+	if ((!PlayerInGame (i) || !CheckActorInventory (3800 + i, "HasClass")) && !CheckActorinventory(3800 + i, "ClassID"))
 		return CLASS_None;
 	
-	return CheckActorInventory (3800 + i, "ClassID");
+	return CheckActorInventory (3800 + i, "ClassID")-1;
 }
 
 // ============================================================================

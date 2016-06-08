@@ -420,11 +420,10 @@ script 697 (void) {
 	int y = GetActorY (0);
 	int z = GetActorZ (0);
 	int angle = GetActorAngle (ActivatorTID ());
-	
 	switch (MechType) {
 	case 0:
 		// Orca
-		SpawnSpotFacing ("EjectedOrcaSpawner", 3800+PlayerNumber(), 0);
+		giveinventory ("EjectedOrcaSpawnerItem", 1); // [TT] Prevent teamdamage
 		break;
 	
 	case 1:

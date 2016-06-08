@@ -25,7 +25,7 @@ actor MedicationFieldItem : InventoryItem 29017 {
 // How many "slots" of med fields does the player have?
 // This amount of med fields are restored by full refills.
 actor MedicationFieldCount : Inventory {
-	Inventory.MaxAmount 3
+	Inventory.MaxAmount 9999 // [TT] Double definition removal
 }
 
 // ==================================================================================
@@ -89,12 +89,6 @@ actor MedicationField {
 		TNT1 A 0 A_SpawnItemEx ("ExplosionMain", 0, 0, 32)
 		stop
 	}
-}
-
-// ==================================================================================
-// How many iterations has the field gone through?
-actor MedicationFieldCount : Inventory {
-	Inventory.MaxAmount 9999
 }
 
 // ==================================================================================
