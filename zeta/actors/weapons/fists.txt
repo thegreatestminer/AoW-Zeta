@@ -8,6 +8,7 @@ actor Unarmed : AOWWeapon {
 	Weapon.Kickback 165
 	Weapon.SelectionOrder 20
 	Weapon.PreferredSkin "MarineFist"
+	weapon.upsound "weapons/up/fists"
 	Tag "Fists"
 	states {
 	Ready:

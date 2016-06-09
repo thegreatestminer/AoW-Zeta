@@ -13,6 +13,7 @@ actor CombustionAutorifleWeak : AOWWeapon 21088 {
 	Weapon.AmmoType2 "FA21CalAmmo"
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 20
+	Weapon.UpSound "weapons/up/combrifle"
 	Weapon.PreferredSkin "MarineMachineGun"
 	states {
 	Ready:

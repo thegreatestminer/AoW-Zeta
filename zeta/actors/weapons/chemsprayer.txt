@@ -13,6 +13,7 @@ actor ChemicalSprayer : AOWWeapon 21066 {
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 0
 	Weapon.PreferredSkin "MarinePlasma"
+	Weapon.UpSound "weapons/up/chem"
 	Tag "Chemical Sprayer"
 	states {
 	Spawn:

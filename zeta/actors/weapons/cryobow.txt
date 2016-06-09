@@ -8,6 +8,7 @@ actor ChronoBow : AOWWeapon {
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
 	Inventory.PickupMessage "You got the chrono bow!"
+	Weapon.UpSound "weapons/up/chrono"
 	Obituary "$OB_CHRONOBOW"
 	DropItem "CryoBow"
 	Tag "CryoBow"

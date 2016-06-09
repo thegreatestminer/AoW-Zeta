@@ -11,6 +11,7 @@ actor DoubleShotgun : AOWWeapon replaces SuperShotgun 21086 {
 	Weapon.AmmoUse 2
 	Weapon.AmmoGive 0
 	Weapon.PreferredSkin "MarineSSG"
+	Weapon.UpSound "weapons/up/ssg"
 	Tag "Double Shotgun"
 	states {
 	Ready:

@@ -10,6 +10,7 @@ actor GatlingGun : AOWWeapon 21045 {
 	Weapon.AmmoType2 "MachineGunAmmo"
 	Weapon.AmmoUse2 2
 	Weapon.PreferredSkin "MarineChaingun"
+	Weapon.UpSound "weapons/up/gatling"
 	
 	States {
 	Spawn:

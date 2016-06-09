@@ -244,7 +244,7 @@ actor JuggernautWeapons : AOWWeapon {
 		goto Ready
 	AltFire:
 		MHUD C 0
-		MHUD C 29 ACS_ExecuteAlways (314, 0, 4)
+		MHUD C 15 ACS_ExecuteAlways (314, 0, 4)
 		goto Ready
 	NoAmmo:
 		MHUD A 10 A_WeaponReady (WRF_NOPRIMARY)

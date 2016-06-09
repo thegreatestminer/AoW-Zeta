@@ -10,6 +10,7 @@ actor Handgun : AOWWeapon replaces Pistol 21041 {
 	Weapon.PreferredSkin "MarinePistol"
 	Inventory.Pickupmessage "You got the handgun!"
 	Obituary "%o was capped by %k's handgun."
+	Weapon.UpSound "weapons/up/pistol"
 	AttackSound "pistol/fire"
 	States {
 	Ready:

@@ -114,6 +114,7 @@ actor TitanWeapons : AOWWeapon {
 	weapon.preferredskin "TitanMech"
 	States {
 	Ready:
+		MHUD C 0 A_StopSound (6)
 		MHUD C 1 A_WeaponReady
 		wait
 	Deselect:
@@ -214,8 +215,8 @@ actor TitanWeapons : AOWWeapon {
 		Goto LightDone
 	AltFire:
 		MHUD A 0
-		MHUD B 35 ACS_ExecuteAlways (314, 0)
-		MHUD A 18
+		MHUD B 15 ACS_ExecuteAlways (314, 0)
+		MHUD A 10
 		Goto Ready
 	NoAmmo:
 		MHUD A 10 A_WeaponReady (WRF_NOPRIMARY)

@@ -15,6 +15,7 @@ actor UtilityGun : AOWWeapon {
 	Weapon.AmmoUse 0
 	Weapon.Kickback 0
 	Weapon.PreferredSkin "MarineBFG10k"
+	Weapon.UpSound "weapons/up/utilgun"
 	
 	States {
 	Spawn:

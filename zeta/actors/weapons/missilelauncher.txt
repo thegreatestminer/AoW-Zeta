@@ -9,6 +9,7 @@ actor MissileLauncher : AOWWeapon replaces RocketLauncher 21048
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 2
 	Weapon.PreferredSkin "MarineRockets"
+	Weapon.UpSound "weapons/up/rocket"
 	Tag "Missile Launcher"
 	states {
 	Spawn:

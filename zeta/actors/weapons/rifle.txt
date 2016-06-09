@@ -14,6 +14,7 @@ actor Rifle : AOWWeapon 21042 {
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 2
 	Weapon.PreferredSkin "MarineBase"
+	Weapon.UpSound "weapons/up/rifle"
 	States {
 	Ready:
 		RIFL A 1 A_WeaponReady

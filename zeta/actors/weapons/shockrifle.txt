@@ -12,6 +12,7 @@ actor ShockRifle : AOWWeapon 21068 {
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 40
 	Weapon.PreferredSkin "MarineShockRifle"
+	Weapon.UpSound "weapons/up/shockrifle"
 	States {
 	Ready:
 		VOLT ABCDCB 3 A_WeaponReady
