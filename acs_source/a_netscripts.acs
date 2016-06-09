@@ -21,6 +21,63 @@ script SC_CL_SPECTATORTELEPORT (void) NET CLIENTSIDE {
 }
 
 // =============================================================================
+// [SG] For quickly throwing frag grenades/flashbangs, or detonating remote C4s
+
+/*
+str whichnadeweap[3] = { "FragGrenade", "Flashbang", "RemoteC4" };
+str whichnadeammo[3] = { "FragGrenadeAmmo", "FlashbangAmmo", "RemoteC4" }; // you can detonate remotes with no ammo left
+str whichnadedinv[3] = { "IsUsingBindFragGrenade", "IsUsingBindFlashbang", "IsUsingBindRemoteC4" }; */
+
+script SC_USEGRENADE (int whichnade) NET {
+	// this copypaste is only here because of static variable limits, else the above arrays would've been used
+	
+	/*
+	if( (!CheckInventory(whichnadeweap[whichnade])) || (!CheckInventory(whichnadeammo[whichnade])) || (CheckInventory(whichnadedinv[whichnade])) )
+		terminate;	// Do nothing if the player lacks the requested item, ammo for it, or has just used this
+	
+	GiveInventory(whichnadedinv[whichnade],1);
+	SetWeapon(whichnadeweap[whichnade]); */
+	
+	switch(whichnade)
+	{
+	
+		default:
+		case 0:
+		
+			if( (!CheckInventory("FragGrenade")) || (!CheckInventory("FragGrenadeAmmo")) | (CheckInventory("IsUsingBindFragGrenade")) )
+				terminate;
+				
+			GiveInventory("IsUsingBindFragGrenade",1);
+			SetWeapon("FragGrenade");
+			
+			break;
+			
+			
+		case 1:
+		
+			if( (!CheckInventory("Flashbang")) || (!CheckInventory("FlashbangAmmo")) | (CheckInventory("IsUsingBindFlashbang")) )
+				terminate;
+				
+			GiveInventory("IsUsingBindFlashbang",1);
+			SetWeapon("Flashbang");
+			
+			break;
+			
+			
+		case 1:
+		
+			if( (!CheckInventory("RemoteC4")) || (CheckInventory("IsUsingBindRemoteC4")) )
+				terminate;
+				
+			SetWeapon("RemoteC4");
+			GiveInventory("IsUsingBindRemoteC4",1);
+			
+			break;
+	}
+}
+	
+
+// =============================================================================
 // [Dusk] This allows players to switch to the losing team
 script SC_CCMD_TEAMSWITCH (void) NET {
 	if (!PlayerInGame (PlayerNumber()))
