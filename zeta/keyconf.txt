@@ -46,9 +46,9 @@ alias surrender "puke 342"
 alias spectatorteleport "puke 940"
 
 // Weapons
-alias usefraggrenade "puke -828 0"
-alias useflashbang "puke -828 1"
-alias usedetonator "puke -828 2"
+alias usefraggrenade "puke 828 0"
+alias useflashbang "puke 828 1"
+alias usedetonator "puke 828 2"
 
 // Items
 alias useselfheal "use SelfHealItem"

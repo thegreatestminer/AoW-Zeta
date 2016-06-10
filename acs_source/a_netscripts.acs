@@ -64,7 +64,7 @@ script SC_USEGRENADE (int whichnade) NET {
 			break;
 			
 			
-		case 1:
+		case 2:
 		
 			if( (!CheckInventory("RemoteC4")) || (CheckInventory("IsUsingBindRemoteC4")) )
 				terminate;

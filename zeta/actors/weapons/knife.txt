@@ -83,7 +83,8 @@ actor Knife : AOWWeapon {
 		KNIF A 18 A_WeaponReady (WRF_NOSECONDARY)
 		goto Ready
 	Fire:
-		TNT1 A 0 A_JumpIfInventory("IsInSpawnRoom",1,"Ready")
+		TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
+		TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")
 		KNIF A 0 A_JumpIfInventory ("StealthMode", 1, "Fire.Stealth")
 	Fire.Go:
 		KNIF B 1
