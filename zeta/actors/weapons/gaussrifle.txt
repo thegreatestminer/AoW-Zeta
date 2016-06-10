@@ -11,6 +11,7 @@ actor GaussRifle : AOWWeapon 21049 {
 	Weapon.AmmoType2 "GaussRifleAmmo"
 	Weapon.AmmoUse2 2
 	Weapon.PreferredSkin "MarineRailgun"
+	Weapon.UpSound "weapons/up/gauss"
 	Decal "GaussScorch"
 	Tag "Gauss Rifle"
 	States {

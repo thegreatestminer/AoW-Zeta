@@ -6,6 +6,7 @@ actor BloodRevolver : AOWWeapon {
 	Weapon.AmmoType "BloodRevolverAmmo"
 	Weapon.SelectionOrder 0
 	Weapon.PreferredSkin "MarinePistol"
+	Weapon.UpSound "weapons/up/revolver"
 	Inventory.Pickupmessage "You got the revolver!"
 	Obituary "$OB_REVOLVER"
 	DropItem "Handgun"

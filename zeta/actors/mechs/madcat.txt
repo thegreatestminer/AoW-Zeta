@@ -205,8 +205,8 @@ actor MadCatWeapons : AOWWeapon {
 		Goto LightDone
 	AltFire:
 		MHUD A 0
-		MHUD A 35 ACS_ExecuteAlways (314, 0)
-		MHUD C 18
+		MHUD A 15 ACS_ExecuteAlways (314, 0)
+		MHUD C 10
 		Goto Ready
 	NoAmmo:
 		MHUD A 10 A_WeaponReady (WRF_NOPRIMARY)

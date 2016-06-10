@@ -36,6 +36,7 @@ OB_IONCANNON = "%o was obliterated by %k's \chIon Cannon.";
 OB_LASERCHAINGUN = "%o was incinerated by %k's laser chaingun.";
 OB_LASERRIFLE = "%o was burned by %k's laser rifle.";
 OB_KAMIKAZE = "%k make %o go boom!";
+OB_KARASAWA = "%o was fried by %k's karasawa.";
 OB_KNIFE = "%o \cKwas cut up by %k!";
 OB_MACHINEGUN = "%o was perforated by %k's machinegun.";
 OB_MINIRAVEN_RED = "%o was pecked by a \cgRed\c- mini-Raven.";

@@ -18,6 +18,7 @@ actor ArtilleryCannon : AOWWeapon 21085 {
 	Weapon.AmmoUse2 1
 	Weapon.PreferredSkin "MarineSRockets"
 	Weapon.SelectionOrder 11
+	Weapon.UpSound "weapons/up/artil"
 	Scale 0.6
 	//$Category Weapons
 	Tag "Artillery Cannon"

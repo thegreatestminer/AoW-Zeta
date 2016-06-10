@@ -9,6 +9,7 @@ actor LaserChaingun : AOWWeapon 21083 {
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 25
 	Weapon.PreferredSkin "MarineMinigun"
+	Weapon.UpSound "weapons/up/laserchaingun"
 	Tag "Laser Chaingun"
 	States {
 	Ready:

@@ -125,6 +125,12 @@ sprite = PFLM
 name = "MarineSniper"
 sprite = PSNP
 }
+
+{
+name = "MarineKarasawa"
+sprite = PKSW
+}
+
 /* // [SG] Mech classes have +NOSKIN, these only cause problems
 /////////////////////////////////////////MECHS
 {

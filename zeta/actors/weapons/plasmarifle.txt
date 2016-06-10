@@ -13,6 +13,7 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 	Weapon.Kickback 25
 	Weapon.SelectionOrder 5
 	Weapon.PreferredSkin "MarinePlasma"
+	Weapon.UpSound "weapons/up/plasmagun"
 	States  { 
 	Spawn:
 		PLAS A -1

@@ -10,6 +10,7 @@ actor Boomstick : AOWWeapon replaces Shotgun 21080 {
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 5
 	Weapon.PreferredSkin "MarineShotgun"
+	Weapon.UpSound "weapons/up/shotgun"
 	States {
 	Ready:
 		SHTG A 1 A_WeaponReady

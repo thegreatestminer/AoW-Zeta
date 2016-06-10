@@ -11,6 +11,7 @@ actor GrenadeLauncher : AOWWeapon 21046 {
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive 2
 	Weapon.PreferredSkin "MarineAssaultGrenade"
+	Weapon.UpSound "weapons/up/nadelauncher"
 	Tag "Grenade Launcher"
 	States {
 	Spawn:

@@ -13,6 +13,7 @@ actor Flamer : AOWWeapon 21047 {
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 0
 	Weapon.PreferredSkin "MarineFlamer"
+	Weapon.UpSound "weapons/up/flamer"
 	Decal BulletChip
 	Tag "Flamethrower"
 	States {

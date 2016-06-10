@@ -27,6 +27,38 @@ Gauss/Select		gauss_s
 laser/fire			lsrlfire
 lchaingun/fire			lsclfire
 
+
+// Select sounds
+
+weapons/up/fragnade			weapup00
+weapons/up/flashbang		weapup00
+weapons/up/fists			weapup00
+weapons/up/repair			weapup01
+weapons/up/pistol			weapup02
+weapons/up/shotgun			weapup03
+weapons/up/gatling			weapup04
+weapons/up/artil			weapup05
+weapons/up/rocket			weapup05
+weapons/up/plasmagun		weapup06
+weapons/up/bfg				weapup07
+weapons/up/laserrifle		weapup08
+weapons/up/flamer			weapup09
+weapons/up/sniper			weapup10
+weapons/up/revolver			weapup11
+weapons/up/chrono			weapup12
+weapons/up/laserchaingun	weapup13
+weapons/up/ssg				weapup14
+weapons/up/rifle			weapup15
+weapons/up/timegun			weapup16
+weapons/up/utilgun			weapup17
+weapons/up/machinegun		weapup18
+weapons/up/plasmacannon		weapup19
+weapons/up/gauss			weapup20
+weapons/up/smg				weapup21
+weapons/up/shockrifle		weapup22
+weapons/up/nadelauncher		weapup23
+
+
 //CryoBow
 weapons/cryobowfire     DSBOWFIR
 weapons/cryobowshot     DSBOWSHT
@@ -67,6 +99,36 @@ chem/fire				chemfire
 // Volt Autorifle
 voltrifle/fire			voltfire
 voltrifle/decay			voltdeca
+
+//Karasawa
+Weapons/KarasawaHit	    KSAWHIT
+Weapons/KarasawaFire	KSAWFIRE
+Weapons/KarasawaIdle	KSAWIDLE
+Weapons/KarasawaCharge	KSAWCHRG
+Weapons/KarasawaShock	KSAWSHCK
+
+$Limit Weapons/KarasawaHit	0
+$Limit Weapons/KarasawaFire    	0
+
+//Flashbang Grenades
+flash/flashthrow	flshthrw
+flash/flashbounce	flshbnce
+$random				flash/flash { flash/flash1 flash/flash2 flash/flash3 }
+flash/flash1		flshexp1
+flash/flash2		flshexp2
+flash/flash3		flshexp3
+
+//Frag Grenade
+frag/pinpull		pinpull
+frag/throw			throw
+$random Weapons/fragbounce {FragBounce1 FragBounce2 FragBounce3 FragBounce4 FragBounce5 FragBounce6}
+
+FragBounce1    FRAGBNC1
+FragBounce2    FRAGBNC2
+FragBounce3    FRAGBNC3
+FragBounce4    FRAGBNC4
+FragBounce5    FRAGBNC5
+FragBounce6    FRAGBNC6
 
 // Plasma Cannon
 plasmacannon/fire		plasmaca

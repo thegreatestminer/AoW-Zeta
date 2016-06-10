@@ -9,6 +9,7 @@ actor PlasmaCannon : AOWWeapon {
 	Weapon.AmmoGive 4
 	Weapon.AmmoType2 "PlasmaCannonAmmo"
 	Weapon.AmmoUse2 1
+	Weapon.UpSound "weapons/up/plasmacannon"
 	Weapon.PreferredSkin "MarineBFG"
 	States {
 	Ready:

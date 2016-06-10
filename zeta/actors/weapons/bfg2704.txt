@@ -8,6 +8,7 @@ actor BFG2704 : AOWWeapon replaces BFG9000 {
 	Weapon.AmmoType ""
 	Weapon.AmmoGive 0
 	Weapon.PreferredSkin "MarineBFG"
+	Weapon.UpSound "weapons/up/bfg"
 	Tag "BFG 2704"
 	DropItem ""
 	States {

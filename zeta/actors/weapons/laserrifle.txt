@@ -15,6 +15,7 @@ actor StealthLaserRifle : AOWWeapon {
 	Weapon.AmmoGive2 100
 	weapon.SlotNumber 8
 	Weapon.PreferredSkin "MarineGrenade"
+	Weapon.UpSound "weapons/up/laserrifle"
 	Tag "Laser rifle (stealth)"
 	states {
 	Ready:
