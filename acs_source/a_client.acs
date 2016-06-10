@@ -467,39 +467,42 @@ int g_PreferenceCursor = 0;
 // Increment, minimum and maximum are only used in integer and credit types.
 #define PRK_CVAR 0 // CVAR name, will be prefixed with aow_cl_
 #define PRK_LABEL 1 // Description of this as appears on the menu
-#define PRK_TYPE 2 // Type of this, determines how it is handled in the menu
-#define PRK_INCR 3 // How much this variable is incremented at one key press
-#define PRK_MIN 4 // Minimum amount of this
-#define PRK_MAX 5 // Maximum amount of this
-// --
-#define MAX_PREFKEYS 6
+#define MAX_PREFKEYS_str 2
+
+
+#define PRK_TYPE 0 // Type of this, determines how it is handled in the menu
+#define PRK_INCR 1 // How much this variable is incremented at one key press
+#define PRK_MIN 2 // Minimum amount of this
+#define PRK_MAX 3 // Maximum amount of this
+#define MAX_PREFKEYS_int 4
 
 // =============================================================================
 // [Dusk] Preference definitions.
 #define MAX_PREFERENCES 7
-int g_Preferences[MAX_PREFERENCES][MAX_PREFKEYS];
+int g_Preferences_int[MAX_PREFERENCES][MAX_PREFKEYS_int];
+str g_Preferences_str[MAX_PREFERENCES][MAX_PREFKEYS_str];
 
 // =============================================================================
 // [Dusk] Definitions have to be in a separate function because otherwise
 // there's conflicts.
 function void PR_AddPreferenceType (str var, str label, int type, int incr, int min, int max) {
 	int i = 0;
-	while (g_Preferences[i][PRK_CVAR] != 0)
+	while (g_Preferences_str[i][PRK_CVAR] != 0)
 		i++; // Find a free spot
 	if (i >= MAX_PREFERENCES)
 		FatalError1f ("Tried to declare too many preferences types! Limit is %d", MAX_PREFERENCES);
 	
-	g_Preferences[i][PRK_CVAR] = var;
-	g_Preferences[i][PRK_LABEL] = label;
-	g_Preferences[i][PRK_TYPE] = type;
-	g_Preferences[i][PRK_INCR] = incr;
-	g_Preferences[i][PRK_MIN] = min;
-	g_Preferences[i][PRK_MAX] = max;
+	g_Preferences_str[i][PRK_CVAR] = var;
+	g_Preferences_str[i][PRK_LABEL] = label;
+	g_Preferences_int[i][PRK_TYPE] = type;
+	g_Preferences_int[i][PRK_INCR] = incr;
+	g_Preferences_int[i][PRK_MIN] = min;
+	g_Preferences_int[i][PRK_MAX] = max;
 }
 
 // =============================================================================
 function void PR_InitPreferences (void) {
-	if (g_Preferences[0][PRK_CVAR] != 0)
+	if (g_Preferences_Str[0][PRK_CVAR] != 0)
 		return;
 	
 	PR_AddPreferenceType ("fx", "Graphics level", PREFTYPE_POLARENUM, -1, -1, -1);
@@ -512,7 +515,7 @@ function void PR_InitPreferences (void) {
 	
 	// Check that we have the right amount of preferences
 	int i = 0;
-	while (g_Preferences[i][PRK_CVAR] != 0)
+	while (g_Preferences_str[i][PRK_CVAR] != 0)
 		i++;
 	if (i != MAX_PREFERENCES)
 		FatalError2f ("MAX_PREFERENCES set incorrectly, is %d, should be %d\n", i, MAX_PREFERENCES);
@@ -612,11 +615,11 @@ function void PR_Draw (void) {
 		}
 		
 		// Label of the preference
-		PR_HudMessage (strparam (s:head_color, s:g_Preferences[i][PRK_LABEL], s:":"), (i * 2) + 1, -0.4, y);
+		PR_HudMessage (strparam (s:head_color, s:g_Preferences_str[i][PRK_LABEL], s:":"), (i * 2) + 1, -0.4, y);
 		
 		// Now build the value string
-		int val = GetCVar (strparam (s:"aow_cl_", s:g_Preferences[i][PRK_CVAR]));
-		str type = g_Preferences[i][PRK_TYPE];
+		int val = GetCVar (strparam (s:"aow_cl_", s:g_Preferences_str[i][PRK_CVAR]));
+		str type = g_Preferences_int[i][PRK_TYPE];
 		str text;
 		
 		// Determine how to show the value to the user
@@ -675,8 +678,8 @@ function void PR_Undraw (void) {
 // Move current preference to positive or to negative.
 function void PR_MoveCurrent (int neg) {
 	int cur = g_PreferenceCursor;
-	str type = g_Preferences[cur][PRK_TYPE];
-	str cvar = strparam (s:"aow_cl_", s:g_Preferences[cur][PRK_CVAR]);
+	str type = g_Preferences_int[cur][PRK_TYPE];
+	str cvar = strparam (s:"aow_cl_", s:g_Preferences_str[cur][PRK_CVAR]);
 	int val = GetCVar (cvar);
 	str cmd = strparam (s:"set ", s:cvar);
 	
@@ -690,9 +693,9 @@ function void PR_MoveCurrent (int neg) {
 		break;
 	case PREFTYPE_INT:
 	case PREFTYPE_CREDITS:
-		int newval = val + (cond (neg, -1, 1) * g_Preferences[cur][PRK_INCR]);
-		int min = g_Preferences[cur][PRK_MIN];
-		int max = g_Preferences[cur][PRK_MAX];
+		int newval = val + (cond (neg, -1, 1) * g_Preferences_int[cur][PRK_INCR]);
+		int min = g_Preferences_int[cur][PRK_MIN];
+		int max = g_Preferences_int[cur][PRK_MAX];
 		if (newval < min)
 			newval = min;
 		else if (newval > max)
