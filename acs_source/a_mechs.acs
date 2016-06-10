@@ -484,7 +484,7 @@ script 697 (void) {
 	SetActorProperty (0, APROP_Invulnerable, false);
 	SetPlayerProperty (0, 0, 3);
 	CheckAndRemove ("MechEjectButton");
-	ACS_ExecuteAlways (10, 0);
+	//ACS_ExecuteAlways (10, 0); [TT] Deprecated.
 	TakeInventory ("IsMech", 1);
 	PopArmor ();
 	
