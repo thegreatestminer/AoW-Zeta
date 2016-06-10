@@ -479,7 +479,7 @@ script 697 (void) {
 		ThrustThingZ (0, 80, 0, 1);
 	}
 	
-	delay (5);
+	delay (1);
 	
 	SetActorProperty (0, APROP_Invulnerable, false);
 	SetPlayerProperty (0, 0, 3);
