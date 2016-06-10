@@ -88,6 +88,11 @@ script SC_CCMD_TEAMSWITCH (void) NET {
 		GenericError ("Too early to use this!");
 		terminate;
 	}
+	else if(checkinventory("isMech"))
+	{
+		GenericError ("You can't do that in a mech!");
+		terminate;
+	}
 	
 	int basediff = abs (CalcBaseLeft (TEAM_BLUE) - CalcBaseLeft (TEAM_RED));
 	int newteam = !PlayerTeam ();
