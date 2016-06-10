@@ -479,12 +479,12 @@ script 697 (void) {
 		ThrustThingZ (0, 80, 0, 1);
 	}
 	
-	delay (5);
+	delay (1);
 	
 	SetActorProperty (0, APROP_Invulnerable, false);
 	SetPlayerProperty (0, 0, 3);
 	CheckAndRemove ("MechEjectButton");
-	ACS_ExecuteAlways (10, 0);
+	//ACS_ExecuteAlways (10, 0); [TT] Deprecated.
 	TakeInventory ("IsMech", 1);
 	PopArmor ();
 	
@@ -606,3 +606,17 @@ script 86 (int x) {
 script 85 (void) {ACS_ExecuteAlways (84, 0);}
 script 88 (void) {ACS_ExecuteAlways (86, 0, 1);}
 script 89 (void) {} // Dummy - present because maps actually call this. even though it was empty
+
+script SC_JUGGARMORHELP (void)
+{
+	ActivatorSound ("mech/start", 127);
+	
+	// [Dusk] Store the armor values into inventory and take it from the actual
+	// mech, this way the mech is unaffected by armor but the armor can also be
+	// given back if and when the player ejects.
+	PushArmor ();
+	
+	SetFont ("BIGFONT");
+	HudMessage (s:"Powersuit online!";
+	HUDMSG_FADEOUT, 1800+PlayerNumber(), CR_GREEN, 0.5, 0.45, 2.0, 1.0);
+}
