@@ -28,7 +28,7 @@ actor RepairGun : AOWWeapon {
 		TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")
 		REP1 C 0 A_JumpIfInventory ("RepairGunUpgrade", 1, "FireEnhanced")
 		REP1 C 2
-		REP1 B 0 bright A_FireBullets (0.2, 0.2, 1, 4, "RepairDisarmPuff", FBF_NORANDOM, 800)
+		REP1 B 0 bright A_FireBullets (0.2, 0.2, 1, 2, "RepairDisarmPuff", FBF_NORANDOM, 800)
 		REP1 B 0 bright ACS_ExecuteAlways (650, 0, 10, 0)
 		REP1 B 2 bright ACS_ExecuteAlways (820, 0) // display target health
 		REP1 C 2 A_Refire
@@ -51,7 +51,7 @@ actor RepairGun : AOWWeapon {
 		wait
 	FireEnhanced:
 		REP2 C 1
-		REP2 B 0 bright A_FireBullets (0.2, 0.2, 1, 2, "EnhancedRepairDisarmPuff", FBF_NORANDOM, 800)
+		REP2 B 0 bright A_FireBullets (0.2, 0.2, 1, 1, "EnhancedRepairDisarmPuff", FBF_NORANDOM, 800)
 		REP2 B 0 bright ACS_ExecuteAlways (650, 0, 10, 0)
 		REP2 B 1 bright ACS_ExecuteAlways (820, 0)
 		REP2 A 2 A_Refire
@@ -109,7 +109,7 @@ actor BombSquadGun : RepairGun {
 		TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
 		TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")
 		REP3 C 2
-		REP3 B 2 bright A_FireBullets (0.0, 0.0, 1, 18, "DisarmPuff", FBF_NORANDOM, 500)
+		REP3 B 2 bright A_FireBullets (0.0, 0.0, 1, 13, "DisarmPuff", FBF_NORANDOM, 500)
 		REP3 C 2 A_Refire
 		Goto Ready
 	AltFire:

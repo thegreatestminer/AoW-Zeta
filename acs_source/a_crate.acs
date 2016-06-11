@@ -379,7 +379,7 @@ script 309 (int c) {
 		LocalAmbientSound ("powerup/iron", 127);
 		ActivatorSound ("powerup/invisound", 127);
 		
-		SetHealth (1000);
+		GiveInventory("IronCurtain",1); // [SG] reverted Iron Curtain to invul instead of 1000 hp
 		
 		IntelMessage ("\cCIron curtain!!", false);
 		break;

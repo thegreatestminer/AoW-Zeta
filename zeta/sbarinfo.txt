@@ -124,6 +124,7 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 	// Speed upgrade (60)
 	// Fatigue (60)
 	// Thermal cloak (90)
+	// Iron Curtain (30)
 	// Time gun effects
 	InInventory PowerBerserk {
 		DrawImage "prh_back", -45, -80;
@@ -175,10 +176,18 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 		}}
 	}
 	
-	InInventory PowerTimeGunFloat {
+	InInventory PowerIronCurtain {	// [SG] Iron Curtain already has a colormap, leave it lower priority
 		InInventory Not PowerInvisibility || PowerBerserk {
 		InInventory Not PowerSpeedUpgrade || PowerFatigue {
 		InInventory Not PowerThermalCloak {
+			DrawImage "prh_back", -45, -80;
+			DrawImage "prh_invu", -45, -80;
+			DrawBar "prh_barw", "prh_barx", PowerupTime IronCurtain, vertical, -43, -78;
+	
+	InInventory PowerTimeGunFloat {
+		InInventory Not PowerInvisibility || PowerBerserk {
+		InInventory Not PowerSpeedUpgrade || PowerFatigue {
+		InInventory Not PowerThermalCloak || PowerIronCurtain {
 			DrawImage "prh_back", -45, -80;
 			DrawImage "prh_timf", -45, -80;
 			DrawBar "prh_baro", "prh_barx", PowerupTime TimeGunFloat, vertical, -43, -78;
@@ -189,10 +198,11 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 		InInventory Not PowerInvisibility || PowerBerserk {
 		InInventory Not PowerSpeedUpgrade || PowerFatigue {
 		InInventory Not PowerThermalCloak || PowerTimeGunFloat {
+		InInventory Not PowerIronCurtain {
 			DrawImage "prh_back", -45, -80;
 			DrawImage "prh_tims", -45, -80;
 			DrawBar "prh_baro", "prh_barx", PowerupTime TimeGunBoost, vertical, -43, -78;
-		}}}
+		}}}}
 	}
 	
 	DrawSelectedInventory alwaysshowcounter, INDEXFONT, -85, -25, -87, -13, White, 0;
