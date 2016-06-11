@@ -19,7 +19,6 @@ actor BaseTerminal {
 	DeathSound "grenade/explode"
 	DesignatedTeam 1
 	PainChance 255
-	DamageFactor "Fist", 0.3
 	DamageFactor "Bullet", 0.8
 	DamageFactor "Rifle", 0.8
 	DamageFactor "Explosion", 0.75

@@ -33,6 +33,7 @@ lchaingun/fire			lsclfire
 weapons/up/fragnade			weapup00
 weapons/up/flashbang		weapup00
 weapons/up/fists			weapup00
+weapons/up/remotec4			weapup00
 weapons/up/repair			weapup01
 weapons/up/pistol			weapup02
 weapons/up/shotgun			weapup03
@@ -43,6 +44,7 @@ weapons/up/plasmagun		weapup06
 weapons/up/bfg				weapup07
 weapons/up/laserrifle		weapup08
 weapons/up/flamer			weapup09
+weapons/up/chem				weapup09
 weapons/up/sniper			weapup10
 weapons/up/revolver			weapup11
 weapons/up/chrono			weapup12
@@ -57,6 +59,8 @@ weapons/up/gauss			weapup20
 weapons/up/smg				weapup21
 weapons/up/shockrifle		weapup22
 weapons/up/nadelauncher		weapup23
+weapons/up/tibrifle			weapup24
+weapons/up/combrifle		weapup24
 
 
 //CryoBow

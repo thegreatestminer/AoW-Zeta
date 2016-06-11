@@ -28,6 +28,8 @@ actor ProxyMineCount : Inventory {
 	inventory.maxamount 6
 }
 
+// [SG] Mines no longer take damage from bullets
+
 Actor ProxyMineRed {
 	MONSTER
 	-SOLID
@@ -52,8 +54,8 @@ Actor ProxyMineRed {
 	Scale .2
 	Mass 0x7FFFFFFF
 	DamageFactor "Fist",			0.0
-	DamageFactor "Bullet",			0.5
-	DamageFactor "Rifle",			0.5
+	DamageFactor "Bullet",			0.0
+	DamageFactor "Rifle",			0.0
 	DamageFactor "Explosion",		0.0
 	DamageFactor "Fire",			0.0
 	DamageFactor "Chemical",		0.0

@@ -11,25 +11,26 @@ actor BombPack : AOWWeapon {
 	DropItem "Nothing"
 	States {
 	Ready:
-		SBOM A 10	// [SG] 10 tics to prevent morphing clientside desync
 		SBOM A 0 A_ChangeFlag ("PICKUP", 0)
 		// [Dusk] The scream is not really an item sound but I don't want anything
 		// to interrupt it. The above line disables +PICKUP, so the guy won't be
 		// picking up any items.
-		SBOM A 0 A_PlaySound ("terrorist/select", CHAN_WEAPON)
-		SBOM A 0 A_PlaySound ("terrorist/scream", CHAN_ITEM, 1.0, true) // [TT] Hopefully will fix the bomb yelling bug.
+		SBOM A 10 A_PlaySound ("terrorist/select", CHAN_WEAPON)
+		SBOM A 0 A_PlaySound ("terrorist/scream", 5, 1.0, true) // [TT] Hopefully will fix the bomb yelling bug.
 		SBOM A 1 A_WeaponReady (WRF_NOSWITCH)
 		wait
 	Deselect:
-		TNT1 A 0 A_StopSound (CHAN_ITEM)
+		TNT1 A 0 A_StopSound (5)
+		TNT1 AA 0 A_Lower
 		TNT1 A 1 A_Lower
-		wait
+		goto Deselect+1
 	Select:
+		SBOM AA 0 A_Raise
 		SBOM A 1 A_Raise
-		wait
+		loop
 	DontFire:
 		SBOM A 2
-		goto Ready+4
+		goto Ready+3
 	Fire:
 		TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "DontFire")
 		TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "DontFire")
@@ -40,7 +41,7 @@ actor BombPack : AOWWeapon {
 		SBOM C 25
 		SBOM C 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
 		SBOM C 1 A_GiveInventory ("IsTerrorist", 1)
-		SBOM C 5 A_StopSound (CHAN_ITEM)
+		SBOM C 5 A_StopSound (5)
 		SBOM C -1 DamageThing (1000000)
 		stop
 	Spawn:
@@ -156,7 +157,7 @@ actor NoMoreTerrorism : CustomInventory {
 		stop
 	Pickup:
 		TNT1 A 0 A_ChangeFlag ("PICKUP", 1)
-		TNT1 A 0 A_StopSound (CHAN_ITEM)
+		TNT1 A 0 A_StopSound (5)
 		stop
 	}
 }
