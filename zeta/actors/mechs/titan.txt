@@ -36,6 +36,14 @@ actor Titan : MechPlayer_Base {
 		ROB3 B 10 //A_PlaySound("mech/step")
 		ROB3 A 0 A_JumpIf(WaterLevel >= 1, "Drown")
 		Goto Spawn
+	Melee:
+		ROB3 GGG 1 A_JumpIfInventory("TitanShootingLRM",1,"FireRockets")
+		ROB3 G 10
+		goto Spawn
+	FireRockets:
+		ROB3 K 10
+		ROB3 KK 15 A_SpawnItemEx("MechStepDamageStrong", 0, -34, 4, 0, 0, 0, 0, 0, 0)
+		goto Spawn
 	SeeDamaged:
 		ROB3 CD 7 
 		ROB3 D 0 A_PlaySoundEx("mech/idle","SoundSlot5",1,-1)
@@ -105,6 +113,8 @@ actor TitanSwitchPickup : CustomInventory {
 	}
 }
 
+actor TitanShootingLRM : inventory { } // [SG] for firing animation
+
 actor TitanWeapons : AOWWeapon {
 	Weapon.SelectionOrder 1
 	Weapon.AmmoUse 0
@@ -116,7 +126,6 @@ actor TitanWeapons : AOWWeapon {
 	weapon.preferredskin "TitanMech"
 	States {
 	Ready:
-		MHUD C 0 A_StopSound (6)
 		MHUD C 1 A_WeaponReady
 		wait
 	Deselect:
@@ -138,7 +147,6 @@ actor TitanWeapons : AOWWeapon {
 		MHUD A 0 A_JumpIfInventory("Wolverine-WhatWeapon",2,"Fire.Missiles")
 		MHUD A 0 A_JumpIfInventory("Wolverine-WhatWeapon",1,"Fire.Flamer")
 		//Continue firing 80mm
-		MHUD A 0 A_StopSound (6)
 		MHUD A 0 A_JumpIfInventory("Reload-80mm",1,"Fire.Missiles")
 		MHUD A 10 A_JumpIfInventory("Titan-80mmAmmo",1,1)
 		Goto NoAmmo
@@ -155,65 +163,65 @@ actor TitanWeapons : AOWWeapon {
 		MHUD A 0 A_JumpIfInventory ("Titan-FlamerAmmo", 10, 1)
 		Goto NoAmmo
 		MHUD A 0 A_TakeInventory ("Titan-FlamerAmmo", 10)
-		MHUD A 0 A_PlaySound ("flamer2/fire", 6, 1.0, 1)
-		MHUD A 0 bright A_GunFlash
+		MHUD A 0 A_PlaySound ("flamer2/fire", 6)
+		MHUD A 0 bright A_Light2
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 bright A_Light1
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
+		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
+		MHUD A 0 bright A_Light2
 		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD A 0 bright A_GunFlash
+		MHUD A 0 bright A_Light1
 		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD A 0 bright A_GunFlash
+		MHUD A 0 bright A_Light2
 		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
 		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
 		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD A 0 bright A_GunFlash
-		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD A 0 bright A_GunFlash
-		MHUD A 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD B 1 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,18,3)
-		MHUD A 0 Bright A_FireCustomMissile("FastFlameShot",random(-2,2),0,-18,3)
-		MHUD A 0 Bright
-		MHUD A 0 Bright A_Refire 
+		MHUD A 0 Bright A_ReFire 
 		MHUD B 3 Bright A_PlaySound ("flamer2/down", 6)
-		MHUD A 3
+		MHUD A 3 A_Light0
 		goto Ready
 	Fire.Missiles:
 		//Continue firing Rockets
-		MHUD A 0 A_StopSound (6)
 		MHUD A 0 A_JumpIfInventory("Reload-LRM",1,"Fire.Flamer")
 		MHUD A 10 A_JumpIfInventory("MechRocketAmmo",20,1)
 		Goto NoAmmo
-		MHUD A 2 A_PlayWeaponSound("lrm/fire")
+		MHUD A 0 A_PlayWeaponSound("lrm/fire")
+		MHDU AA 1 A_GiveInventory("TitanShootingLRM",1)
 		MHUD B 0 Radius_Quake(2,70,0,1,0)
 		MHUD A 0 A_TakeInventory("MechRocketAmmo",20)
 		MHUD A 0 ACS_ExecuteAlways (319, 0, 1, 6) // reload
-		MHUD B 0 Bright A_GunFlash
-		MHUD BBBBBBBBBBBBBBBBBBBB 2 A_FireCustomMissile("LongRangeMissile",random(-1,1),0,-25,0)
-		MHUD A 35
-		MHUD A 2 A_Refire
+		MHUD B 0 A_GunFlash
+		MHUD BBBBBBBBBBBBBBBBBBBB 2 bright A_FireCustomMissile("LongRangeMissile",random(-1,1),0,-25,0)
+		MHUD AAAAA 7 A_TakeInventory("TitanShootingLRM",1)
+		MHUD A 2 A_ReFire
 		goto Ready
 	Flash:
-		TNT1 A 1 Bright A_Light2
+		TNT1 A 2 Bright A_Light2
 		TNT1 A 2 Bright A_Light1
+		TNT1 A 0 A_JumpIfInventory("TitanShootingLRM",1,"Flash")
 		Goto LightDone
 	AltFire:
 		MHUD A 0

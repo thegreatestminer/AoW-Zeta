@@ -590,19 +590,19 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 int Mechs_int[NUM_MECHS][NUM_MECH_KEYS_INT] = {
 	/*  cost, health, weight, type (does it need adv mechs researched) */
 	{
+		1250, 
 		1000, 
-		1000, 
-		MECHWEIGHT_LIGHT, 
-		0,
-	}, 
-	{
-		1200, 
-		2000, 
 		MECHWEIGHT_LIGHT, 
 		0,
 	}, 
 	{
 		1250, 
+		2000, 
+		MECHWEIGHT_LIGHT, 
+		0,
+	}, 
+	{
+		1500, 
 		3000, 
 		MECHWEIGHT_MEDIUM, 
 		0,
@@ -626,7 +626,7 @@ int Mechs_int[NUM_MECHS][NUM_MECH_KEYS_INT] = {
 		MF_POWER,
 	}, 
 	{
-		1250, 
+		1500, 
 		3500, 
 		MECHWEIGHT_MEDIUM, 
 		0,
