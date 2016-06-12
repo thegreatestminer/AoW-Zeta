@@ -18,6 +18,7 @@ actor Utility_MiniRefCacheRed {
 	+ISMONSTER
 	+QUICKTORETALIATE
 	Obituary "%o ventured too close to the \cARed Mini-Refinery\c-."
+	DesignatedTeam 1		// [SG] this was missing!
 	Radius 32
 	Height 48
 	Health 5850

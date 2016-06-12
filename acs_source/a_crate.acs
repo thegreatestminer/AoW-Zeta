@@ -203,7 +203,9 @@ function int CheckCrate (int c) {
 			return false;
 		return true;
 	case CRATE_BASECRASHER:
-		return true; // CheckMinutes (5); // not until 5:00
+		return !SuddenDeath; // [SG] not in sudden death. To be adjusted later
+	case CRATE_BASEMIRACLE:
+		return !SuddenDeath; // [SG] not in sudden death. To be adjusted later
 	case CRATE_UTILITYGUN:
 		return !CheckInventory ("UtilityGun"); // not if player already has utility
 	case CRATE_ENERGYARMOR:
@@ -213,8 +215,8 @@ function int CheckCrate (int c) {
 		return	!CheckInventory ("ExplosionArmor") && // ditto, for explo proof
 				!CheckInventory ("PowerExplosiveResistance");
 	case CRATE_BULLETARMOR:
-		return	!CheckInventory ("BulletArmor") && // ditto, for bullet proof
-				!CheckInventory ("PowerBulletResistance");
+		return	!CheckInventory ("BulletProofArmor") && // ditto, for bullet proof
+				!CheckInventory ("PowerBulletProof");
 	case CRATE_JUGGERNAUT:
 		return	CheckMinutes (5) && // not until 5:00
 				!CheckInventory("IsMech") && // not if already mech
@@ -546,7 +548,7 @@ script 309 (int c) {
 	case CRATE_BULLETARMOR:
 		LocalAmbientSound ("powerup/resistbullet", 127);
 		ActivatorSound ("misc/armor_pkup", 127);
-		GiveInventory ("BulletArmor", 1);
+		GiveInventory ("BulletProofArmor", 1);
 		break;
 	case CRATE_JUGGERNAUT:
 		GiveInventory ("JuggernautPowerup",1);
@@ -635,6 +637,7 @@ script 309 (int c) {
 		CheckAndRemove ("ChemicalSprayer");
 		CheckAndRemove ("TiberiumAutorifleWeak");
 		CheckAndRemove ("TiberiumAutorifle");
+		CheckAndRemove ("Flashbang");
 		CheckAndRemove ("FragGrenade");
 		CheckAndRemove ("RepairGunUpgrade");
 		if (GetRank () < RANK_COMMANDO)
@@ -649,6 +652,7 @@ script 309 (int c) {
 		CheckAndRemove ("PlasmaGun");
 		CheckAndRemove ("MachineGun");
 		CheckAndRemove ("GatlingGun");
+		CheckAndRemove ("Karasawa");
 		CheckAndRemove ("CombustionAutorifle");
 		CheckAndRemove ("CombustionAutorifleWeak");
 		

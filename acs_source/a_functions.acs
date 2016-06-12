@@ -259,6 +259,18 @@ function void SetFragGrenades (int grenades) {
 	}
 }
 
+function void SetFlashbangs (int flashnades) {
+	if (!CheckInventory ("Flashbang"))
+		GiveInventory ("Flashbang", 1);
+	SetAmmoCapacity ("FlashbangAmmo", flashnades);
+	if (CheckInventory ("FlashbangAmmo") < flashnades) {
+		GIveInventory ("FlashbangAmmo", flashnades);
+	} else if (CheckInventory ("FlashbangAmmo") > flashnades) {
+		TakeInventory("FlashbangAmmo", 10);
+		GiveInventory("FlashbangAmmo", flashnades);
+	}
+}
+
 // ============================================================================
 // [Dusk] Convenience functions
 function int GetHealth (void) {return GetActorProperty (0, APROP_HEALTH);}
