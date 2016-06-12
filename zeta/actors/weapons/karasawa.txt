@@ -189,8 +189,6 @@ Actor KsawBolt
 		"####" ABCD 1 Bright A_SpawnItemEx("BoltBlur", 0, 0, 0, 1, 0, 0, 180, SXF_CLIENTSIDE)
 		loop
 	Death:
-		TNT1 AA 0 A_SpawnItemEx("PlasmaParticleSpawnerRed", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 BBBB 1 A_SpawnItem("GaussImpactFlareRed",0)
 		KSDR ABCDEF 2 Bright
 		Stop
 	}
@@ -205,8 +203,6 @@ Actor KsawBoltBlue : KsawBolt
 		"####" ABCD 1 Bright A_SpawnItemEx("BoltBlurBlue", 0, 0, 0, 1, 0, 0, 180, SXF_CLIENTSIDE)
 		loop
 	Death:
-		TNT1 AA 0 A_SpawnItemEx("PlasmaParticleSpawnerBlue", 0, 0, 0, 0, 0, 0, 0, 128)
-		TNT1 BBBB 1 A_SpawnItem("GaussImpactFlareBlue",0)
 		KSDB ABCDEF 2 Bright
 		Stop
 	}

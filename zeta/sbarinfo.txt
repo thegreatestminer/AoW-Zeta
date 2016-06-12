@@ -183,6 +183,8 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 			DrawImage "prh_back", -45, -80;
 			DrawImage "prh_invu", -45, -80;
 			DrawBar "prh_barw", "prh_barx", PowerupTime IronCurtain, vertical, -43, -78;
+		}}}
+	}
 	
 	InInventory PowerTimeGunFloat {
 		InInventory Not PowerInvisibility || PowerBerserk {

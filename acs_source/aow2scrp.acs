@@ -155,7 +155,7 @@
 #libdefine SC_PopAngle					826
 #libdefine SC_InitMonster				827
 #libdefine SC_UseGrenade				828
-#libdefine SC_JUGGARMORHELP				829
+#libdefine SC_JuggArmorHelp				829
 // [...]
 #libdefine SC_BotEnter					888
 #libdefine SC_BotRespawn				889
@@ -686,7 +686,6 @@ global int 63:deathtoll;
 #include "a_netscripts.acs"
 #include "a_nukes.acs"
 #include "a_opendeck.acs"
-//#include "a_preferences.acs"
 #include "a_printf.acs"
 #include "a_regen.acs"
 #include "a_repfac.acs"
