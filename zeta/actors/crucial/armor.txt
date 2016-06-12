@@ -196,6 +196,7 @@ actor ChemicalProof : PermanentPowerup {Powerup.Type "ChemicalProof"}
 actor BulletResistance : PermanentPowerup {Powerup.Type "BulletResistance"}
 actor ExplosiveResistance : PermanentPowerup {Powerup.Type "ExplosiveResistance"}
 actor EnergyResistance : PermanentPowerup {Powerup.Type "EnergyResistance"}
+actor BulletProof : PermanentPowerup {Powerup.Type "BulletProof"}
 
 // =============================================================================
 // [Dusk] Harvesters get this to make sure they can not be harmed by

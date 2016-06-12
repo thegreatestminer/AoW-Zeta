@@ -6,13 +6,14 @@
 // due. Please don't be lame and just copy-paste any of this and call it your own. Thanks!
 
 // What type is weak against what?
-int ArmorWeaknesses[6] = {
+int ArmorWeaknesses[7] = {
 	ARMOD_NOCHANGE, // NOCHANGE
 	ARMOD_CHEM, // FIRE
 	ARMOD_FIRE, // CHEM
 	ARMOD_BULLET, // ENERGY
 	ARMOD_ENERGY, // EXPLO
 	ARMOD_EXPLO, // BULLET
+	ARMOD_EXPLO, // BULLETPROOF
 };
 
 function int GetArmorGrade (void) {
@@ -39,6 +40,7 @@ function int GetPlayerArmorModifier (int p) {
 	if (CheckActorInventory (3800 + p, "PowerExplosiveResistance")) return ARMOD_EXPLO;
 	if (CheckActorInventory (3800 + p, "PowerEnergyResistance")) return ARMOD_ENERGY;
 	if (CheckActorInventory (3800 + p, "PowerBulletResistance")) return ARMOD_BULLET;
+	if (CheckActorInventory (3800 + p, "PowerBulletProof")) return ARMOD_BULLETPROOF;
 	return 0;
 }
 
@@ -99,6 +101,7 @@ function void SetPlayerArmorGrade (int p, int n, int mod) {
 		CheckAndRemove ("PowerBulletResistance");
 		CheckAndRemove ("PowerExplosiveResistance");
 		CheckAndRemove ("PowerEnergyResistance");
+		CheckAndRemove ("PowerBulletProof");
 		
 		switch (mod) {
 		case ARMOD_FIRE:
@@ -116,6 +119,9 @@ function void SetPlayerArmorGrade (int p, int n, int mod) {
 		case ARMOD_BULLET:
 			GiveActorInventory (3800 + p, "BulletResistance", 1);
 			break;
+		case ARMOD_BULLETPROOF:
+			GiveActorInventory (3800 + p, "BulletProof", 1);
+			break;
 		}
 	}
 }
@@ -124,25 +130,25 @@ function void SetPlayerArmorGrade (int p, int n, int mod) {
 script SC_SETARMORGRADE (int grade, int mod)
 	SetArmorGrade (grade, mod);
 
-// [Dusk] ARMOR DISPLAY COMMAND
+// [Dusk] ARMOR DISPLAY COMMAND		// [SG] armors no longer have weaknesses as of now, updating with new values
 // Argh! Data tables!
-int ArmorNames[13] = {"PowerGrade1Armor", "PowerGrade2Armor", "PowerGrade3Armor", "PowerGrade4Armor", "PowerGrade5Armor", 
+int ArmorNames[14] = {"PowerGrade1Armor", "PowerGrade2Armor", "PowerGrade3Armor", "PowerGrade4Armor", "PowerGrade5Armor", 
 	"PowerGradeNeg1Armor", "PowerFireProof", "PowerChemicalProof", "PowerExplosiveResistance", "PowerEnergyResistance", 
-	"PowerBulletResistance", "PowerChemicalResistance", "PowerGrade2ArmorFactoryPower"};
-int ArmorValuesFist[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9};
-int ArmorValuesBullet[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 0.9};
-int ArmorValuesExplo[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	1.0, 1.0, 0.5, 2.0, 2.0, 1.0, 0.9};
-int ArmorValuesAntiArmor[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	1.0, 1.0, 0.5, 2.0, 1.0, 1.0, 0.9};
-int ArmorValuesFire[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	0.0, 2.0, 1.0, 1.0, 1.0, 2.0, 0.9};
-int ArmorValuesChem[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	2.0, 0.0, 1.0, 1.0, 1.0, 0.5, 0.9};
-int ArmorValuesEnergy[13] = {0.9, 0.8, 0.7, 0.6, 0.5, 1.2,
-	1.0, 1.0, 2.0, 0.5, 2.0, 1.0, 0.9};
+	"PowerBulletResistance", "PowerChemicalResistance", "PowerGrade2ArmorFactoryPower", "PowerBulletProof" };
+int ArmorValuesFist[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.86, 1.0};
+int ArmorValuesBullet[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	1.0, 1.0, 1.0, 1.0, 0.7, 1.0, 0.86, 0.4};
+int ArmorValuesExplo[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.86, 1.0};
+int ArmorValuesAntiArmor[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	1.0, 1.0, 0.6, 1.0, 1.0, 1.0, 0.86, 1.0};
+int ArmorValuesFire[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	0.0, 2.0, 1.0, 1.0, 1.0, 1.0, 0.86, 1.0};
+int ArmorValuesChem[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	2.0, 0.0, 1.0, 1.0, 1.0, 0.6, 0.86, 1.0};
+int ArmorValuesEnergy[14] = {0.93, 0.86, 0.79, 0.72, 0.65, 1.14,
+	1.0, 1.0, 1.0, 0.6, 1.0, 1.0, 0.86, 1.0};
 
 script SC_CCMD_SHOWARMOR (void) NET CLIENTSIDE {
 	int fist, bullet, explo, antiarmor, fire, chem, energy;
