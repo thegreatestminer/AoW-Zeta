@@ -87,6 +87,7 @@ str Items_Str[MAX_ITEMS][MAX_ITEMKEYS_str] = {
 	{"Combustion Autorifle (weak)", "CombustionAutorifleWeak", "FA21CalAmmo", ""},
 	{"Sniper Rifle (weak)", "SniperRifleWeak", "SniperAmmo", ""},
 	{"Chrono Bow", "ChronoBow", "ChronoBolt", ""},
+	{"Karasawa", "Karasawa", "KarasawaAmmo", ""},
 };
 
 int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] = 
@@ -97,18 +98,18 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
 	{1, 400, 0, 25}, //smg
 	{1, 50, 0, 25}, //shotgun
 	{1, 50, 0, 50}, //ssg
-	{1, 400, 0, 25}, //machine
+	{1, 400, 0, 50}, //machine
 	{1, 400, 0, 100}, //gattling
 	{1, 30, 4, 25}, //Rifle
-	{1, 50, 0, 150}, //guass
+	{1, 50, 0, 125}, //guass
 	{1, 40, 0, 125}, //grenade rifle
 	{1, 200, 100, 0}, //stealth rifle
 	{1, 200, 0, 25}, //laser rifle
 	{1, 175, 0, 0}, //time gun
 	{1, 40, 0, 125}, //artillery canon
-	{1, 400, 0, 175}, //laser chaingun
+	{1, 400, 0, 150}, //laser chaingun
 	{1, 0, 0, 0}, //util
-	{1, 10, 0, 500}, //plasma cannon
+	{1, 10, 0, 0}, //plasma cannon	// [SG] selling Plasma Cannon? no
 	{1, 200, 4, 125}, //chem spray
 	{1, 120, 0, 125}, // tib autorifle
 	{1, 120, 0, 75}, // tib autorifle weak
@@ -121,7 +122,7 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
 	{1, 400, 4, 125}, // flamethrower
 	{1, 200, 0, 150}, //shock rifle
 	{1, 40, 0, 125}, //sniper rifle
-	{1, 200, 0, 200}, //plasma rifle
+	{1, 200, 0, 125}, //plasma rifle
 	{1, 100, 0, 0}, //stealth knife
 	{1, 0, 0, 125}, //chainsaw
 	{1, 0, 0, 0}, //bomb pack
@@ -137,7 +138,8 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
 	{1, 120, 0, 125}, //combustion autorifle
 	{1, 120, 0, 75}, //combustion autorifle (weak)
 	{1, 40, 0, 125}, //sniper rifle(weak)
-	{1, 25, 0, 400}, //chrono bow
+	{1, 25, 0, 300}, //chrono bow
+	{1, 50, 0, 125}, // karasawa
 };
 
 /*============================================================================
@@ -169,7 +171,7 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
  *	- armor modifier (ARMOD_NOCHANGE, ARMOD_BULLET, ARMOD_EXPLO, ARMOD_ENERGY, ARMOD_CHEM, ARMOD_FIRE)
  *
  *	row 3:
- *	- frag grenades
+ *	- frag grenades & flashbangs
  *	- timed C4 count
  *	- enhanced timed C4 (true/false)
  *	- flags
@@ -229,7 +231,7 @@ function void InitClasses (void) {
 		2, 1, false, 0,
 		ITEM_RIFLE, 0, 0, 0, 0, 0);
 	
-	AddClass (CLASS_MachineGunner, "Machine Gunner", 300, 0.9, DEP_NONE,
+	AddClass (CLASS_MachineGunner, "Machine Gunner", 300, 0.8, DEP_NONE,
 		1, ARMOD_BULLET,
 		2, 1, false, 0,
 		ITEM_MACHINEGUN, 0, 0, 0, 0, 0);
@@ -265,7 +267,7 @@ function void InitClasses (void) {
 		ITEM_SHOCKRIFLE, 0, 0, 0, 0, 0);
 	
 	AddClass (CLASS_Commando, "Commando", 1000, 0.85, DEP_CENTRE,
-		0, ARMOD_NOCHANGE,
+		2, ARMOD_NOCHANGE,
 		4, 2, true, CF_Warning|CF_CantPilot,
 		ITEM_GAUSS, ITEM_MISSILE, ITEM_GATLING, ITEM_RIFLE, 0, 0);
 	
@@ -349,10 +351,15 @@ function void InitClasses (void) {
 		2, 1, false, 0,
 		ITEM_COMBUSTRIFLE, 0, 0, 0, 0, 0);
 		
-	AddClass (CLASS_ChronoArcher, "Chrono Archer", 1500, 0.9, DEP_CENTRE,
+	AddClass (CLASS_ChronoArcher, "Chrono Archer", 1000, 0.9, DEP_CENTRE,
 		2, ARMOD_NOCHANGE,
 		4, 2, true, CF_Warning|CF_CantPilot,
 		ITEM_CRYOBOW, 0, 0, 0, 0, 0);
+		
+	AddClass (CLASS_KarasawaSoldier, "Karasawa Soldier", 800, 0.8, DEP_CENTRE,
+		2, ARMOD_ENERGY,
+		2, 1, false, 0,
+		ITEM_KARASAWA, 0, 0, 0, 0, 0);
 }
 
 #define RESEARCH_ENHANCEDREFINING 0
@@ -364,8 +371,9 @@ function void InitClasses (void) {
 #define RESEARCH_ADVTURRETS 6
 #define RESEARCH_MORETURRETS 7
 #define RESEARCH_FRAGNADE 8
+#define RESEARCH_FLASHBANG 9
 // ----
-#define NUM_RESEARCHES 9
+#define NUM_RESEARCHES 10
 
 str Researches_str[NUM_RESEARCHES][NUM_RESEARCH_KEYS_STR] = {
 	/* {
@@ -429,6 +437,12 @@ str Researches_str[NUM_RESEARCHES][NUM_RESEARCH_KEYS_STR] = {
 		\n
 		\n
 		\t--- Exactly what it says on the tin.\n"
+	}, {
+		"+1 Flashbang",
+		"Adds an extra flashbang to your arsenal.\n
+		\n
+		\n
+		\t--- Exactly what it says on the tin.\n"
 	}
 };
 
@@ -442,7 +456,8 @@ int Researches_int[NUM_RESEARCHES][NUM_RESEARCH_KEYS_INT] = {
 	{200, RC_CAT_ADDON},  //repair gun upgrade
 	{2000, RC_CAT_UPGRADE}, //adv turrets
 	{2000, RC_CAT_UPGRADE}, //turret cap increase
-	{200, RC_CAT_ADDON}, //+1 fraggrenade
+	{150, RC_CAT_ADDON}, //+1 fraggrenade
+	{150, RC_CAT_ADDON}, //+1 flashbang
 };
 
 str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {

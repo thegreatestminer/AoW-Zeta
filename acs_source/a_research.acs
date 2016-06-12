@@ -95,6 +95,12 @@ function bool CheckResearch (int r) {
 			return false;
 		}
 		break;
+	case RESEARCH_FLASHBANG:
+		if (GetAmmoCapacity ("FlashbangAmmo") >= 4) {
+			g_Error = "You already have four!";
+			return false;
+		}
+		break;
 	}
 	
 	// Must afford it
@@ -185,6 +191,10 @@ function bool RC_PurchaseResearch (int r) {
 	case RESEARCH_FRAGNADE:
 		MenuResponse (MSGTYPE_SUCCESS, "Got a frag grenade!");
 		SetFragGrenades (GetAmmoCapacity ("FragGrenadeAmmo") + 1);
+		break;
+	case RESEARCH_FLASHBANG:
+		MenuResponse (MSGTYPE_SUCCESS, "Got a flashbang!");
+		SetFragGrenades (GetAmmoCapacity ("FlashbangAmmo") + 1);
 		break;
 	}
 	
