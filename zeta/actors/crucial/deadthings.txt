@@ -277,3 +277,14 @@ actor FadingCorpse {
 		wait
 	}
 }
+
+actor DisintegratedCorpse {
+	+NOINTERACTION
+	+NOBLOCKMAP
+	+CLIENTSIDEONLY
+	states {
+	Spawn:
+        DISR ABCDEFGHIJ 3 bright
+        Stop
+	}
+}

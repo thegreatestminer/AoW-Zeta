@@ -153,6 +153,7 @@ actor BulletProofArmor : FireArmor {
 		ARM7 A 6 bright
 		ARM7 B 6
 		loop
+	}
 }
 
 actor IsChangingArmor : Inventory {}
