@@ -947,6 +947,13 @@ graphic arm5icon, 31, 17 {
 	offset -6, -16
 }
 
+graphic arm7icon, 31, 17 {
+	xscale 2.0
+	yscale 2.25
+	patch "arm7a0", 0, 0
+	offset -6, -16
+}
+
 Graphic jeticon, 25, 29
 {
 	XScale 2.0
