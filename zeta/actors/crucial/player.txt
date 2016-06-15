@@ -7,8 +7,8 @@ actor Player : DoomPlayer {
 	player.displayname "Average Joe"
 	player.crouchsprite "PLYC"
 	player.startitem "Unarmed", 1
-	player.forwardmove 0.875
-	player.sidemove 0.666
+	player.forwardmove 0.864
+	player.sidemove 0.648
 	player.maxhealth 100
 	
 	damagefactor "Explosion", 0.3

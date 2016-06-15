@@ -287,6 +287,97 @@ function void GivePoints (int p) {Team_GivePoints (PlayerTeam(), p, false);}
 function int GetPlayerTeam (int p) {return GetPlayerInfo (p, PLAYERINFO_TEAM);}
 
 // ============================================================================
+// [SG] Base Crasher & Base Miracle checks
+
+function int CheckBaseCrasher (int team)
+{
+	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("aow_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("aow_suddendeathtime") - 5)) )
+		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
+		
+	if(!team)		// not if any building is at low health on this team
+	{
+		if( (GotBarracks[0]) && (GetActorHealth(TID_BARRACKS_BLUE) < GetActorSpawnHealth(TID_BARRACKS_BLUE) / 2) )
+			return 0;
+		
+		if( (GotRefinery[0]) && (GetActorHealth(TID_REFINERY_BLUE) < GetActorSpawnHealth(TID_REFINERY_BLUE) / 2) )
+			return 0;
+		
+		if( (GotPlant[0]) && (GetActorHealth(TID_RESCENTRE_BLUE) < GetActorSpawnHealth(TID_RESCENTRE_BLUE) * 2 / 5) )
+			return 0;
+		
+		if( (GotFactory[0]) && (GetActorHealth(TID_FACTORY_BLUE) < GetActorSpawnHealth(TID_FACTORY_BLUE) * 2 / 5) )
+			return 0;
+		
+		if( (GotObelisk[0]) && (GetActorHealth(TID_OBELISK_BLUE) < GetActorSpawnHealth(TID_OBELISK_BLUE) / 2) )
+			return 0;
+	}
+	// yes, this could be simplified, but it's best kept this way in case TIDs are eventually changed	
+	else
+	{
+		if( (GotBarracks[1]) && (GetActorHealth(TID_BARRACKS_RED) < GetActorSpawnHealth(TID_BARRACKS_RED) / 2) )
+			return 0;
+		
+		if( (GotRefinery[1]) && (GetActorHealth(TID_REFINERY_RED) < GetActorSpawnHealth(TID_REFINERY_RED) / 2) )
+			return 0;
+		
+		if( (GotPlant[1]) && (GetActorHealth(TID_RESCENTRE_RED) < GetActorSpawnHealth(TID_RESCENTRE_RED) * 2 / 5) )
+			return 0;
+		
+		if( (GotFactory[1]) && (GetActorHealth(TID_FACTORY_RED) < GetActorSpawnHealth(TID_FACTORY_RED) * 2 / 5) )
+			return 0;
+		
+		if( (GotObelisk[1]) && (GetActorHealth(TID_OBELISK_RED) < GetActorSpawnHealth(TID_OBELISK_RED) / 2) )
+			return 0;
+	}
+	
+	return 1;
+}
+
+function int CheckBaseMiracle (int team)
+{
+	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("aow_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("aow_suddendeathtime") - 5)) )
+		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
+		
+	if(!team)		// not if all buildings are already at full health
+	{
+		if( (GotBarracks[0]) && (GetActorHealth(TID_BARRACKS_BLUE) < GetActorSpawnHealth(TID_BARRACKS_BLUE) * 99 / 100) )
+			return 1;
+		
+		if( (GotRefinery[0]) && (GetActorHealth(TID_REFINERY_BLUE) < GetActorSpawnHealth(TID_REFINERY_BLUE) * 99 / 100) )
+			return 1;
+		
+		if( (GotPlant[0]) && (GetActorHealth(TID_RESCENTRE_BLUE) < GetActorSpawnHealth(TID_RESCENTRE_BLUE) * 99 / 100) )
+			return 1;
+		
+		if( (GotFactory[0]) && (GetActorHealth(TID_FACTORY_BLUE) < GetActorSpawnHealth(TID_FACTORY_BLUE) * 99 / 100) )
+			return 1;
+		
+		if( (GotObelisk[0]) && (GetActorHealth(TID_OBELISK_BLUE) < GetActorSpawnHealth(TID_OBELISK_BLUE) * 99 / 100) )
+			return 1;
+	}
+	
+	else
+	{
+		if( (GotBarracks[1]) && (GetActorHealth(TID_BARRACKS_RED) < GetActorSpawnHealth(TID_BARRACKS_RED) * 99 / 100) )
+			return 1;
+		
+		if( (GotRefinery[1]) && (GetActorHealth(TID_REFINERY_RED) < GetActorSpawnHealth(TID_REFINERY_RED) * 99 / 100) )
+			return 1;
+		
+		if( (GotPlant[1]) && (GetActorHealth(TID_RESCENTRE_RED) < GetActorSpawnHealth(TID_RESCENTRE_RED) * 99 / 100) )
+			return 1;
+		
+		if( (GotFactory[1]) && (GetActorHealth(TID_FACTORY_RED) < GetActorSpawnHealth(TID_FACTORY_RED) * 99 / 100) )
+			return 1;
+		
+		if( (GotObelisk[1]) && (GetActorHealth(TID_OBELISK_RED) < GetActorSpawnHealth(TID_OBELISK_RED) * 99 / 100) )
+			return 1;
+	}
+	
+	return 0;
+}
+
+// ============================================================================
 // [Dusk] Returns the `display name` of the player with id pn
 // This function must cater for client-side ACS!
 function str DisplayName (int pn) {

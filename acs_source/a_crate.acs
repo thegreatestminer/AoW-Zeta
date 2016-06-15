@@ -203,16 +203,16 @@ function int CheckCrate (int c) {
 			return false;
 		return true;
 	case CRATE_BASECRASHER:
-		return !SuddenDeath; // [SG] not in sudden death. To be adjusted later
+		return CheckBaseCrasher(PlayerTeam()); // [SG] defined in a_functions.acs
 	case CRATE_BASEMIRACLE:
-		return !SuddenDeath; // [SG] not in sudden death. To be adjusted later
+		return CheckBaseMiracle(PlayerTeam()); // [SG] defined in a_functions.acs
 	case CRATE_UTILITYGUN:
 		return !CheckInventory ("UtilityGun"); // not if player already has utility
 	case CRATE_ENERGYARMOR:
-		return	!CheckInventory ("PowerEnergyResistance") && // not if the player is already energy-proof
+		return	!CheckInventory ("PowerEnergyResistance") && // not if the player is already energy-resistant
 				!CheckInventory ("EnergyArmor"); // or has an armor item that gives it
 	case CRATE_EXPLOARMOR:
-		return	!CheckInventory ("ExplosionArmor") && // ditto, for explo proof
+		return	!CheckInventory ("ExplosionArmor") && // ditto, for explosion resistance
 				!CheckInventory ("PowerExplosiveResistance");
 	case CRATE_BULLETARMOR:
 		return	!CheckInventory ("BulletProofArmor") && // ditto, for bullet proof
@@ -233,7 +233,7 @@ function int CheckCrate (int c) {
 	case CRATE_MARINEBEACON:
 		return CheckInventory("MarineBeaconItem") < 3; // not if the player already has 3 marine beacons
 	case CRATE_OPENDECK:
-		return	CheckMinutes (10) && // not until 10:00
+		return	CheckMinutes (5) && // not until 5:00
 				!CheckInventory ("OpenDeck") && // not if the player already has open deck
 				!GetConfig (CONFIG_TOURNAMENTMODE);
 	case CRATE_DISARM:
@@ -256,7 +256,7 @@ function int CheckCrate (int c) {
 		return !CheckInventory ("Jetpack"); // not if the player already has the jetpack
 	case CRATE_REVOLVER:
 		return	!CheckInventory ("Revolver") && // not if the player already has the revolver
-				CheckMinutes (10); // not until 10:00
+				CheckMinutes (5); // not until 5:00
 	case CRATE_RADAR:
 		return	!CheckInventory ("PowerRadar") && // not if the player already has the radar
 				!GetConfig (CONFIG_NORADAR); // not if radars are disabled
@@ -537,7 +537,7 @@ script 309 (int c) {
 		break;
 	case CRATE_ENERGYARMOR:
 		LocalAmbientSound ("powerup/resistlaser", 127);
-		LocalAmbientSound ("misc/armor_pkup", 127);
+		ActivatorSound ("misc/armor_pkup", 127);
 		GiveInventory ("EnergyArmor", 1);
 		break;
 	case CRATE_EXPLOARMOR:
