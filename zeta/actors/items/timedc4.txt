@@ -104,6 +104,7 @@ actor TimedC4Armed {
 	DamageFactor "Mine", 0.0
 	DamageFactor "Mechstomp", 0.0
 	DamageFactor "Monster", 0.0
+	DamageFactor "Deconstruction", 0.0
 	
 	states {
 	Spawn:

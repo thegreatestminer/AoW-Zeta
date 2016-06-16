@@ -2,6 +2,7 @@
  ** All Out War 2: The Second Coming ACS script                                                    **
  ** Credit to VoltlocK for originally creating the engine                                          **
  ** With modifications by Eruanna, Dusk and the Omega team                                         **
+ ** Continued by Catastrophe and SwordGrunt														   **
  **                                                                                                **
  ** You may use portions of this script in your project as long as you give credit where credit is **
  ** due. Please don't be lame and just copy-paste any of this and call it your own. Thanks!        **
@@ -166,7 +167,7 @@
 //										901
 //										902
 #libdefine SC_SillyThings				903
-#libdefine SC_TortoisePassenger			904
+//#libdefine SC_TortoisePassenger			904
 #libdefine SC_WeaponCheck				905
 #libdefine SC_GiveToTarget				906
 #libdefine SC_JetpackToggle				907
@@ -176,7 +177,7 @@
 #libdefine SC_CL_SYNCTICKETS			911
 #libdefine SC_PLAYERENTER				912
 #libdefine SC_WEAPONFIRECHECK			913
-#libdefine SC_TortoiseSpecial			914
+//#libdefine SC_TortoiseSpecial			914
 #libdefine SC_CREDITFLOW				915
 #libdefine SC_CL_SNIPERZOOM				916
 #libdefine SC_DEVELOPERMODE				917
@@ -234,7 +235,7 @@
 #libdefine SC_MENU_SELECT				969
 #libdefine SC_MENU_SERVERINIT			970
 #libdefine SC_UTILITY_CHECKADVTURRETS	971
-#libdefine SC_CL_TortoiseHUD			972
+//#libdefine SC_CL_TortoiseHUD			972
 #libdefine SC_CLIENTFX					973
 #libdefine SC_DAMAGEOVERTIME			974
 #libdefine SC_Stealth					975
@@ -559,7 +560,7 @@
 #define NUM_MECH_WEIGHTS	3
 
 // [Dusk] How many troops can the tortoise carry?
-#define TORTOISE_PASSENGERS 5
+//#define TORTOISE_PASSENGERS 5
 
 // [Dusk] Flags for mechs.. just one here for now
 #define MF_POWER	(1 << 0)
@@ -702,5 +703,4 @@ global int 63:deathtoll;
 #include "a_teleporter.acs"
 #include "a_timegun.acs"
 #include "a_tiberium.acs"
-#include "a_tortoise.acs"
 #include "a_utility.acs"

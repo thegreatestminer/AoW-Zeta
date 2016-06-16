@@ -1,9 +1,11 @@
 actor Tortoise : MechPlayer_Base {
-	+USESPECIAL
+	//+USESPECIAL
 	Health 3500
 	Radius 40
 	Height 64
-	Player.DisplayName "Titan"
+	mass 4000
+	Player.DisplayName "Tortoise"
+	player.soundclass "tort"
 	Player.ForwardMove 0.35
 	Player.SideMove 0.15
 	Player.MaxHealth 3500
@@ -16,7 +18,7 @@ actor Tortoise : MechPlayer_Base {
 		ROB2 Q 0 SetPlayerProperty (0, 0, 3)
 		ROB2 Q 0 ACS_ExecuteAlways (SC_STEALTH, 0, STEALTH_FORCEOFF)
 		ROB2 Q 0 ACS_Execute (315, 0)
-		ROB2 Q 0 Thing_SetSpecial (0, ACS_ExecuteAlways, 914, 0, tid)
+		//ROB2 Q 0 Thing_SetSpecial (0, ACS_ExecuteAlways, 914, 0, tid)
 		ROB2 Q 0 A_GiveInventory ("MechEjectButton", 1)
 		ROB2 Q 0 A_GiveInventory ("IsMech",1)
 		ROB2 Q 35
@@ -27,11 +29,11 @@ actor Tortoise : MechPlayer_Base {
 		ROB2 A 0 SetPlayerProperty(0,0,3)
 		ROB2 AB 7 A_JumpIfHealthLower (500,"SeeDamaged")
 		ROB2 C 0 A_PlaySound ("mech/idle", 5, 1.0, 1, ATTN_NONE)
-		ROB2 Q 0 A_SpawnItemEx ("MechStepSmokePuff", 0, -32, 4)
-		ROB2 Q 0 A_SpawnItemEx ("MechStepDamageWeak", 0, -32, 4)
+		ROB2 C 0 A_SpawnItemEx ("MechStepSmokePuff", 0, -32, 4)
+		ROB2 C 0 A_SpawnItemEx ("MechStepDamageWeak", 0, -32, 4)
 		ROB2 CD 7
-		ROB2 Q 0 A_SpawnItemEx ("MechStepSmokePuff", 0, 32, 4)
-		ROB2 Q 0 A_SpawnItemEx ("MechStepDamageWeak", 0, 32, 4)
+		ROB2 A 0 A_SpawnItemEx ("MechStepSmokePuff", 0, 32, 4)
+		ROB2 A 0 A_SpawnItemEx ("MechStepDamageWeak", 0, 32, 4)
 		ROB2 A 0 A_JumpIf (waterlevel >= 1, "Drown")
 		Goto Spawn
 	SeeDamaged:
@@ -75,6 +77,20 @@ actor Tortoise : MechPlayer_Base {
 	}
 }
 
+Actor TortoisePlasmaAmmo : Ammo {
+	inventory.amount 10
+	inventory.maxamount 400
+	ammo.backpackamount 10
+	ammo.backpackmaxamount 400
+}
+
+Actor TortoiseBulletAmmo : Ammo {
+	inventory.amount 10
+	inventory.maxamount 600
+	ammo.backpackamount 10
+	ammo.backpackmaxamount 600
+}
+
 actor TortoiseUsed : Tortoise {
 	Health 1750
 }
@@ -116,9 +132,12 @@ actor TortoiseSwitchPickup : CustomInventory {
 
 actor TortoiseWeapons : AOWWeapon {
 	Weapon.SelectionOrder 1
-	Weapon.AmmoUse 1
-	Weapon.AmmoGive 400
-	Weapon.AmmoType "PlasmaRifleAmmo"
+	weapon.ammouse 1
+	weapon.ammogive 400
+	weapon.ammotype "TortoisePlasmaAmmo"
+	weapon.ammouse2 1
+	weapon.ammogive2 600
+	weapon.ammotype2 "TortoiseBulletAmmo"
 	Obituary "$OB_TORTOISE"
 	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.DONTBOB
@@ -139,16 +158,20 @@ actor TortoiseWeapons : AOWWeapon {
 		wait
 	Fire:
 		MHUD A 0 A_GunFlash
-		MHUD A 0 A_PlaySound ("Weapons/PlasmaShot", CHAN_WEAPON)
-		MHUD A 0 A_JumpIfInventory ("IsBlue", 1, "FireBlue")
-		MHUD A 0 A_FireCustomMissile ("TortoisePlasmaShotRed", 0, 1, -16, 0)
-		MHUD B 3 Bright
-		MHUD B 1 A_Refire
+		MHUD A 0 Radius_Quake (1, 4, 0, 1, 0)
+		MHUD A 0 A_FireCustomMissile ("TortoisePlasmaShot", 0, 1, -16, 0)
+		MHUD D 3 Bright
+		MHUD A 1
+		MHUD B 12 A_Refire
 		Goto Ready
-	FireBlue:
-		MHUD B 0 A_FireCustomMissile ("TortoisePlasmaShotBlue", 0, 1, -16, 0)
+	AltFire:
+		MHUD B 0 A_GunFlash
+		MHUD B 0 A_PlaySound ("Tortoise/FireBullet", CHAN_WEAPON)
+		MHUD B 0 Radius_Quake (2, 8, 0, 1, 0)
+		MHUD B 0 A_FireBullets (3.0, 3.0, -1, 10, "RiflePuff")
 		MHUD B 3 Bright
-		MHUD B 1 A_Refire
+		MHUD A 1
+		MHUD B 12 A_Refire
 		Goto Ready
 	Flash:
 		TNT1 A 2 Bright A_Light2
@@ -161,12 +184,31 @@ actor TortoiseWeapons : AOWWeapon {
 	}
 }
 
-actor TortoisePlasmaShotBlue : PlasmaShotBlue {
-	Obituary "$OB_TORTOISE"
-}
-
-actor TortoisePlasmaShotRed : PlasmaShotRed {
-	Obituary "$OB_TORTOISE"
+actor TortoisePlasmaShot
+{
+	seesound "tortoise/fireplasma"
+	deathsound "tortoise/hitplasma"
+	PROJECTILE
+	obituary "$OB_TORTOISE"
+	speed 42
+	renderstyle add
+	damage (random(23,28))
+	scale 0.5
+	radius 8
+	height 12
+	damagetype "energy"
+	decal PulseScorch
+	states
+	{
+		Spawn:
+			TRTP A -1 bright
+			stop
+		Death:
+			TNT1 A 0 A_Explode(16,64,1)
+			TNT1 A 0 A_SpawnItemEx ("PulseBallSmokePuff",0,0,0,0,0,1)
+			TNT1 A 1 A_SpawnItemEx ("ExplosionSmaller",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE)
+			stop
+	}
 }
 
 actor TortoiseAmmoPackage : CustomInventory {
@@ -174,11 +216,12 @@ actor TortoiseAmmoPackage : CustomInventory {
 	inventory.maxamount 0
 	states {
 	Pickup:
-		TNT1 A 0 A_GiveInventory ("PlasmaRifleAmmo", 600)
+		TNT1 A 0 A_GiveInventory ("TortoisePlasmaAmmo", 400)
+		TNT1 A 0 A_GiveInventory ("TortoiseBulletAmmo", 600)
 		stop
 	}
 }
-
+/*
 actor MakePassenger : CustomInventory {
 	+AUTOACTIVATE
 	+ALWAYSPICKUP
@@ -217,6 +260,32 @@ actor TortoiseEjectSpaceCheck {
 actor TortoiseEjectSpaceCheck2 : TortoiseEjectSpaceCheck {
 	+THRUACTORS
 	Radius 80
+}*/
+
+actor DamagedTortoise {
+	Health 300
+	Radius 40
+	Height 64
+	Mass 2000
+	+SHOOTABLE
+	scale 1.75
+	bloodtype "HHMetalHit"
+	bloodcolor "White"
+	obituary "%o went boom."
+	Translation "112:127=[255,255,255]:[0,0,0]"
+	damagefactor "Disarm", 0.0
+	states {
+	Spawn:
+		ROB2 Q 170
+		ROB2 Q 5 A_SpawnItemEx("EjectedMechSmokePuff",random(-32,32),random(-32,32),random(96,128),0,0,3,0,128,0)
+		wait
+	Death:
+		ROB2 Q 0
+		ROB2 Q 10 A_NoBlocking
+		ROB2 Q 10 A_SpawnItemEx ("MechExplosionSmall", 0,0,0,0,0,0,0, SXF_NOCHECKPOSITION)
+		DISR K -1
+		Stop
+	}
 }
 
 actor EjectedTortoise {

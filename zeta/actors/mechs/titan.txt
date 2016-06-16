@@ -4,6 +4,7 @@ actor Titan : MechPlayer_Base {
 	Radius 58
 	Height 128
 	Player.DisplayName "Titan"
+	player.soundclass "titan"
 	player.forwardmove 0.35
 	player.sidemove 0.15
 	player.maxhealth 5000
@@ -306,7 +307,6 @@ actor DamagedTitan {
 	Mass 2000
 	+SHOOTABLE
 	damagefactor "Disarm", 0.0
-	PainChance 0
 	scale 1.1
 	bloodtype "HHMetalHit"
 	bloodcolor "White"
@@ -314,11 +314,9 @@ actor DamagedTitan {
 	Translation "112:127=[255,255,255]:[0,0,0]"
 	States {
 	Spawn:
-		ROB3 AAAA 35
-		ROB3 A 35 
-		ROB3 AAAA 5 A_SpawnItemEx("EjectedMechSmokePuff",random(-32,32),random(-32,32),random(96,128),0,0,3,0,128,0)
+		ROB3 A 175
 		ROB3 A 5 A_SpawnItemEx("EjectedMechSmokePuff",random(-32,32),random(-32,32),random(96,128),0,0,3,0,128,0)
-		goto Spawn+5
+		wait
 	Death:
 		ROB1 A 0
 		ROB3 A 10 A_NoBlocking

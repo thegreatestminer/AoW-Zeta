@@ -7,6 +7,7 @@ actor Wolverine : MechPlayer_Base {
 	PainChance 0
 	PainChance "Flash", 255
 	Player.DisplayName "Wolverine"
+	player.soundclass "wolv"
 	player.forwardmove 0.45
 	player.sidemove 0.15
 	player.maxhealth 3000
@@ -148,6 +149,7 @@ actor WolverineWeapons : AOWWeapon {
 		MHUD A 2 A_ReFire
 		Goto Ready
 	Fire:
+		MHUD A 0
 		MHUD A 0 A_JumpIfInventory ("Wolverine-WhatWeapon",2,"FireMinigun")
 		MHUD A 0 A_JumpIfInventory ("Wolverine-WhatWeapon",1,"FirePulse")
 		MHUD A 0 A_JumpIfInventory ("Reload-LRM", 1, "FirePulse")
@@ -209,7 +211,7 @@ actor WolverineWeapons : AOWWeapon {
 	AltFire:
 		MHUD A 0
 		MHUD C 15 ACS_ExecuteAlways (314, 0)
-		MHUD A 12
+		MHUD A 10
 		Goto Ready
 	NoAmmo:
 		MHUD A 10 A_WeaponReady (WRF_NOPRIMARY)
@@ -273,9 +275,6 @@ actor DamagedWolverine {
 	Radius 58
 	Height 128
 	Mass 2000
-	-SOLID
-	-NOBLOCKMAP
-	-NOCLIP
 	+SHOOTABLE
 	PainChance 0
 	scale 1.75
@@ -286,11 +285,9 @@ actor DamagedWolverine {
 	damagefactor "Disarm", 0.0
 	states {
 	Spawn:
-		ROB1 AAAA 35
-		ROB1 A 35 
-		ROB1 AAAA 5 A_SpawnItemEx("EjectedMechSmokePuff",random(-32,32),random(-32,32),random(96,128),0,0,3,0,128,0)
+		ROB1 A 175
 		ROB1 A 5 A_SpawnItemEx("EjectedMechSmokePuff",random(-32,32),random(-32,32),random(96,128),0,0,3,0,128,0)
-		goto Spawn+5
+		goto wait
 	Death:
 		ROB1 A 0
 		ROB1 A 10 A_NoBlocking

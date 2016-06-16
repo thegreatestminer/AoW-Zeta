@@ -136,10 +136,10 @@ script SC_MECHMORPH (int mech) {
 	
 	// [Dusk] Tell teammates of the purchase
 	TeamMessage (TMSG_MECHPURCHASE, mech, 0);
-	
+	/*
 	// [Dusk] Fire up the tortoise HUD
 	if (mech == MECH_Tortoise)
-		ACS_Execute (SC_CL_TortoiseHUD, 0);
+		ACS_Execute (SC_CL_TortoiseHUD, 0);*/
 	
 	Log (n:0, s:" pilots ", s:mechname, s:".");
 	
@@ -410,11 +410,11 @@ script 697 (void) {
 	else if (CheckInventory ("TortoiseWeapons")) MechType = 6;
 	
 	if(MechType == -1) terminate;
-	
+	/*
 	if (CountPassengers (ActivatorTID ()) > 0) {
 		GenericError ("You cannot eject while you\nhave passengers on-board!");
 		terminate;
-	}
+	}*/
 	
 	int x = GetActorX (0);
 	int y = GetActorY (0);
@@ -465,7 +465,12 @@ script 697 (void) {
 	
 	case 6:
 		// Tortoise
-		SpawnSpotFacing ("EjectedTortoise", 3800 + PlayerNumber(), 0);
+		
+		if (GetActorProperty(0,APROP_Health) >= 1750)
+			Spawn ("EjectedTortoise", x, y, z, 0, angle);
+		else
+			Spawn ("DamagedTortoise", x, y, z, 0, angle);
+			
 		break;
 	}
 	

@@ -464,7 +464,7 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 	/*  name, morph item, ammo item, description */
 	{
 		"Orca", 
-		//"1000", 
+		//"1250", 
 		"OrcaSwitch",
 		"OrcaAmmoPackage", 
 		//"1000", 
@@ -483,7 +483,7 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 	}, 
 	{
 		"Raven", 
-		//"1200", 
+		//"1250", 
 		"RavenSwitch",
 		"RavenAmmoPackage", 
 		//"2000", 
@@ -502,7 +502,7 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 	}, 
 	{
 		"Wolverine", 
-		//"1250", 
+		//"1500", 
 		"WolverineSwitch",
 		"WolverineAmmoPackage", 
 		//"3000", 
@@ -584,21 +584,22 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 	}, 
 	{
 		"Tortoise", 
-		//"1250", 
+		//"1500", 
 		"TortoiseSwitch",
 		"TortoiseAmmoPackage", 
 		//"3500", 
 		//MECHWEIGHT_MEDIUM, 
 		//0,
-		"		An armoured personnel carrier, the\n
-		Tortoise doesn't sport a powerful engine\n
-		or an impressive arsenal. Instead, it has\n
-		tough armor rivaling that of the Mad Cat\n
-		and the ability to \ckcarry up to five\n
-		\ckinfantry passengers\c- make it a rather\n
-		tactical unit.\n
+		"		A small but heavily armored mech\n
+		designed to infiltrate cramped corridors\n
+		and tear infantry apart. Its very slow\n
+		speed and inability to hit buildings from\n
+		the outside solidifies its role as area\n
+		denial and ambushing in enemy territory.\n
+		\n
 		Weapons:\n
-		\t- Plasma Rifle"
+		\t- Explosive Plasma Rifle\n
+		\t- Heavy MachineGun"
 	}
 };
 
