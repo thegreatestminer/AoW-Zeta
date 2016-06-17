@@ -281,7 +281,7 @@ function void BuyAddon (int id) {
 	}
 	
 	// Check cost
-	if (GetCredits () < cost) {
+	if (GetCredits () < cost - CalcDiscount(cost)) {	// [SG] calculate discount when checking for the price
 		MenuResponse (MSGTYPE_ERROR, "You need more credits!");
 		return;
 	}

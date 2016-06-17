@@ -10,11 +10,11 @@ function void CL_DisplayBuildingHud (void) {
 		return;
 	}
 	
-	int bluey = 0.52;
+	int bluey = 0.44;
 	// [Dusk] {9/23/12} In smaller resolutions, we need to shove the blue
 	// team base HUD a bit up or it will overlap with the red one
 	if (GetCVar ("vid_defheight") <= 400)
-		bluey = 0.46;
+		bluey = 0.36;
 	
 	HudMessageBold (s:ExistsBuilding (101), s:"Barracks\cc: ",
 		s:ColorCodeHealth(GetActorSpeed (101)), d:GetActorSpeed (101), s:"\cc%\n",
