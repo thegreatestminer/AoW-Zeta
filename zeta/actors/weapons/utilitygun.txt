@@ -1028,10 +1028,14 @@ actor AntiUtilityExplosion {
 	states {
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_Explode (999999, 96)
+		TNT1 A 0 A_Explode (999999, 160)
 		stop
 	}
 }
+
+// [SG] This takes care of garbage like remote C4s 
+
+actor AntiUtilityExplosionDisarm : AntiUtilityExplosion { damagetype "Disarm" }
 
 actor PowerupCacheMapSpawned 21490 {
 	states {

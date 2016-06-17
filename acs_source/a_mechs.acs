@@ -84,7 +84,10 @@ script SC_MECHMORPH (int mech) {
 	// Attempt to teleport the player into the hanger
 	if (!Teleport(dest)) {
 		// [Dusk] If we can't, try clear it of crap and try again.
-		SpawnSpotForced ("AntiUtilityExplosionLarge", dest, 0, 0);
+		SpawnSpotForced ("AntiUtilityExplosion", dest, 0, 0);
+		SpawnSpotForced ("AntiUtilityExplosionDisarm", dest, 0, 0);
+		
+		Delay(1);
 		
 		// [Dusk] If we STILL can't teleport, there isn't much we can do.
 		if (!Teleport (dest))
