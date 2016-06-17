@@ -103,7 +103,7 @@ script SC_DOTELEPORTTOFIELD (int team) {
 	
 	// [Dusk] Try to teleport 10 times. This way, if one teleport destination is blocked,
 	// we'll still be able to teleport onto another.
-	if (GetLevelInfo (LEVELINFO_LEVELNUM) == 20 || GetLevelInfo (LEVELINFO_LEVELNUM) == 21) {
+	/*if (GetLevelInfo (LEVELINFO_LEVELNUM) == 20 || GetLevelInfo (LEVELINFO_LEVELNUM) == 21) {
 		// Renegade levels need NoStop. Maybe there could be a cleaner way to do this?
 		for (i = 0; i < 10; i++) {
 			if (Teleport_NoStop (1+(1-team), 0)) {
@@ -111,14 +111,14 @@ script SC_DOTELEPORTTOFIELD (int team) {
 				break;
 			}
 		}
-	} else {
+	} else {*/
 		for (i = 0; i < 10; i++) {
 			if (Teleport (1+(1-team))) {
 				failed = false;
 				break;
 			}
 		}
-	}
+	//}
 	
 	if (failed)
 	{

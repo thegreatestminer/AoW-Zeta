@@ -221,8 +221,15 @@ script SC_ARMORITEMUSE (int modtype) {
 	}
 	
 	TakeInventory ("IsChangingArmor", 1);
-	ActivatorSound ("misc/armor_pkup", 127);
-	SetArmorGrade (NOCHANGE, modtype);
+	
+	if( (!CheckInventory("IsMech")) || (!CheckInventory("CancelChangingArmor")) )
+	{
+		ActivatorSound ("misc/armor_pkup", 127);
+		SetArmorGrade (NOCHANGE, modtype);
+	}
+	
+	else
+		TakeInventory("CancelChangingArmor",1);
 }
 
 // [Dusk] Client-side progress prediction
