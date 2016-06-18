@@ -31,6 +31,8 @@ script SC_CLIENT OPEN CLIENTSIDE {
 	}
 	
 	PR_InitPreferences ();
+	// [SG] With these moved to CVarInfo, this is no longer needed
+	/*
 	
 	// [Dusk] Use consolecommand to make client-side CVARs show up properly
 	// Use CONFONT for HUD elements
@@ -76,6 +78,7 @@ script SC_CLIENT OPEN CLIENTSIDE {
 	ArchiveCVAR ("aow_cl_fullteamlog");
 	ArchiveCVAR ("aow_cl_donateamount");
 	
+	*/
 	// [Dusk] {9/10/12} Activate the radar
 	ACS_Execute (SC_CL_RADAR, 0);
 }

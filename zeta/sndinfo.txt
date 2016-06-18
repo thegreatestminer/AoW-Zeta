@@ -202,6 +202,12 @@ switch/minigun			hookback
 switch/flamer			swflamer
 switch/shotgun			swshotgu
 switch/80mm			boltdoor
+Tortoise/FirePlasma		TORTATK1
+Tortoise/HitPlasma		TORTATKX
+Tortoise/FireBullet  	TORTATK2
+$limit tortoise/fireplasma	0
+$limit tortoise/hitplasma	0
+$limit tortoise/firebullet	0
 trail/fire			mechrail
 trail/reload			mechrald
 100mm/fire			ds100mm
@@ -698,6 +704,132 @@ $playersound	mech	other	*jump		blanksnd
 $playersound	mech	other	*fist		blanksnd
 $playersound	mech	other	*usefail	blanksnd
 $playersound	mech	other	*taunt	    	blanksnd
+
+
+//Wolverine
+$playeralias	wolv	male	*death		weapons/rocklx
+$playeralias	wolv	male	*xdeath		weapons/rocklx
+$playeralias	wolv	male	*gibbed		weapons/rocklx
+$playersound	wolv	male	*pain100	blanksnd
+$playersounddup	wolv	male	*pain75		*pain100
+$playersounddup	wolv	male	*pain50		*pain100
+$playersounddup	wolv	male	*pain25		*pain100
+$playersound	wolv	male	*grunt		blanksnd
+$playersounddup	wolv	male	*land		*grunt
+$playersound	wolv	male	*jump		blanksnd
+$playersound	wolv	male	*fist		blanksnd
+$playersound	wolv	male	*usefail	blanksnd
+$playersound	wolv	male	*taunt		rob1taun
+$playeralias	wolv	female	*death		weapons/rocklx
+$playeralias	wolv	female	*xdeath		weapons/rocklx
+$playeralias	wolv	female	*gibbed		weapons/rocklx
+$playersound	wolv	female	*pain100	blanksnd
+$playersounddup	wolv	female	*pain75		*pain100
+$playersounddup	wolv	female	*pain50		*pain100
+$playersounddup	wolv	female	*pain25		*pain100
+$playersound	wolv	female	*grunt		blanksnd
+$playersounddup	wolv	female	*land		*grunt
+$playersound	wolv	female	*jump		blanksnd
+$playersound	wolv	female	*fist		blanksnd
+$playersound	wolv	female	*usefail	blanksnd
+$playersound	wolv	female	*taunt		rob1taun
+$playeralias	wolv	other	*death		weapons/rocklx
+$playeralias	wolv	other	*xdeath		weapons/rocklx
+$playeralias	wolv	other	*gibbed		weapons/rocklx
+$playersound	wolv	other	*pain100	blanksnd
+$playersounddup	wolv	other	*pain75		*pain100
+$playersounddup	wolv	other	*pain50		*pain100
+$playersounddup	wolv	other	*pain25		*pain100
+$playersound	wolv	other	*grunt		blanksnd
+$playersounddup	wolv	other	*land		*grunt
+$playersound	wolv	other	*jump		blanksnd
+$playersound	wolv	other	*fist		blanksnd
+$playersound	wolv	other	*usefail	blanksnd
+$playersound	wolv	other	*taunt		rob1taun
+
+
+//Tortoise
+$playeralias	tort	male	*death		weapons/rocklx
+$playeralias	tort	male	*xdeath		weapons/rocklx
+$playeralias	tort	male	*gibbed		weapons/rocklx
+$playersound	tort	male	*pain100	blanksnd
+$playersounddup	tort	male	*pain75		*pain100
+$playersounddup	tort	male	*pain50		*pain100
+$playersounddup	tort	male	*pain25		*pain100
+$playersound	tort	male	*grunt		blanksnd
+$playersounddup	tort	male	*land		*grunt
+$playersound	tort	male	*jump		blanksnd
+$playersound	tort	male	*fist		blanksnd
+$playersound	tort	male	*usefail	blanksnd
+$playersound	tort	male	*taunt		rob2taun
+$playeralias	tort	female	*death		weapons/rocklx
+$playeralias	tort	female	*xdeath		weapons/rocklx
+$playeralias	tort	female	*gibbed		weapons/rocklx
+$playersound	tort	female	*pain100	blanksnd
+$playersounddup	tort	female	*pain75		*pain100
+$playersounddup	tort	female	*pain50		*pain100
+$playersounddup	tort	female	*pain25		*pain100
+$playersound	tort	female	*grunt		blanksnd
+$playersounddup	tort	female	*land		*grunt
+$playersound	tort	female	*jump		blanksnd
+$playersound	tort	female	*fist		blanksnd
+$playersound	tort	female	*usefail	blanksnd
+$playersound	tort	female	*taunt		rob2taun
+$playeralias	tort	other	*death		weapons/rocklx
+$playeralias	tort	other	*xdeath		weapons/rocklx
+$playeralias	tort	other	*gibbed		weapons/rocklx
+$playersound	tort	other	*pain100	blanksnd
+$playersounddup	tort	other	*pain75		*pain100
+$playersounddup	tort	other	*pain50		*pain100
+$playersounddup	tort	other	*pain25		*pain100
+$playersound	tort	other	*grunt		blanksnd
+$playersounddup	tort	other	*land		*grunt
+$playersound	tort	other	*jump		blanksnd
+$playersound	tort	other	*fist		blanksnd
+$playersound	tort	other	*usefail	blanksnd
+$playersound	tort	other	*taunt		rob2taun
+
+
+//Titan
+$playeralias	titan	male	*death		weapons/rocklx
+$playeralias	titan	male	*xdeath		weapons/rocklx
+$playeralias	titan	male	*gibbed		weapons/rocklx
+$playersound	titan	male	*pain100	blanksnd
+$playersounddup	titan	male	*pain75		*pain100
+$playersounddup	titan	male	*pain50		*pain100
+$playersounddup	titan	male	*pain25		*pain100
+$playersound	titan	male	*grunt		blanksnd
+$playersounddup	titan	male	*land		*grunt
+$playersound	titan	male	*jump		blanksnd
+$playersound	titan	male	*fist		blanksnd
+$playersound	titan	male	*usefail	blanksnd
+$playersound	titan	male	*taunt		rob3taun
+$playeralias	titan	female	*death		weapons/rocklx
+$playeralias	titan	female	*xdeath		weapons/rocklx
+$playeralias	titan	female	*gibbed		weapons/rocklx
+$playersound	titan	female	*pain100	blanksnd
+$playersounddup	titan	female	*pain75		*pain100
+$playersounddup	titan	female	*pain50		*pain100
+$playersounddup	titan	female	*pain25		*pain100
+$playersound	titan	female	*grunt		blanksnd
+$playersounddup	titan	female	*land		*grunt
+$playersound	titan	female	*jump		blanksnd
+$playersound	titan	female	*fist		blanksnd
+$playersound	titan	female	*usefail	blanksnd
+$playersound	titan	female	*taunt		rob3taun
+$playeralias	titan	other	*death		weapons/rocklx
+$playeralias	titan	other	*xdeath		weapons/rocklx
+$playeralias	titan	other	*gibbed		weapons/rocklx
+$playersound	titan	other	*pain100	blanksnd
+$playersounddup	titan	other	*pain75		*pain100
+$playersounddup	titan	other	*pain50		*pain100
+$playersounddup	titan	other	*pain25		*pain100
+$playersound	titan	other	*grunt		blanksnd
+$playersounddup	titan	other	*land		*grunt
+$playersound	titan	other	*jump		blanksnd
+$playersound	titan	other	*fist		blanksnd
+$playersound	titan	other	*usefail	blanksnd
+$playersound	titan	other	*taunt		rob3taun
 
 
 $playeralias	juggernaut	male	*death		juggernaut/death

@@ -86,6 +86,8 @@ script SC_GAMEINIT OPEN {
 		UseTeleporterNodes = 0;
 		break;
 	}
+	// [SG] With these moved to CVarInfo, this is no longer needed
+	/*
 	
 	// Archive some server CVars here
 	delay (35);
@@ -124,6 +126,8 @@ script SC_GAMEINIT OPEN {
 	ArchiveCVAR ("aow_donatewait");
 	ArchiveCVAR ("aow_nukecountdown");
 	ArchiveCVAR ("aow_nukesurpreme");
+	
+	*/
 	
 	// If we're offline, set the game to multiplayer emulation
 	// for more accurate netgame emulation.
@@ -172,6 +176,9 @@ script SC_SERVERSETTINGS OPEN {
 	// [Dusk] Weapon stay must be disabled to prevent infinite weapons
 	if (GetCVAR ("sv_weaponstay"))
 		ConsoleCommand ("sv_weaponstay 0");
+	
+	// [SG] With these moved to CVarInfo, this is no longer needed
+	/*
 	
 	// ==================================
 	// CUSTOM CVARS
@@ -280,6 +287,8 @@ script SC_SERVERSETTINGS OPEN {
 	// come with a DEVASTATING blast that can easily obliterate MULTIPLE buildings.
 	if (GetCVar ("aow_nukesurpreme") <= 0)
 		ConsoleCommand ("set aow_nukesurpreme 0");
+		
+	*/
 	
 	// TODO: get rid of these variables and replace with direct GetCVAR calls
 	CreditFragAward = GetCVAR("aow_creditfrag");

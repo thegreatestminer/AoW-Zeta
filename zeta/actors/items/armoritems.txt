@@ -157,4 +157,5 @@ actor BulletProofArmor : FireArmor {
 }
 
 actor IsChangingArmor : Inventory {}
+actor CancelChangingArmor : inventory {}
 actor ArmorChangeProgress : Inventory {inventory.maxamount 175}
