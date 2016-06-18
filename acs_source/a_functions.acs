@@ -291,7 +291,7 @@ function int GetPlayerTeam (int p) {return GetPlayerInfo (p, PLAYERINFO_TEAM);}
 
 function int CheckBaseCrasher (int team)
 {
-	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("aow_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("aow_suddendeathtime") - 5)) )
+	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
 		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
 		
 	if(!team)		// not if any building is at low health on this team
@@ -335,7 +335,7 @@ function int CheckBaseCrasher (int team)
 
 function int CheckBaseMiracle (int team)
 {
-	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("aow_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("aow_suddendeathtime") - 5)) )
+	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
 		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
 		
 	if(!team)		// not if all buildings are already at full health
@@ -789,12 +789,12 @@ function void RefillC4 (void) {
 
 // ============================================================================
 script SC_SuperNukeCheck (void) {
-	SetResultValue (GetCVar ("aow_nukesurpreme"));
+	SetResultValue (GetCVar ("zeta_nukesurpreme"));
 }
 
 // ============================================================================
 script SC_SillyThings (void) {
-	SetResultValue (GetCVar ("aow_sillythings"));
+	SetResultValue (GetCVar ("zeta_sillythings"));
 }
 
 // ============================================================================
@@ -813,7 +813,7 @@ function bool CheckActorDistance(int Source, int Target, int Range) {
 	int Dist = msqr(GetActorX(Source) - GetActorX(Target)>>16);
 	Dist += msqr(GetActorY(Source) - GetActorY(Target)>>16);
 	Dist += msqr(GetActorZ(Source) - GetActorZ(Target)>>16);
-	if (Dist <= msqr(Range) && GetCVar("aow_debug") == 1)
+	if (Dist <= msqr(Range) && GetCVar("zeta_debug") == 1)
 		Log(s:"I'm close to object ",d:Target);
 	if (Dist <= msqr(Range))
 		return true;
@@ -866,7 +866,7 @@ function void ActivateMenu (int menu) {
 // ============================================================================
 // [Dusk] Set desired font for HUD display
 function void SetHUDFont (void) {
-	if (GetCVar ("aow_cl_confonthud"))
+	if (GetCVar ("zeta_cl_confonthud"))
 		SetFont ("CONFONT");
 	else
 		SetFont ("SMALLFONT");

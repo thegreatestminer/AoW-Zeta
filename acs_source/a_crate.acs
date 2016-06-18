@@ -441,7 +441,7 @@ script 309 (int c) {
 		RecountTimeCops ();
 		break;
 	case CRATE_BOMB:
-		if (GetCVar ("aow_sillythings") && PlayerCount() >= 2) {
+		if (GetCVar ("zeta_sillythings") && PlayerCount() >= 2) {
 			// :V
 			int player;
 			do {

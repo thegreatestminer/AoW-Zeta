@@ -27,7 +27,7 @@ script SC_GAMEINIT OPEN {
 		GotObelisk[i] = True;
 	}
 	
-	StartingTickets = GetCVAR ("aow_tickets");
+	StartingTickets = GetCVAR ("zeta_tickets");
 	
 	SetLineSpecial (159, ACS_Execute, 342);
 	
@@ -39,15 +39,15 @@ script SC_GAMEINIT OPEN {
 	//FixFuckedUpArrays ();
 	
 	// Activate developer mode if the proper cvar is set.
-	if (GetCVAR ("aow_developer")) {
+	if (GetCVAR ("zeta_developer")) {
 		DeveloperSafetyLock = 0x7FFFFFFF;
 		ACS_ExecuteAlways (SC_DEVELOPERMODE, 0);
 	}
 	
 	// If we have ticket pool active, set the initial tickets now.
 	if (TicketPool) {
-		SetTickets (TEAM_Blue, GetCVAR ("aow_tickets"));
-		SetTickets (TEAM_RED, GetCVAR ("aow_tickets"));
+		SetTickets (TEAM_Blue, GetCVAR ("zeta_tickets"));
+		SetTickets (TEAM_RED, GetCVAR ("zeta_tickets"));
 	}
 	
 	// Map markers
@@ -91,41 +91,41 @@ script SC_GAMEINIT OPEN {
 	
 	// Archive some server CVars here
 	delay (35);
-	ArchiveCVAR ("aow_credflow");
-	ArchiveCVAR ("aow_startcredits");
-	ArchiveCVAR ("aow_creditfrag");
-	ArchiveCVAR ("aow_bonusamount");
-	ArchiveCVAR ("aow_bonustime");
-	ArchiveCVAR ("aow_medicbonusneed");
-	ArchiveCVAR ("aow_repairbonus");
-	ArchiveCVAR ("aow_juggernautlimit");
-	ArchiveCVAR ("aow_ticketpool");
-	ArchiveCVAR ("aow_teamstaytime");
-	ArchiveCVAR ("aow_plasmapurchasedelay");
-	ArchiveCVAR ("aow_maxcannonsperteam");
-	ArchiveCVAR ("aow_plasmacooldown");
-	ArchiveCVAR ("aow_nukepurchasedelay");
-	ArchiveCVAR ("aow_maxtimecopsperteam");
-	ArchiveCVAR ("aow_c4delay");
-	ArchiveCVAR ("aow_suddendeathtime");
-	ArchiveCVAR ("aow_degeneration");
-	ArchiveCVAR ("aow_degenerationinterval");
-	ArchiveCVAR ("aow_tournamentmode");
-	ArchiveCVAR ("aow_disablemechs");
-	ArchiveCVAR ("aow_surrendermode");
-	ArchiveCVAR ("aow_buildingpoints");
-	ArchiveCVAR ("aow_tiberium_self");
-	ArchiveCVAR ("aow_tiberium_other");
-	ArchiveCVAR ("aow_tiberium_advperc");
-	ArchiveCVAR ("aow_creditcap");
-	ArchiveCVAR ("aow_nomechs");
-	ArchiveCVAR ("aow_noradar");
-	ArchiveCVAR ("aow_noteamswitcher");
-	ArchiveCVAR ("aow_nospawninvul");
-	ArchiveCVAR ("aow_nodisconnectdonate");
-	ArchiveCVAR ("aow_donatewait");
-	ArchiveCVAR ("aow_nukecountdown");
-	ArchiveCVAR ("aow_nukesurpreme");
+	ArchiveCVAR ("zeta_credflow");
+	ArchiveCVAR ("zeta_startcredits");
+	ArchiveCVAR ("zeta_creditfrag");
+	ArchiveCVAR ("zeta_bonusamount");
+	ArchiveCVAR ("zeta_bonustime");
+	ArchiveCVAR ("zeta_medicbonusneed");
+	ArchiveCVAR ("zeta_repairbonus");
+	ArchiveCVAR ("zeta_juggernautlimit");
+	ArchiveCVAR ("zeta_ticketpool");
+	ArchiveCVAR ("zeta_teamstaytime");
+	ArchiveCVAR ("zeta_plasmapurchasedelay");
+	ArchiveCVAR ("zeta_maxcannonsperteam");
+	ArchiveCVAR ("zeta_plasmacooldown");
+	ArchiveCVAR ("zeta_nukepurchasedelay");
+	ArchiveCVAR ("zeta_maxtimecopsperteam");
+	ArchiveCVAR ("zeta_c4delay");
+	ArchiveCVAR ("zeta_suddendeathtime");
+	ArchiveCVAR ("zeta_degeneration");
+	ArchiveCVAR ("zeta_degenerationinterval");
+	ArchiveCVAR ("zeta_tournamentmode");
+	ArchiveCVAR ("zeta_disablemechs");
+	ArchiveCVAR ("zeta_surrendermode");
+	ArchiveCVAR ("zeta_buildingpoints");
+	ArchiveCVAR ("zeta_tiberium_self");
+	ArchiveCVAR ("zeta_tiberium_other");
+	ArchiveCVAR ("zeta_tiberium_advperc");
+	ArchiveCVAR ("zeta_creditcap");
+	ArchiveCVAR ("zeta_nomechs");
+	ArchiveCVAR ("zeta_noradar");
+	ArchiveCVAR ("zeta_noteamswitcher");
+	ArchiveCVAR ("zeta_nospawninvul");
+	ArchiveCVAR ("zeta_nodisconnectdonate");
+	ArchiveCVAR ("zeta_donatewait");
+	ArchiveCVAR ("zeta_nukecountdown");
+	ArchiveCVAR ("zeta_nukesurpreme");
 	
 	*/
 	
@@ -183,135 +183,135 @@ script SC_SERVERSETTINGS OPEN {
 	// ==================================
 	// CUSTOM CVARS
 	// w/ sanity checks
-	if (!GetCVAR ("aow_credflow")) ConsoleCommand ("set aow_credflow 4");
-	if (GetCVAR ("aow_startcredits") <= 0) ConsoleCommand ("set aow_startcredits 300");
-	if (GetCVAR ("aow_creditfrag") <= 0) ConsoleCommand ("set aow_creditfrag 50");	
-	if (GetCVAR ("aow_bonusamount") <= 0) ConsoleCommand ("set aow_bonusamount 300");	
-	if (GetCVAR ("aow_bonustime") <= 0) ConsoleCommand ("set aow_bonustime 5");
-	if (GetCVAR ("aow_medicbonusneed") <= 0) ConsoleCommand ("set aow_medicbonusneed 175");
-	if (GetCVAR ("aow_repairbonus") <= 0) ConsoleCommand ("set aow_repairbonus 1");	
-	if (GetCVAR ("aow_juggernautlimit") <= 0) ConsoleCommand ("set aow_juggernautlimit 2");
-	if (GetCVAR ("aow_ticketpool") <= 0)
-		ConsoleCommand ("set aow_ticketpool 0");
+	if (!GetCVAR ("zeta_credflow")) ConsoleCommand ("set zeta_credflow 4");
+	if (GetCVAR ("zeta_startcredits") <= 0) ConsoleCommand ("set zeta_startcredits 300");
+	if (GetCVAR ("zeta_creditfrag") <= 0) ConsoleCommand ("set zeta_creditfrag 50");	
+	if (GetCVAR ("zeta_bonusamount") <= 0) ConsoleCommand ("set zeta_bonusamount 300");	
+	if (GetCVAR ("zeta_bonustime") <= 0) ConsoleCommand ("set zeta_bonustime 5");
+	if (GetCVAR ("zeta_medicbonusneed") <= 0) ConsoleCommand ("set zeta_medicbonusneed 175");
+	if (GetCVAR ("zeta_repairbonus") <= 0) ConsoleCommand ("set zeta_repairbonus 1");	
+	if (GetCVAR ("zeta_juggernautlimit") <= 0) ConsoleCommand ("set zeta_juggernautlimit 2");
+	if (GetCVAR ("zeta_ticketpool") <= 0)
+		ConsoleCommand ("set zeta_ticketpool 0");
 	//[SP]How long you can stay on a team before you are never switched.
-	if (GetCVAR ("aow_teamstaytime") <= 0) ConsoleCommand("set aow_teamstaytime 2");
+	if (GetCVAR ("zeta_teamstaytime") <= 0) ConsoleCommand("set zeta_teamstaytime 2");
 	
-	if (GetCVAR ("aow_tickets") <= 0)
-		ConsoleCommand ("set aow_tickets 75");
+	if (GetCVAR ("zeta_tickets") <= 0)
+		ConsoleCommand ("set zeta_tickets 75");
 	
 	// Plasma Cannon initial delay
-	if (!GetCVAR ("aow_plasmapurchasedelay")) ConsoleCommand("set aow_plasmapurchasedelay 5");
+	if (!GetCVAR ("zeta_plasmapurchasedelay")) ConsoleCommand("set zeta_plasmapurchasedelay 5");
 	//[SP]Maximum number of plasma cannons per team. (Set to -1 for unlimited)
-	if (!GetCVAR ("aow_maxcannonsperteam")) ConsoleCommand("set aow_maxcannonsperteam 4");
+	if (!GetCVAR ("zeta_maxcannonsperteam")) ConsoleCommand("set zeta_maxcannonsperteam 4");
 	// [Dusk] Time (in minutes) to determine plasma cannon cooldown. Use -1 to disable
-	if (!GetCVAR ("aow_plasmacooldown")) ConsoleCommand("set aow_plasmacooldown 3");
+	if (!GetCVAR ("zeta_plasmacooldown")) ConsoleCommand("set zeta_plasmacooldown 3");
 	
 	//[SP]How long you have to wait to buy a new superweapon beacon. (Minutes) (Set to -1 to disable wait)
-	if (!GetCVAR ("aow_nukepurchasedelay"))ConsoleCommand("set aow_nukepurchasedelay 5");
+	if (!GetCVAR ("zeta_nukepurchasedelay"))ConsoleCommand("set zeta_nukepurchasedelay 5");
 	
 	// [SP]Maximum number of time cops per team. (Set to -1 for unlimited)
-	if (!GetCVAR ("aow_maxtimecopsperteam")) ConsoleCommand("set aow_maxtimecopsperteam 1");
+	if (!GetCVAR ("zeta_maxtimecopsperteam")) ConsoleCommand("set zeta_maxtimecopsperteam 1");
 	
 	// [Dusk] How many minutes until +1 Timed C4 can be purchased. (-1 to disable)
-	if (!GetCVAR ("aow_c4delay")) ConsoleCommand("set aow_c4delay 5");
+	if (!GetCVAR ("zeta_c4delay")) ConsoleCommand("set zeta_c4delay 5");
 	
 	//[SP] Time (in minutes) before sudden death.
 	// [Dusk] changed default to 45, -1 means immediate
-	if (GetCVAR ("aow_suddendeathtime") == 0)
-		ConsoleCommand("set aow_suddendeathtime 45");
+	if (GetCVAR ("zeta_suddendeathtime") == 0)
+		ConsoleCommand("set zeta_suddendeathtime 45");
 	
 	// [Dusk] Sudden death degeneration
-	if (GetCVAR ("aow_degeneration") <= 0)
-		ConsoleCommand("set aow_degeneration 0");
-	if (GetCVAR ("aow_degenerationinterval") <= 0)
-		ConsoleCommand("set aow_degenerationinterval 10");
+	if (GetCVAR ("zeta_degeneration") <= 0)
+		ConsoleCommand("set zeta_degeneration 0");
+	if (GetCVAR ("zeta_degenerationinterval") <= 0)
+		ConsoleCommand("set zeta_degenerationinterval 10");
 	
-	if (GetCVAR ("aow_tournamentmode") <= 0)
-		ConsoleCommand("set aow_tournamentmode 0");
-	if (GetCVAR ("aow_disablemechs") <= 0)
-		ConsoleCommand("set aow_disablemechs 0");
-	if (GetCVAR ("aow_surrendermode") <= 0)
-		ConsoleCommand("set aow_surrendermode 0");
+	if (GetCVAR ("zeta_tournamentmode") <= 0)
+		ConsoleCommand("set zeta_tournamentmode 0");
+	if (GetCVAR ("zeta_disablemechs") <= 0)
+		ConsoleCommand("set zeta_disablemechs 0");
+	if (GetCVAR ("zeta_surrendermode") <= 0)
+		ConsoleCommand("set zeta_surrendermode 0");
 	
 	// [Dusk] Tiberium amounts
-	if (!GetCVAR ("aow_tiberium_self"))
-		ConsoleCommand ("set aow_tiberium_self 225");
-	if (!GetCVAR ("aow_tiberium_other"))
-		ConsoleCommand ("set aow_tiberium_other 75");
-	if (!GetCVAR ("aow_tiberium_advperc"))
-		ConsoleCommand ("set aow_tiberium_advperc 300");
+	if (!GetCVAR ("zeta_tiberium_self"))
+		ConsoleCommand ("set zeta_tiberium_self 225");
+	if (!GetCVAR ("zeta_tiberium_other"))
+		ConsoleCommand ("set zeta_tiberium_other 75");
+	if (!GetCVAR ("zeta_tiberium_advperc"))
+		ConsoleCommand ("set zeta_tiberium_advperc 300");
 	
 	// [Dusk] Alternate experience mode. In altexp, exp needs are lowered
 	// to a third, but experience is reset upon death.
-	if (GetCVAR ("aow_altexp") <= 0)
-		ConsoleCommand ("set aow_altexp 0");
+	if (GetCVAR ("zeta_altexp") <= 0)
+		ConsoleCommand ("set zeta_altexp 0");
 	
 	// [Dusk] {9/6/12} Maximum amount of credits a player can possess.
 	//     0 = infinite (well, as infinite as integers go..)
 	// [Dusk] {1/16/13} Cap at 30k because of networking issues. The HUD
 	// overflows otherwise. If this cap is to be increased, the networking
 	// will have to be increased to something.. hackier.
-	if (GetCVAR ("aow_creditcap") == 0 || GetCVAR ("aow_creditcap") > 30000)
-		ConsoleCommand ("set aow_creditcap 30000");
+	if (GetCVAR ("zeta_creditcap") == 0 || GetCVAR ("zeta_creditcap") > 30000)
+		ConsoleCommand ("set zeta_creditcap 30000");
 	
 	// [Dusk] {9/10/12} Server config for absolutely no mechs
-	if (GetCVAR ("aow_nomechs") <= 0)
-		ConsoleCommand ("set aow_nomechs 0");
+	if (GetCVAR ("zeta_nomechs") <= 0)
+		ConsoleCommand ("set zeta_nomechs 0");
 	
 	// [Dusk] {9/10/12} Server config for no radar. Safety measure
 	// in case the radar breaks up and bad things happen.
-	if (GetCVAR ("aow_noradar") <= 0)
-		ConsoleCommand ("set aow_noradar 0");
+	if (GetCVAR ("zeta_noradar") <= 0)
+		ConsoleCommand ("set zeta_noradar 0");
 	
 	// [Dusk] {10/26/12} If true, the team switcher is disabled.
-	if (GetCVAR ("aow_noteamswitcher") <= 0)
-		ConsoleCommand ("set aow_noteamswitcher 0");
+	if (GetCVAR ("zeta_noteamswitcher") <= 0)
+		ConsoleCommand ("set zeta_noteamswitcher 0");
 	
 	// [Dusk] {10/27/12} If true, players do not get spawn invulnerability upon respawn
-	if (GetCVAR ("aow_nospawninvul") <= 0)
-		ConsoleCommand ("set aow_nospawninvul 0");
+	if (GetCVAR ("zeta_nospawninvul") <= 0)
+		ConsoleCommand ("set zeta_nospawninvul 0");
 	
 	// [Dusk] {11/2/12} Toggle disconnect donate (donation of all money upon disconnect)
-	if (GetCVAR ("aow_nodisconnectdonate") <= 0)
-		ConsoleCommand ("set aow_nodisconnectdonate 0");
+	if (GetCVAR ("zeta_nodisconnectdonate") <= 0)
+		ConsoleCommand ("set zeta_nodisconnectdonate 0");
 	
 	// [Dusk] {11/19/12} How many seconds must the player be in game until they can donate?
-	if (GetCVAR ("aow_donatewait") == 0)
-		ConsoleCommand ("set aow_donatewait 0");
+	if (GetCVAR ("zeta_donatewait") == 0)
+		ConsoleCommand ("set zeta_donatewait 0");
 	
 	// [Dusk] {1/16/13} How many seconds does a beacon take to detonate?
-	if (GetCVAR ("aow_nukecountdown") <= 0)
-		ConsoleCommand ("set aow_nukecountdown 60");
+	if (GetCVAR ("zeta_nukecountdown") <= 0)
+		ConsoleCommand ("set zeta_nukecountdown 60");
 	
 	// [Dusk] {2/16/13} Use more powerful nukes? These ones have half the health but
 	// come with a DEVASTATING blast that can easily obliterate MULTIPLE buildings.
-	if (GetCVar ("aow_nukesurpreme") <= 0)
-		ConsoleCommand ("set aow_nukesurpreme 0");
+	if (GetCVar ("zeta_nukesurpreme") <= 0)
+		ConsoleCommand ("set zeta_nukesurpreme 0");
 		
 	*/
 	
 	// TODO: get rid of these variables and replace with direct GetCVAR calls
-	CreditFragAward = GetCVAR("aow_creditfrag");
-	CreditAwardTime = GetCVAR("aow_bonustime");
-	CreditAwardAmount = GetCVAR("aow_bonusamount");
-	CreditRepairAmount = GetCVAR("aow_repairbonus");
-	TicketPool = GetCVAR("aow_ticketpool");
-	TournamentMode = GetCVAR("aow_tournamentmode");
-	BeaconPurchaseDelay = GetCVAR("aow_nukepurchasedelay") * 60;
-	PlasmaCooldownTime = GetCVAR("aow_plasmacooldown") * MINUTETICS;
-	MedicBonusNeed = GetCVAR ("aow_medicbonusneed");
+	CreditFragAward = GetCVAR("zeta_creditfrag");
+	CreditAwardTime = GetCVAR("zeta_bonustime");
+	CreditAwardAmount = GetCVAR("zeta_bonusamount");
+	CreditRepairAmount = GetCVAR("zeta_repairbonus");
+	TicketPool = GetCVAR("zeta_ticketpool");
+	TournamentMode = GetCVAR("zeta_tournamentmode");
+	BeaconPurchaseDelay = GetCVAR("zeta_nukepurchasedelay") * 60;
+	PlasmaCooldownTime = GetCVAR("zeta_plasmacooldown") * MINUTETICS;
+	MedicBonusNeed = GetCVAR ("zeta_medicbonusneed");
 	
 	// ======================================================================
 	// [Dusk] Synchronized configurations!
-	SetConfig (CONFIG_ALTEXP, GetCVAR ("aow_altexp"));
-	SetConfig (CONFIG_STARTTICKETS, GetCVAR ("aow_tickets"));
-	SetConfig (CONFIG_MECHS, (!CheckMapFlags (MAPF_NOMECHS) && !GetCVAR ("aow_nomechs")));
+	SetConfig (CONFIG_ALTEXP, GetCVAR ("zeta_altexp"));
+	SetConfig (CONFIG_STARTTICKETS, GetCVAR ("zeta_tickets"));
+	SetConfig (CONFIG_MECHS, (!CheckMapFlags (MAPF_NOMECHS) && !GetCVAR ("zeta_nomechs")));
 	SetConfig (CONFIG_TOURNAMENTMODE, TournamentMode);
-	SetConfig (CONFIG_MAXTIMECOPS, GetCVAR ("aow_maxtimecopsperteam"));
-	SetConfig (CONFIG_JUGGERNAUTLIMIT, GetCVAR ("aow_juggernautlimit"));
-	SetConfig (CONFIG_C4DELAY, GetCVAR ("aow_c4delay"));
-	SetConfig (CONFIG_NORADAR, GetCVAR ("aow_noradar"));
-	SetConfig (CONFIG_CREDITCAP, GetCVAR ("aow_creditcap"));
+	SetConfig (CONFIG_MAXTIMECOPS, GetCVAR ("zeta_maxtimecopsperteam"));
+	SetConfig (CONFIG_JUGGERNAUTLIMIT, GetCVAR ("zeta_juggernautlimit"));
+	SetConfig (CONFIG_C4DELAY, GetCVAR ("zeta_c4delay"));
+	SetConfig (CONFIG_NORADAR, GetCVAR ("zeta_noradar"));
+	SetConfig (CONFIG_CREDITCAP, GetCVAR ("zeta_creditcap"));
 	
 	// [Dusk] {9/6/12} Are these needed in this function? They're updated upon research anyway.
 	SetConfig (CONFIG_ADVTURRETS_BLUE, AdvancedTurrets[TEAM_BLUE]);
@@ -373,7 +373,7 @@ script SC_PLAYERENTER ENTER {
 Script SC_PLAYERDISCONNECT (int gone) DISCONNECT {
 	// [Dusk] {11/2/12} Donate all credits to teammates. This
 	// has to be done before the block below which resets credits!
-	if (!GetCVar ("aow_nodisconnectdonate")) {
+	if (!GetCVar ("zeta_nodisconnectdonate")) {
 		int team = PlayersTeam[gone];
 		int teammates = GetTeamProperty (team, TPROP_NumPlayers);
 		if (teammates > 0) {
@@ -498,7 +498,7 @@ script SC_CL_PLAYERDISCONNECT (int gone) DISCONNECT CLIENTSIDE {
 }
 
 function void InitPlayer (void) {
-	SetCredits (GetCVAR ("aow_startcredits"));
+	SetCredits (GetCVAR ("zeta_startcredits"));
 	Experience[PlayerNumber()] = 0;
 	Surrender[PlayerNumber()] = False;
 	PlayersTeam[PlayerNumber()] = PlayerTeam();

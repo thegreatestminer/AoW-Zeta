@@ -36,47 +36,47 @@ script SC_CLIENT OPEN CLIENTSIDE {
 	
 	// [Dusk] Use consolecommand to make client-side CVARs show up properly
 	// Use CONFONT for HUD elements
-	if (GetCVar ("aow_cl_confonthud") <= 0)
-		ConsoleCommand ("set aow_cl_confonthud 0");
+	if (GetCVar ("zeta_cl_confonthud") <= 0)
+		ConsoleCommand ("set zeta_cl_confonthud 0");
 	
 	// Request information about the killer's health when we get fragged
-	if (GetCVar ("aow_cl_killerhealth") <= 0)
-		ConsoleCommand ("set aow_cl_killerhealth 0");
+	if (GetCVar ("zeta_cl_killerhealth") <= 0)
+		ConsoleCommand ("set zeta_cl_killerhealth 0");
 	
 	// Desired effect level (negative means less, positive means more, 0 means normal)
-	if (GetCVar ("aow_cl_fx") == 0)
-		ConsoleCommand ("set aow_cl_fx 0");
+	if (GetCVar ("zeta_cl_fx") == 0)
+		ConsoleCommand ("set zeta_cl_fx 0");
 	
 	// Don't draw any HUD elements
-	if (GetCVar ("aow_cl_nohud") <= 0)
-		ConsoleCommand ("set aow_cl_nohud 0");
+	if (GetCVar ("zeta_cl_nohud") <= 0)
+		ConsoleCommand ("set zeta_cl_nohud 0");
 	
 	// Always use the radar (but it will only show teammates)
-	if (GetCVar ("aow_cl_alwaysradar") <= 0)
-		ConsoleCommand ("set aow_cl_alwaysradar 0");
+	if (GetCVar ("zeta_cl_alwaysradar") <= 0)
+		ConsoleCommand ("set zeta_cl_alwaysradar 0");
 	
 	// [Dusk] {9/15/12} Disables team log completely.
-	if (GetCVar ("aow_cl_noteamlog") <= 0)
-		ConsoleCommand ("set aow_cl_noteamlog 0");
+	if (GetCVar ("zeta_cl_noteamlog") <= 0)
+		ConsoleCommand ("set zeta_cl_noteamlog 0");
 	
 	// [Dusk] {10/4/12} CVAR to show team log on the screen.
 	// It takes a lot of screen space so I'm disabling it by default
-	if (GetCVAR ("aow_cl_fullteamlog") <= 0)
-		ConsoleCommand ("set aow_cl_fullteamlog 0");
+	if (GetCVAR ("zeta_cl_fullteamlog") <= 0)
+		ConsoleCommand ("set zeta_cl_fullteamlog 0");
 	
 	// [Dusk] {10/27/12} How much to donate?
-	if (GetCVAR ("aow_cl_donateamount") <= 0)
-		ConsoleCommand ("set aow_cl_donateamount 100");
+	if (GetCVAR ("zeta_cl_donateamount") <= 0)
+		ConsoleCommand ("set zeta_cl_donateamount 100");
 	
 	// [Dusk] Also archive them.
-	ArchiveCVAR ("aow_cl_confonthud");
-	ArchiveCVAR ("aow_cl_killerhealth");
-	ArchiveCVAR ("aow_cl_fx");
-	ArchiveCVAR ("aow_cl_nohud");
-	ArchiveCVAR ("aow_cl_alwaysradar");
-	ArchiveCVAR ("aow_noteamintel");
-	ArchiveCVAR ("aow_cl_fullteamlog");
-	ArchiveCVAR ("aow_cl_donateamount");
+	ArchiveCVAR ("zeta_cl_confonthud");
+	ArchiveCVAR ("zeta_cl_killerhealth");
+	ArchiveCVAR ("zeta_cl_fx");
+	ArchiveCVAR ("zeta_cl_nohud");
+	ArchiveCVAR ("zeta_cl_alwaysradar");
+	ArchiveCVAR ("zeta_noteamintel");
+	ArchiveCVAR ("zeta_cl_fullteamlog");
+	ArchiveCVAR ("zeta_cl_donateamount");
 	
 	*/
 	// [Dusk] {9/10/12} Activate the radar
@@ -90,18 +90,18 @@ script SC_WHOAMI (void) NET CLIENTSIDE {
 
 // =============================================================================
 script SC_CL_EFFECTS (void) NET CLIENTSIDE {
-	int last_nohud = GetCVAR ("aow_cl_nohud");
-	int last_confonthud = GetCVAR ("aow_cl_confonthud");
+	int last_nohud = GetCVAR ("zeta_cl_nohud");
+	int last_confonthud = GetCVAR ("zeta_cl_confonthud");
 	int tid, targ;
 	int tick = 0;
 	
 	while (1) {
 		// [Dusk] If HUD preferences have changed, refresh the HUD.
-		if (GetCVar ("aow_cl_nohud") != last_nohud ||
-			GetCVar ("aow_cl_confonthud") != last_confonthud)
+		if (GetCVar ("zeta_cl_nohud") != last_nohud ||
+			GetCVar ("zeta_cl_confonthud") != last_confonthud)
 		{
-			last_nohud = GetCVar ("aow_cl_nohud");
-			last_nohud = GetCVar ("aow_cl_confonthud");
+			last_nohud = GetCVar ("zeta_cl_nohud");
+			last_nohud = GetCVar ("zeta_cl_confonthud");
 			UpdateHUD ();
 		}
 		
@@ -262,10 +262,10 @@ function bool SpawnTrail (int src, int dest, str type, int interval, int rand,
 	int n = (d>>16) / interval;
 	int cap = 128;
 	
-	if (GetCVar ("aow_cl_fx") > 0) {
+	if (GetCVar ("zeta_cl_fx") > 0) {
 		n *= 2;
 		cap *= 2;
-	} else if (GetCVar ("aow_cl_fx") < 0) {
+	} else if (GetCVar ("zeta_cl_fx") < 0) {
 		n /= 2;
 		cap /= 2;
 	}
@@ -313,9 +313,9 @@ function bool SpawnTrail (int src, int dest, str type, int interval, int rand,
 }
 
 // =============================================================================
-// [Dusk] Get aow_cl_fx value
+// [Dusk] Get zeta_cl_fx value
 script SC_CL_FXCVAR (void) CLIENTSIDE {
-	SetResultValue (GetCVar ("aow_cl_fx"));
+	SetResultValue (GetCVar ("zeta_cl_fx"));
 }
 
 // =============================================================================
@@ -400,7 +400,7 @@ script SC_CL_RADAR (void) NET CLIENTSIDE {
 		if (GetConfig (CONFIG_NORADAR) || // server disabled the radar
 			!PlayerInGame (consoleplayer) || // consoleplayer is spectating
 			(
-				!GetCVar ("aow_cl_alwaysradar") && // player has no radar and cvar is disabled
+				!GetCVar ("zeta_cl_alwaysradar") && // player has no radar and cvar is disabled
 				!CheckActorInventory (3800+consoleplayer, "PowerRadar")
 			))
 		{
@@ -468,7 +468,7 @@ int g_PreferenceCursor = 0;
 #define HID_PREFERENCES 7000
 
 // Increment, minimum and maximum are only used in integer and credit types.
-#define PRK_CVAR 0 // CVAR name, will be prefixed with aow_cl_
+#define PRK_CVAR 0 // CVAR name, will be prefixed with zeta_cl_
 #define PRK_LABEL 1 // Description of this as appears on the menu
 #define MAX_PREFKEYS_str 2
 
@@ -525,7 +525,7 @@ function void PR_InitPreferences (void) {
 }
 
 // =============================================================================
-// CCMD: aow_preferencemenu
+// CCMD: zeta_preferencemenu
 script SC_PREF_MENUTOGGLE (void) net clientside {
 	if (g_PreferencesOpen) {
 		PR_Dismiss ();
@@ -621,7 +621,7 @@ function void PR_Draw (void) {
 		PR_HudMessage (strparam (s:head_color, s:g_Preferences_str[i][PRK_LABEL], s:":"), (i * 2) + 1, -0.4, y);
 		
 		// Now build the value string
-		int val = GetCVar (strparam (s:"aow_cl_", s:g_Preferences_str[i][PRK_CVAR]));
+		int val = GetCVar (strparam (s:"zeta_cl_", s:g_Preferences_str[i][PRK_CVAR]));
 		str type = g_Preferences_int[i][PRK_TYPE];
 		str text;
 		
@@ -682,7 +682,7 @@ function void PR_Undraw (void) {
 function void PR_MoveCurrent (int neg) {
 	int cur = g_PreferenceCursor;
 	str type = g_Preferences_int[cur][PRK_TYPE];
-	str cvar = strparam (s:"aow_cl_", s:g_Preferences_str[cur][PRK_CVAR]);
+	str cvar = strparam (s:"zeta_cl_", s:g_Preferences_str[cur][PRK_CVAR]);
 	int val = GetCVar (cvar);
 	str cmd = strparam (s:"set ", s:cvar);
 	

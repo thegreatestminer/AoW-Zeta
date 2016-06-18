@@ -76,15 +76,15 @@ script SC_MARINE_INIT (void) {
 script SC_MARINE_COMENSATION OPEN {
 	while (true) {
 		delay (35 * 5);
-		if (!GetCVar ("aow_debugmarines") && (!CheckMinutes (5) || GetCVar ("aow_nocompensation")))
+		if (!GetCVar ("zeta_debugmarines") && (!CheckMinutes (5) || GetCVar ("zeta_nocompensation")))
 			continue;
 		int n;
 		
 		// Calculate AI marine needs
-		if (GetCVar ("aow_debugmarines") > 0) {
+		if (GetCVar ("zeta_debugmarines") > 0) {
 			// Debug CVAR to override these counts.
-			AIMarines[TEAM_BLUE] = GetCVar ("aow_debugmarines");
-			AIMarines[TEAM_RED] = GetCVar ("aow_debugmarines");
+			AIMarines[TEAM_BLUE] = GetCVar ("zeta_debugmarines");
+			AIMarines[TEAM_RED] = GetCVar ("zeta_debugmarines");
 		} else {
 			int rc = GetTeamProperty (TEAM_RED, TPROP_NumPlayers);
 			int bc = GetTeamProperty (TEAM_BLUE, TPROP_NumPlayers);
