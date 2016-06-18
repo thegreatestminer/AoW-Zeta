@@ -102,7 +102,7 @@ function bool PurchaseClass (int id) {
 	}
 	
 	// If the class is a time cop, we need to check the limit
-	int max = GetCVar ("aow_maxtimecopsperteam");
+	int max = GetCVar ("zeta_maxtimecopsperteam");
 	if (Classes_int[id][CK_FLAGS] & CF_IsTimeCop && max > 0) {
 		if (TeamInvCount ("TimeGun", PlayerTeam()) >= max) {
 			g_Error = "Timecops at limit!";
@@ -364,8 +364,8 @@ function int SetClass (int id, int scflags) {
 	if (!(scflags & SCF_NOTELEPORT)) {
 		ACS_ExecuteAlways (SC_DOTELEPORTTOFIELD, 0, 1-PlayerTeam ());
 		
-		// Don't give spawn invul if aow_nospawninvul is set.
-		if (!GetCVar ("aow_nospawninvul"))
+		// Don't give spawn invul if zeta_nospawninvul is set.
+		if (!GetCVar ("zeta_nospawninvul"))
 			GiveInventory ("SpawnInvulnerability", 1);
 	}
 	
