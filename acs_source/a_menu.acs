@@ -214,7 +214,8 @@ script SC_MENU (int player) CLIENTSIDE {
 	int MenuID = CheckInventory ("InMenu");
 	
 	MenuActive = true;
-	while (CheckInventory ("InMenu") && GetHealth () > 0) {
+	while (CheckInventory ("InMenu") && GetHealth () > 0) 
+	{
 		delay (1);
 		
 		if (MenuDelay)
@@ -252,7 +253,7 @@ script SC_MENU (int player) CLIENTSIDE {
 				arg1 = 0;
 			}
 			
-			Puke3 (-SC_MENU_SELECT, arg0, arg1, buttons & (BT_ATTACK | BT_USE));
+			Puke3 (-SC_MENU_SELECT, arg0, arg1, !(buttons & (BT_ALTATTACK))); // [Cata] Attempting to stop the menu from presisting after pressing "use"
 			
 			// Tell the user if we used alt-fire to dismiss
 			if (buttons & BT_ALTATTACK)

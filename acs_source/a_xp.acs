@@ -46,7 +46,7 @@ function void DoAddExperience (int XP, int forcemessage) {
 		IntelMessage (strparam (s:"You have ranked up to \cD", s:RankTitles[GetRank ()], s:"!"), false);
 		ACS_ExecuteAlways (91, 0);
 		
-		TeamMessage (TMSG_RANKUP, GetRank(), 0);
+		TeamMessage (TMSG_RANKUP, GetRank(), playernumber());
 		Log (n:0, s:"\c- ranks up to ", s:RankTitles[GetRank ()]);
 	}
 }

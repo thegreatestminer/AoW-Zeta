@@ -540,6 +540,7 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 		\t- 2x Shock Rifle\n
 		\t- LRM-20"
 	}, 
+	
 	{
 		"Titan", 
 		//"2000", 
@@ -560,6 +561,25 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 		\t- 2x Flamer\n
 		\t- LRM-20"
 	}, 
+	
+	{
+		"Rhino", 
+		"RhinoSwitch",
+		"RhinoAmmoPackage", 
+		"		A heavy mech designed for brawling\n
+		This was originally imported from a failed\n
+		operation years ago. We have modified it\n
+		to be a killing machine. It comes armed\n
+		with missiles, shock cannons, and even\n
+		a plasma cannon.\n
+		\n
+		\n
+		Weapons:\n
+		\t- LRM-10\n
+		\t- Plasma Cannon\n
+		\t- Shock Cannon"
+	}, 
+	
 	{
 		"Juggernaut MKII", 
 		//"3000", 
@@ -600,7 +620,7 @@ str Mechs_str[NUM_MECHS][NUM_MECH_KEYS_STR] = {
 		Weapons:\n
 		\t- Explosive Plasma Rifle\n
 		\t- Heavy MachineGun"
-	}
+	},
 };
 
 int Mechs_int[NUM_MECHS][NUM_MECH_KEYS_INT] = {
@@ -629,22 +649,33 @@ int Mechs_int[NUM_MECHS][NUM_MECH_KEYS_INT] = {
 		MECHWEIGHT_HEAVY, 
 		MF_POWER,
 	}, 
+	
 	{
 		2000, 
 		5000, 
 		MECHWEIGHT_HEAVY, 
 		MF_POWER,
 	}, 
+	
+	// [Cata] Rhino
+	{
+		2500, 
+		4000, 
+		MECHWEIGHT_HEAVY, 
+		MF_POWER,
+	},
+	
 	{
 		3000, 
 		5000, 
 		MECHWEIGHT_HEAVY, 
 		MF_POWER,
 	}, 
+	
 	{
 		1500, 
 		3500, 
 		MECHWEIGHT_MEDIUM, 
 		0,
-	}
+	},
 };

@@ -202,20 +202,22 @@ function void DisplayStatusHUD (void) {
 // =============================================================================
 // [Dusk] TEAM LOG
 // TeamMessage: Server sends clients a team log message.
-function void TeamMessage (int msgtype, int x0, int x1) {
+function void TeamMessage (int msgtype, int x0, int pnum) 
+{
 	if (NetState == NETSTATE_Client || PlayerNumber () == -1 ||
 		!PlayerInGame (PlayerNumber ()) || msgtype >= NUM_MSGTYPES)
 	{
 		return;
 	}
 	
-	ACS_ExecuteAlways (SC_CL_TeamLog, 0, msgtype, x0, x1);
+	ACS_ExecuteAlways (SC_CL_TeamLog, 0, msgtype, x0, pnum); // [Cata] Hopefully fixes the null messages.
 }
 
 // =============================================================================
 // [Dusk] Script 982: Client recieves data from server about a team
 // message. Build the string from recieved information and add it to team log.
-script SC_CL_TeamLog (int msgtype, int x0, int x1) NET CLIENTSIDE {
+// [Cata] pnum addon.
+script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
 	if (GetCVar ("zeta_cl_noteamlog"))
 		terminate;
 	
@@ -240,37 +242,37 @@ script SC_CL_TeamLog (int msgtype, int x0, int x1) NET CLIENTSIDE {
 	// Build the string from incoming data
 	switch (msgtype) {
 	case TMSG_NEWCLASS:
-		msg = strparam (n:0, s:"\c- becomes \cd", s:Classes_str[x0][CK_NAME]);
+		msg = strparam (n:pnum+1, s:"\c- becomes \cd", s:Classes_str[x0][CK_NAME]);
 		break;
 	case TMSG_ADDONPURCHASE:
-		msg = strparam (n:0, s:"\c- purchases \cd", s:GetAddOnName (x0));
+		msg = strparam (n:pnum+1, s:"\c- purchases \cd", s:GetAddOnName (x0));
 		break;
 	case TMSG_MECHPURCHASE:
-		msg = strparam (n:0, s:"\c- pilots \cu", s:Mechs_str[x0][MK_NAME]);
+		msg = strparam (n:pnum+1, s:"\c- pilots \cu", s:Mechs_str[x0][MK_NAME]);
 		break;
 	case TMSG_MECHEJECT:
-		msg = strparam (n:0, s:"\c- ejects \cu", s:Mechs_str[x0][MK_NAME]);
+		msg = strparam (n:pnum+1, s:"\c- ejects \cu", s:Mechs_str[x0][MK_NAME]);
 		break;
 	case TMSG_TIBREFINE:
-		msg = strparam (n:0, s:"\c- refines Tiberium");
+		msg = strparam (n:pnum+1, s:"\c- refines Tiberium");
 		break;
 	case TMSG_RESEARCH:
-		msg = strparam (n:0, s:"\c- researches \ci", s:Researches_str[x0][RCK_NAME]);
+		msg = strparam (n:pnum+1, s:"\c- researches \ci", s:Researches_str[x0][RCK_NAME]);
 		break;
 	case TMSG_RANKUP:
-		msg = strparam (n:0, s:"\c- ranks up to \cd", s:RankTitles[x0]);
+		msg = strparam (n:pnum+1, s:"\c- ranks up to \cd", s:RankTitles[x0]);
 		break;
 	case TMSG_CRATE:
-		msg = strparam (n:0, s:"\c- gets \ck", s:CR_GetDisplayName (x0));
+		msg = strparam (n:pnum+1, s:"\c- gets \ck", s:CR_GetDisplayName (x0));
 		break;
 	case TMSG_RESIGN:
-		msg = strparam (n:0, s:"\ci resigns");
+		msg = strparam (n:pnum+1, s:"\ci resigns");
 		break;
 	case TMSG_CONSTRUCT:
-		msg = strparam (n:0, s:"\c- builds a ", s:ac, s:cname);
+		msg = strparam (n:pnum+1, s:"\c- builds a ", s:ac, s:cname);
 		break;
 	case TMSG_DESTRUCT:
-		msg = strparam (n:0, s:"\c- destroys ", s:ec, s:"enemy ", s:cname);
+		msg = strparam (n:pnum+1, s:"\c- destroys ", s:ec, s:"enemy ", s:cname);
 		break;
 	case TMSG_TELELINK:
 		if (!x0)
@@ -280,13 +282,13 @@ script SC_CL_TeamLog (int msgtype, int x0, int x1) NET CLIENTSIDE {
 		break;
 	case TMSG_TEAMSWITCH:
 		if (!x0)
-			msg = strparam (n:0, s:" \cuswitches away to the enemy team");
+			msg = strparam (n:pnum+1, s:" \cuswitches away to the enemy team");
 		else
-			msg = strparam (n:0, s:" \cdswitches from the enemy team. Say hi!");
+			msg = strparam (n:pnum+1, s:" \cdswitches from the enemy team. Say hi!");
 		break;
 	default:
 		Log (s:"\ckACS: Recieved unknown team message (", d:msgtype, s:", ", d:x0,
-			s:", ", d:x1, s:") (activator: #", d:PlayerNumber(), s:" - ", n:0, s:"\ck)\n",
+			s:", ", d:pnum, s:") (activator: #", d:PlayerNumber(), s:" - ", n:pnum+1, s:"\ck)\n",
 			s:"\ckEither the server is sending me bad data or there's a bug in the code!");
 		terminate;
 	}

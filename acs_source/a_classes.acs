@@ -237,7 +237,7 @@ function int SetClass (int id, int scflags) {
 				HUDMSG_FADEOUT, 1800+PlayerNumber(), CR_ORANGE, 0.5, 0.45, 2.0, 1.0);
 			
 			Log (n:0, s:" resigns.");
-			TeamMessage (TMSG_RESIGN, 0, 0);
+			TeamMessage (TMSG_RESIGN, 0, playernumber());
 		}
 		
 		ACS_ExecuteAlways (97, 0);
@@ -377,7 +377,7 @@ function int SetClass (int id, int scflags) {
 	PlayerSpeeds[PlayerNumber()] = Classes_int[id][CK_SPEED];
 	
 	// Inform teammates of the class change
-	TeamMessage (TMSG_NEWCLASS, id, 0);
+	TeamMessage (TMSG_NEWCLASS, id, playernumber());
 	
 	// Log it, unless offline
 	if (netstate != NETSTATE_Offline || PlayerTeam() != ConsoleTeam())

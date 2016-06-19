@@ -136,7 +136,7 @@ function bool RC_PurchaseResearch (int r) {
 		
 		
 		Log (n:0, s:" researches ", s:Researches_str[r][RCK_NAME], s:" for ", s:TeamNames[PlayerTeam()], s:" team.");
-		TeamMessage (TMSG_RESEARCH, r, 0);
+		TeamMessage (TMSG_RESEARCH, r, playernumber());
 		break;
 	case RC_CAT_EXTENSION:
 		MenuResponse (MSGTYPE_SUCCESS, "Construction Complete!");

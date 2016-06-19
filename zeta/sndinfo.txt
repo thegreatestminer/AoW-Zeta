@@ -1054,3 +1054,6 @@ $rolloff mech/explode/junk	1000 3500
 
 revolver/fire	dsrevolv
 player/berserk dsbersrk
+
+// [Cata] Rhino.
+RHINOSTE RHINOSTE

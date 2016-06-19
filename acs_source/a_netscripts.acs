@@ -110,7 +110,7 @@ script SC_CCMD_TEAMSWITCH (void) NET {
 	SetInventory ("IsRed", newteam == TEAM_Red);
 	
 	// Tell teammates goodbye
-	TeamMessage (TMSG_TEAMSWITCH, false, 0);
+	TeamMessage (TMSG_TEAMSWITCH, false, playernumber());
 	
 	// Actually change the team now
 	Player_SetTeam (newteam);
@@ -129,7 +129,7 @@ script SC_CCMD_TEAMSWITCH (void) NET {
 	Log (n:0, s:" switches to weaker ", s:TeamNames[newteam], s:" team. (Score: ", d:score, s:")");
 	
 	// Tell new teammates hi
-	TeamMessage (TMSG_TEAMSWITCH, true, 0);
+	TeamMessage (TMSG_TEAMSWITCH, true, playernumber());
 	
 	// Reward the player for his deed of balancing out the teams
 	delay (35 * 2);
