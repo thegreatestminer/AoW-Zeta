@@ -87,8 +87,8 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 	}
 	
 	// Armor modifiers
-	InInventory Not PowerExplosiveResistance {
-	InInventory Not PowerEnergyResistance || PowerBulletResistance {
+	InInventory Not PowerExplosiveResistance || PowerEnergyResistance {
+	InInventory Not PowerBulletResistance || PowerBulletProof {
 	InInventory Not PowerFireProof || PowerChemicalProof {
 		drawimage "a_nomod", 60, -15;
 	}}}
@@ -98,6 +98,7 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 	InInventory PowerExplosiveResistance {drawimage "a_explo", 60, -15;}
 	InInventory PowerEnergyResistance {drawimage "a_energy", 60, -15;}
 	InInventory PowerBulletResistance {drawimage "a_bullet", 60, -15;}
+	InInventory PowerBulletProof {drawimage "a_bproof", 60, -15;}
 	
 	// Armor grades
 	InInventory PowerGradeNeg1Armor {drawimage "a_graden", 60, -15;}
@@ -108,9 +109,9 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 	InInventory PowerGrade5Armor {drawimage "a_grade5", 60, -15;}
 	
 	// Progress bar for armor changing
-	InInventory IsChangingArmor {
+	InInventory IsChangingArmor { InInventory Not CancelChangingArmor {
 		DrawBar "progbar1", "progbar2", ArmorChangeProgress, horizontal, 18, -30;
-	}
+	} }
 	
 	// Jetpack fuel bar
 	InInventory Jetpack {

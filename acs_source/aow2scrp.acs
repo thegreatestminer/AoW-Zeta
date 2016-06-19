@@ -418,7 +418,7 @@
 // ============================================================================
 // Armor constants
 #define NOCHANGE 255
-#define ARMOD_NOCHANGE "0"
+#define ARMOD_NOCHANGE 0
 #define ARMOD_FIRE 1
 #define ARMOD_CHEM 2
 #define ARMOD_ENERGY 3
