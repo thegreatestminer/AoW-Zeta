@@ -94,6 +94,7 @@
 #include "actors/mechs/raven.txt"
 #include "actors/mechs/titan.txt"
 #include "actors/mechs/tortoise.txt"
+#include "actors/mechs/rhino.txt"
 #include "actors/objects/caches.txt"
 #include "actors/objects/items.txt"
 #include "actors/objects/gunturret.txt"

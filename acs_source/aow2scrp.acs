@@ -549,10 +549,11 @@
 #define MECH_WOLVERINE 2
 #define MECH_MADCAT 3
 #define MECH_TITAN 4
-#define MECH_JUGGERNAUT 5
-#define MECH_Tortoise 6
+#define MECH_RHINO 5
+#define MECH_JUGGERNAUT 6
+#define MECH_Tortoise 7
 // ----
-#define NUM_MECHS 7
+#define NUM_MECHS 8
 
 #define MECHWEIGHT_LIGHT	0
 #define MECHWEIGHT_MEDIUM	1

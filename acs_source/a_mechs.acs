@@ -254,7 +254,7 @@ script 314 (void) {
 		}
 	}
 	
-	if (CheckInventory ("TitanWeapons")) {
+	else if (CheckInventory ("TitanWeapons")) {
 		if(CheckInventory("Wolverine-WhatWeapon") == 0)
 		{
 			GiveInventory("Wolverine-WhatWeapon",1);
@@ -278,7 +278,7 @@ script 314 (void) {
 		}
 	}
 	
-	if (CheckInventory ("MadCatWeapons")) {
+	else if (CheckInventory ("MadCatWeapons")) {
 		if(CheckInventory("Wolverine-WhatWeapon") == 0)
 		{
 			GiveInventory("Wolverine-WhatWeapon",1);
@@ -301,7 +301,7 @@ script 314 (void) {
 		}
 	}
 	
-	if (CheckInventory ("JuggernautWeapons")) {
+	else if (CheckInventory ("JuggernautWeapons")) {
 		SetFont ("SMALLFONT");
 		if (!CheckInventory("Wolverine-WhatWeapon")) {
 			GiveInventory("Wolverine-WhatWeapon",1);
@@ -324,6 +324,29 @@ script 314 (void) {
 			ActivatorSound("switch/lrm",128);
 		}
 	}
+	
+	else if (CheckInventory ("RhinoWeapons")) 
+	{
+		SetFont ("SMALLFONT");
+		if (!CheckInventory("Wolverine-WhatWeapon")) 
+		{
+			GiveInventory("Wolverine-WhatWeapon",1);
+			HudMessage(s:"\cfLRM-10"; HUDMSG_FADEOUT, 0, CR_Gold, 0.5, 0.8, 1.0, 0.5);
+			ActivatorSound("switch/lrm",128);
+		} 
+		else if (CheckInventory("Wolverine-WhatWeapon") == 1) 
+		{
+			GiveInventory ("Wolverine-WhatWeapon", 1);
+			HudMessage(s:"\cfPlasma Cannon"; HUDMSG_FADEOUT, 0, CR_Gold, 0.5, 0.8, 1.0, 0.5);		
+			ActivatorSound("weapons/up/plasmacannon",128);
+		} 
+		else
+		{
+			TakeInventory("Wolverine-WhatWeapon", 3);
+			HudMessage(s:"\cfShock Cannon"; HUDMSG_FADEOUT, 0, CR_Gold, 0.5, 0.8, 1.0, 0.5);		
+			ActivatorSound("switch/pulse", 128);
+		} 
+	}
 }
 
 //Mech HUD
@@ -334,7 +357,8 @@ script 315 (void) NET CLIENTSIDE {
 	SetHUDFont ();
 	
 	// Wolverine
-	if (CheckWeapon("WolverineWeapons")) {
+	if (CheckWeapon("WolverineWeapons")) 
+	{
 		HudMessage(s:MechHudColor(0, "Reload-LRM"), s:"LRM-10:\n",
 			s:MechHudColor(1, ""), s:"PULSE:\n",
 			s:MechHudColor(2, ""), s:"FLAK: ";
@@ -345,7 +369,10 @@ script 315 (void) NET CLIENTSIDE {
 			HUDMSG_PLAIN, 0, CR_White, 0.85, 0.7, 0.2);
 		delay(2);
 		restart;
-	} else if (CheckWeapon ("MadCatWeapons")) {
+	} 
+	
+	else if (CheckWeapon ("MadCatWeapons")) 
+	{
 		HudMessage(s:MechHudColor(0, "Reload-ShockCannon"), s:"SHOCK CANNON:\n",
 			s:MechHudColor(1, ""), s:"SHOCK RIFLE:\n",
 			s:MechHudColor(2, "Reload-LRM"), s:"LRM-20:\n";
@@ -356,7 +383,10 @@ script 315 (void) NET CLIENTSIDE {
 			HUDMSG_PLAIN, 0, CR_White, 0.85, 0.7, 0.2);
 		delay(2);
 		restart;
-	} else if (CheckWeapon("TitanWeapons")) {
+	} 
+	
+	else if (CheckWeapon("TitanWeapons")) 
+	{
 		HudMessage(s:MechHudColor(0, "Reload-80mm"), s:"100MM:\n",
 			s:MechHudColor(1, ""), s:"FLAMER:\n",
 			s:MechHudColor(2, "Reload-LRM"), s:"LRM-20: ";
@@ -367,7 +397,10 @@ script 315 (void) NET CLIENTSIDE {
 			HUDMSG_PLAIN, 0, CR_White, 0.85, 0.7, 0.2);
 		delay(2);
 		restart;
-	} else if (CheckWeapon ("JuggernautWeapons")) {
+	} 
+	
+	else if (CheckWeapon ("JuggernautWeapons")) 
+	{
 		// [Dusk] Blue nuke is the ion bomb
 		str nukename = "NUKE";
 		if (PlayerTeam() == TEAM_BLUE)
@@ -386,6 +419,21 @@ script 315 (void) NET CLIENTSIDE {
 		delay(2);
 		restart;
 	}
+	
+	else if (CheckWeapon ("RhinoWeapons")) 
+	{
+		HudMessage(	s:MechHudColor(0, "Reload-LRM"), s:"LRM-10:\n",
+					s:MechHudColor(1, "Reload-Plasma"), s:"PLASMA CANNON:\n",
+					s:MechHudColor(2, "Reload-ShockCannon"), s:"SHOCK CANNON: ";
+					HUDMSG_PLAIN, 0, CR_Gold, 0.8, 0.7, 0.2);
+					
+		HudMessage(	d:CheckInventory("MechRocketAmmo"),
+					s:"\n-",
+					s:"\n-";
+					HUDMSG_PLAIN, 0, CR_White, 0.85, 0.7, 0.2);
+		delay(2);
+		restart;
+	} 
 }
 
 function str MechHudColor (int weapon, str cooldownitem) {
@@ -409,8 +457,9 @@ script 697 (void) {
 	else if (CheckInventory ("WolverineWeapons")) MechType = 2;
 	else if (CheckInventory ("MadCatWeapons")) MechType = 3;
 	else if (CheckInventory ("TitanWeapons")) MechType = 4;
-	else if (CheckInventory ("JuggernautWeapons")) MechType = 5;
-	else if (CheckInventory ("TortoiseWeapons")) MechType = 6;
+	else if (CheckInventory ("RhinoWeapons")) MechType = 5;
+	else if (CheckInventory ("JuggernautWeapons")) MechType = 6;
+	else if (CheckInventory ("TortoiseWeapons")) MechType = 7;
 	
 	if(MechType == -1) terminate;
 	/*
@@ -475,6 +524,15 @@ script 697 (void) {
 			Spawn ("DamagedTortoise", x, y, z, 0, angle);
 			
 		break;
+	
+	case 7:
+		//rhino
+		if (GetActorProperty(0,APROP_Health) >= 1500)
+			Spawn ("EjectedRhino", x, y, z, 0, angle);
+		else
+			Spawn ("DamagedRhino", x, y, z, 0, angle);
+			
+		break;
 	}
 	
 	// [Dusk] {9/15/12} Inform teammates
@@ -533,7 +591,7 @@ script 319 (int Weapon, int ReloadTime) {
 		break;
 	case 4:
 		item = "Reload-Plasma";
-		sound = "ppc/reload";
+		sound = "artillery/reload";
 		break;
 	case 5:
 		item = "Reload-Artillery";
