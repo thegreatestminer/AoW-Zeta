@@ -12,7 +12,7 @@ actor ChemicalSprayer : AOWWeapon 21066 {
 	Weapon.AmmoType2 "ChemicalGrenadeAmmo"
 	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 0
-	Weapon.PreferredSkin "MarinePlasma"
+	Weapon.PreferredSkin "MarineChem"
 	Weapon.UpSound "weapons/up/chem"
 	Tag "Chemical Sprayer"
 	states {

@@ -155,6 +155,12 @@ sprite = PKSW
 CrouchSprite=PKWC
 }
 
+{
+name = "MarineChem"
+sprite = PBIC
+CrouchSprite=PBCC
+}
+
 /* // [SG] Mech classes have +NOSKIN, these only cause problems
 /////////////////////////////////////////MECHS
 {
