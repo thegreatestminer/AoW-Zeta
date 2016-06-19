@@ -52,7 +52,7 @@ function bool RefineTiberium (int team) {
 	}
 	
 	Log (n:0, s:" refines for ", s:TeamNames[PlayerTeam()], s:" Team");
-	TeamMessage (TMSG_TIBREFINE, 0, 0);
+	TeamMessage (TMSG_TIBREFINE, 0, playernumber());
 	
 	// Distribute amounts to teammeats
 	if (amount > 0) {

@@ -295,7 +295,7 @@ script 309 (int c) {
 	}
 	
 	// [Dusk] {9/15/12} And to his teammates
-	TeamMessage (TMSG_CRATE, c, 0);
+	TeamMessage (TMSG_CRATE, c, playernumber());
 	
 	// =============================================================================
 	// Give the player the effect. We use SMALLFONT by default

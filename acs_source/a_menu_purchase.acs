@@ -294,7 +294,7 @@ function void BuyAddon (int id) {
 	
 	// Inform teammates of important addons
 	if (item == ITEM_Beacon || ITEM_PlasmaCannon)
-		TeamMessage (TMSG_ADDONPURCHASE, id, 0);
+		TeamMessage (TMSG_ADDONPURCHASE, id, playernumber());
 	
 	Log (n:0, s:" purchases ", s:dname, s:".");
 	

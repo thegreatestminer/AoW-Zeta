@@ -138,7 +138,7 @@ script SC_MECHMORPH (int mech) {
 	}
 	
 	// [Dusk] Tell teammates of the purchase
-	TeamMessage (TMSG_MECHPURCHASE, mech, 0);
+	TeamMessage (TMSG_MECHPURCHASE, mech, playernumber());
 	/*
 	// [Dusk] Fire up the tortoise HUD
 	if (mech == MECH_Tortoise)
@@ -478,7 +478,7 @@ script 697 (void) {
 	}
 	
 	// [Dusk] {9/15/12} Inform teammates
-	TeamMessage (TMSG_MECHEJECT, MechType, 0);
+	TeamMessage (TMSG_MECHEJECT, MechType, playernumber());
 	
 	UnMorphActor (0, 0);
 	

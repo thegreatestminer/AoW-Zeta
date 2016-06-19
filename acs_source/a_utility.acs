@@ -94,7 +94,7 @@ script 344 (int Type, int DoneByUtilGun)
 			SYNC_UpdateBuildingHealth (BUILDING_MINIREF, TEAM_RED);
 			
 			// [Dusk] {9/15/12} Draw a message into team log.
-			TeamMessage (TMSG_CONSTRUCT, 0, 0);
+			TeamMessage (TMSG_CONSTRUCT, 0,  playernumber());
 		} else if(PlayerTeam() == TEAM_RED && ThingCountSector(T_NONE,900,18) == 0) {
 			SetFont("SMALLFONT");
 			IntelMessage ("Must be built into a \cDTiberium Field!", false);
@@ -113,7 +113,7 @@ script 344 (int Type, int DoneByUtilGun)
 			Log(n:0, s:" builds Blue Mini-Refinery.");
 			GivePoints (RESEARCHPOINTS);
 			SYNC_UpdateBuildingHealth (BUILDING_MINIREF, TEAM_BLUE);
-			TeamMessage (TMSG_CONSTRUCT, 0, 0);
+			TeamMessage (TMSG_CONSTRUCT, 0,  playernumber());
 		}
 		else if(PlayerTeam() == TEAM_BLUE && ThingCountSector(T_NONE,901,18) == 0) {
 			SetFont("SMALLFONT");
@@ -178,7 +178,7 @@ script 344 (int Type, int DoneByUtilGun)
 			Log(n:0, s:" builds Red Health Regen Cache.");
 			GivePoints (RESEARCHPOINTS);
 			SYNC_UpdateBuildingHealth (BUILDING_HEALTHREGEN, TEAM_RED);
-			TeamMessage (TMSG_CONSTRUCT, 1, 0);
+			TeamMessage (TMSG_CONSTRUCT, 1,  playernumber());
 		} else if(PlayerTeam() == TEAM_RED) {
 			SetFont ("SMALLFONT");
 			IntelMessage ("Regenerator failed to spawn to cache pad!", false);
@@ -201,7 +201,7 @@ script 344 (int Type, int DoneByUtilGun)
 			Log(n:0, s:" builds Blue Health Regen Cache.");
 			GivePoints (RESEARCHPOINTS);
 			SYNC_UpdateBuildingHealth (BUILDING_HEALTHREGEN, TEAM_BLUE);
-			TeamMessage (TMSG_CONSTRUCT, 1, 0);
+			TeamMessage (TMSG_CONSTRUCT, 1,  playernumber());
 		} else if (PlayerTeam() == TEAM_BLUE) {
 			SetFont ("SMALLFONT");
 			IntelMessage ("Regenerator failed to spawn to cache pad!", false);
@@ -260,7 +260,7 @@ script 344 (int Type, int DoneByUtilGun)
 			Log(n:0, s:" builds Red Ammo Regen Cache.");
 			GivePoints (RESEARCHPOINTS);
 			SYNC_UpdateBuildingHealth (BUILDING_AMMOREGEN, TEAM_RED);
-			TeamMessage (TMSG_CONSTRUCT, 2, 0);
+			TeamMessage (TMSG_CONSTRUCT, 2,  playernumber());
 		} else if(PlayerTeam() == TEAM_RED) {
 			SetFont ("SMALLFONT");
 			IntelMessage ("Regenerator failed to spawn to cache pad!", false);
@@ -283,7 +283,7 @@ script 344 (int Type, int DoneByUtilGun)
 			Log(n:0, s:" builds Blue Ammo Regen Cache.");
 			GivePoints (RESEARCHPOINTS);
 			SYNC_UpdateBuildingHealth (BUILDING_AMMOREGEN, TEAM_BLUE);
-			TeamMessage (TMSG_CONSTRUCT, 2, 0);
+			TeamMessage (TMSG_CONSTRUCT, 2,  playernumber());
 		} else if (PlayerTeam() == TEAM_BLUE) {
 			SetFont ("SMALLFONT");
 			IntelMessage ("Regenerator failed to spawn to cache pad!", false);
@@ -324,7 +324,7 @@ script 345 (int Type, int Team)
 		SYNC_UpdateBuildingHealth (BUILDING_MINIREF, TEAM_RED);
 		
 		// [Dusk] {9/15/12} Display a message into team log too
-		TeamMessage (TMSG_DESTRUCT, 0, 0);
+		TeamMessage (TMSG_DESTRUCT, 0,  playernumber());
 	}
 	if(Type == 3 && Team == 1) //BLUE 
 	{
@@ -336,7 +336,7 @@ script 345 (int Type, int Team)
 		Log(n:0, s:" destroys Blue Mini-Ref.");
 		GivePoints (RESEARCHPOINTS);
 		SYNC_UpdateBuildingHealth (BUILDING_MINIREF, TEAM_BLUE);
-		TeamMessage (TMSG_DESTRUCT, 0, 0);
+		TeamMessage (TMSG_DESTRUCT, 0,  playernumber());
 	}
 	if(Type == 5 && Team == 0) //RED 
 	{
@@ -348,7 +348,7 @@ script 345 (int Type, int Team)
 		Log(n:0, s:" destroys Red Health Regen Cache.");
 		GivePoints (RESEARCHPOINTS);
 		SYNC_UpdateBuildingHealth (BUILDING_HEALTHREGEN, TEAM_RED);
-		TeamMessage (TMSG_DESTRUCT, 1, 0);
+		TeamMessage (TMSG_DESTRUCT, 1,  playernumber());
 	}
 	if(Type == 5 && Team == 1) //BLUE 
 	{
@@ -360,7 +360,7 @@ script 345 (int Type, int Team)
 		Log(n:0, s:" destroys Blue Health Regen Cache.");
 		GivePoints (RESEARCHPOINTS);
 		SYNC_UpdateBuildingHealth (BUILDING_HEALTHREGEN, TEAM_RED);
-		TeamMessage (TMSG_DESTRUCT, 1, 0);
+		TeamMessage (TMSG_DESTRUCT, 1,  playernumber());
 	}
 	if(Type == 7 && Team == 0) //RED 
 	{
@@ -372,7 +372,7 @@ script 345 (int Type, int Team)
 		Log(n:0, s:" destroys Red Ammo Regen Cache.");
 		GivePoints (RESEARCHPOINTS);
 		SYNC_UpdateBuildingHealth (BUILDING_AMMOREGEN, TEAM_RED);
-		TeamMessage (TMSG_DESTRUCT, 2, 0);
+		TeamMessage (TMSG_DESTRUCT, 2,  playernumber());
 	}
 	if(Type == 7 && Team == 1) //BLUE 
 	{
@@ -384,7 +384,7 @@ script 345 (int Type, int Team)
 		Log(n:0, s:" destroys Blue Ammo Regen Cache.");
 		GivePoints (RESEARCHPOINTS);
 		SYNC_UpdateBuildingHealth (BUILDING_AMMOREGEN, TEAM_BLUE);
-		TeamMessage (TMSG_DESTRUCT, 2, 0);
+		TeamMessage (TMSG_DESTRUCT, 2,  playernumber());
 	}
 }
 

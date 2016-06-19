@@ -147,7 +147,7 @@ script SC_TELENODE_INIT (void) {
 	Spawn (spheretype, x + (cos(angle+0.75)*80), y + (sin(angle+0.75)*80), z + 56.0, tid_effects);
 	Spawn (fxtype, x, y, z+56.0, tid_effects);
 	
-	TeamMessage (TMSG_CONSTRUCT, 3, 0);
+	TeamMessage (TMSG_CONSTRUCT, 3, playernumber());
 	
 	delay (1);
 	
@@ -161,7 +161,7 @@ script SC_TELENODE_INIT (void) {
 		SetActorState (TID_TELENODE_FX + dest, "Active");
 		Log (n:0, s:" constructs a teleporter and establishes a link.");
 		
-		TeamMessage (TMSG_TELELINK, 0, 0);
+		TeamMessage (TMSG_TELELINK, 0, playernumber());
 	} else {
 		SetActorState (tid, "Inactive");
 		SetActorState (tid_effects, "Init.Inactive");
@@ -199,7 +199,7 @@ script SC_TELENODE_FUNCTION (int idx) {
 			SetActorState (TID_TELENODE_BLUE1 + dest, "Inactive");
 			SetActorState (TID_TELENODE_FX + dest, "Inactive");
 			
-			TeamMessage (TMSG_TELELINK, 1, 0);
+			TeamMessage (TMSG_TELELINK, 1, playernumber());
 		}
 		
 		// update the hud
