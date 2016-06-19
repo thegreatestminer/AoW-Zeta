@@ -83,8 +83,8 @@ script SC_WEAPONCHECK OPEN {
 }
 
 script SC_CHECKC4TIMER (void) {
-	if (!TimeDelay (GetConfig (CONFIG_C4DELAY), false)) {
-			g_Error = "It is too early to use this!";
+	if (!TimeDelay (GetConfig (CONFIG_C4DELAY), true)) {
+			//g_Error = "It is too early to use this!";
 			SetResultValue(0);
 		}
 	else
