@@ -89,6 +89,13 @@ map mirror "Mirror"
 	sky1 = "sky14"
 }
 
+map catamap "Strange World"
+{
+	music d_catamap
+	sky1 softsky
+	next aow01
+}
+
 skill Normal {
 	name = "Normal"
 	damagefactor = 1.0

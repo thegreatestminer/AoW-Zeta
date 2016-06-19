@@ -22,3 +22,50 @@ actor PermanentFlameDecay 21499 {
 		wait
 	}
 }
+
+// [Cata] For my map.
+ACTOR greencrystal 10701
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +DONTSPLASH
+  +FLOATBOB
+  Radius 16
+  Height 32
+  States
+  {
+  Spawn:
+    GGEM A -1 bright
+    Stop
+  }
+}
+ACTOR greencrystalupsidedown : greencrystal 10702
+{
+  States
+  {
+  Spawn:
+    GGEM B -1 bright
+    Stop
+  }
+}
+
+ACTOR teleMarker 10703
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +DONTSPLASH
+  +FLOATBOB
+  Radius 16
+  Height 32
+  Renderstyle add
+  MASS 800000
+  States
+  {
+  Spawn:
+	TFOG ABCDDCBA 6 bright
+    loop
+  }
+}
+
+
+actor cataSkybox : SkyViewpoint  10704 { +CLIENTSIDEONLY }
