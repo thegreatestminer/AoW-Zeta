@@ -152,7 +152,8 @@ function void SetConfig (int key, str val) {
 }
 
 // Server settings
-script SC_SERVERSETTINGS OPEN {
+script SC_SERVERSETTINGS OPEN 
+{
 	// ==================================
 	// DMFLAGS
 	if (!GetCVAR ("sv_weapondrop"))
@@ -289,6 +290,9 @@ script SC_SERVERSETTINGS OPEN {
 		ConsoleCommand ("set zeta_nukesurpreme 0");
 		
 	*/
+	
+	// [Cata] Set air control so ladders are not glitchy.
+	if(getcvar("sv_aircontrol") == 0) ConsoleCommand ("sv_aircontrol 0.00390625");
 	
 	// TODO: get rid of these variables and replace with direct GetCVAR calls
 	CreditFragAward = GetCVAR("zeta_creditfrag");
