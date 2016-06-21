@@ -118,6 +118,48 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 		DrawImage "fuelicon", -65, -57;
 		DrawBar "progbr1o", "progbar2", JetpackFuel, horizontal, -50, -60;
 	}
+
+	// Frag Grenades
+	InInventory FragGrenadeAmmo {	
+		InInventory IsRed {
+			drawimage "HUDFRAGR", -58, -29;
+		}	
+	InInventory Not IsRed {
+			drawimage "HUDFRAGB", -58, -29;	
+		}
+	    drawnumber 1, INDEXFONT, White, ammo FragGrenadeAmmo, -45,  -27;			
+	}	
+		
+	// Flashbangs
+	InInventory FlashbangAmmo {	
+		InInventory IsRed {
+			drawimage "HUDBANGR", -30, -29;
+		}	
+	InInventory Not IsRed {
+			drawimage "HUDBANGB", -30, -29;
+		}
+		drawnumber 1, INDEXFONT, White, ammo FlashbangAmmo, -17,  -27;					
+	}	
+				
+	// Kamikaze
+	InInventory IsKamikaze {	
+		InInventory IsRed {
+			drawimage "HUDKAMIR", -114, -29;
+		}	
+	InInventory Not IsRed {
+			drawimage "HUDKAMIB", -114, -29;
+		}
+	}	
+		
+	// Firepower Upgrade
+	InInventory PowerFirepowerUpgrade {	
+		InInventory IsRed {
+			drawimage "HUDFIRER", -86, -29;
+		}	
+	InInventory Not IsRed {
+			drawimage "HUDFIREB", -86, -29;
+		}
+	}
 	
 	// Powerup display
 	// Berserk (300)

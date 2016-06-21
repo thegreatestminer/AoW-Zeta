@@ -94,25 +94,33 @@ script SC_CHECKC4TIMER (void) {
 script 320 (int Which)
 {
 	//SetHudSize(1680,1050,0);
-	if(Which == 0)
+	
+	switch(Which)
 	{
-		FadeTo(128,0,0,0.6,0.0);
-		FadeTo(128,0,0,0.0,1.0);
-	}	
-	else if(Which == 1)
-	{
-		FadeTo(128,128,0,0.5,0.0);
-		FadeTo(128,128,0,0.0,1.0);
-	}	
-	else if(Which == 2)
-	{
-		FadeTo(0,125,0,0.5,0.0);
-		FadeTo(0,125,0,0.0,1.0);
-	}	
-	else if(Which == 4)
-	{
-		FadeTo(128,0,0,0.6,0.0);
-		FadeTo(128,0,0,0.0,1.0);
+		case 0:
+			FadeTo(128,0,0,0.6,0.0);
+			FadeTo(128,0,0,0.0,1.0);
+			break;
+			
+		case 1:
+			FadeTo(128,128,0,0.5,0.0);
+			FadeTo(128,128,0,0.0,1.0);
+			break;
+			
+		case 2:
+			FadeTo(0,125,0,0.5,0.0);
+			FadeTo(0,125,0,0.0,1.0);
+			break;
+		
+		case 3:	// [SG] Flashbang hit
+			FadeTo(255,255,255,0.95,0.0);
+			FadeTo(255,255,255,0.0,4.0);
+			break;
+		
+		case 4:
+			FadeTo(128,0,0,0.6,0.0);
+			FadeTo(128,0,0,0.0,1.0);
+			break;
 	}
 }
 
