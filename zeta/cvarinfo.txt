@@ -56,8 +56,7 @@ server	int		zeta_nukesurpreme			=		0;
 // [Dusk] Tiberium amounts
 server	int		zeta_tiberium_self			=		225;
 server	int		zeta_tiberium_other			=		75;
-server	int		zeta_tiberium_advperc		=		260;		// [SG] let's be honest, harvesting with Enh. Ref is just
-																// ridiculously broken, making this a bit more reasonable
+server	int		zeta_tiberium_advperc		=		260;
 																
 server	int		zeta_ticketpool				=		0;
 server	int		zeta_tickets				=		75;
