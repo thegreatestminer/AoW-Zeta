@@ -216,7 +216,7 @@ function void InitClasses (void) {
 		2, 1, false, 0,
 		ITEM_GATLING, 0, 0, 0, 0, 0);
 	
-	AddClass (CLASS_Technician, "Technician", 200, 0.8, DEP_NONE,
+	AddClass (CLASS_Technician, "Technician", 300, 0.8, DEP_NONE,
 		1, ARMOD_NOCHANGE,
 		2, 2, true, CF_Support,
 		ITEM_ADVREPAIR, ITEM_SMG, ITEM_MINE_X4, 0, 0, 0);
@@ -246,7 +246,7 @@ function void InitClasses (void) {
 		2, 2, false, 0,
 		ITEM_MISSILE, ITEM_RIFLE, 0, 0, 0, 0);
 	
-	AddClass (CLASS_StealthTrooper, "Stealth Trooper", 600, 0.85, DEP_NONE,
+	AddClass (CLASS_StealthTrooper, "Stealth Trooper", 600, 0.95, DEP_NONE,
 		-1, ARMOD_ENERGY,
 		2, 2, false, CF_IsStealth,
 		ITEM_STEALTH, ITEM_KNIFE, 0, 0, 0, 0);
@@ -291,7 +291,7 @@ function void InitClasses (void) {
 		1, 1, true, CF_CantPilot|CF_Support,
 		ITEM_UTILITY, ITEM_REPAIR, ITEM_DECON, 0, 0, 0);
 	
-	AddClass (CLASS_DemoExpert, "Demolitions Expert", 550, 0.75, DEP_NONE,
+	AddClass (CLASS_DemoExpert, "Demolitions Expert", 550, 0.7, DEP_NONE,
 		2, ARMOD_EXPLO,
 		4, 4, true, (CF_CantPilot | CF_Support),
 		ITEM_BOMBSQUAD, ITEM_SHOTGUN, ITEM_REMOTEC4, ITEM_MINE_X6, 0, 0);
@@ -386,7 +386,7 @@ str Researches_str[NUM_RESEARCHES][NUM_RESEARCH_KEYS_STR] = {
 		"New technology gets more purity\n
 		out of refining Tiberium.\n
 		\n
-		\t--- Increases Harvesting income by $150\n"
+		\t--- Increases Harvesting income for the team.\n"
 	}, {
 		"Advanced Mechs",
 		"New Mech chassis and hardened metal plating.\n

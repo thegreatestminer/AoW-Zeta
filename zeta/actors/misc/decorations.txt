@@ -11,6 +11,15 @@ actor Box 29024 {
 	}
 }
 
+actor FakeBFG 29007 {
+	+NOINTERACTION
+	states {
+	Spawn:
+		BFUG A -1
+		stop
+	}
+}
+
 actor BrownMetalBarrel 29025 {
 	//$Category Decorations
 	+SOLID

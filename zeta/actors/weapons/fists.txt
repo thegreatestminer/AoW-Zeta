@@ -62,8 +62,7 @@ actor FistReplaced : Inventory {}
 
 actor FistPuff : BulletPuff {
 	+CLIENTSIDEONLY
-	+NOBLOCKMAP
-	+NOGRAVITY
+	+NOINTERACTION
 	-ALLOWPARTICLES
 	+PUFFONACTORS
 	DamageType "Fist"
@@ -87,6 +86,7 @@ actor FistPuff : BulletPuff {
 
 actor FistHit {
 	+CLIENTSIDEONLY
+	+NOINTERACTION
 	+NOCLIP
 	radius 1
 	height 1

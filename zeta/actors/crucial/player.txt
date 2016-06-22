@@ -100,7 +100,7 @@ actor Player : DoomPlayer {
 		PLAY G 4 A_Pain
 		goto Spawn
 	Pain.Flash:
-		PLAY G 0 ACS_ExecuteAlways(320,0,3,0,0)
+		//PLAY G 0 ACS_ExecuteAlways(320,0,3,0,0) // [SG] Why is this called twice?
 		PLAY G 0 ACS_ExecuteAlways(320,0,3,0,0)
 		PLAY G 4 ACS_ExecuteAlways (SC_STEALTH, 0, STEALTH_FLASH)
 		PLAY G 4 A_Pain

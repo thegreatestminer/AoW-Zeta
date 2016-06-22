@@ -91,9 +91,9 @@ map mirror "Mirror"
 
 map catamap "Strange World"
 {
-	music d_catamap
-	sky1 softsky
-	next aow01
+	music = "d_catamap"
+	sky1 = "softsky"
+	next = "aow01"
 }
 
 skill Normal {
