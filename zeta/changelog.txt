@@ -1,27 +1,42 @@
 LEGEND:
 ++ Major Change
 + New Content
-- Bugfix
-! Balance
+- Balance
 ~ Tweak
 * Note
 
-1.0 -> 1.0
-++ All cvars changed from aow_ to zeta_
-	* This is because we are now using CVARINFO, which doesn't allow us to reuse existing CVARS.
+beta -> release
+
+=== CLASSES ===
+- Chrono Archer speed reduced from 90% to 85%
+- Adv technician cost increased from 200 -> 300
+
+=== WEAPONS ===
++ All weapon skins now have crouch sprites (except for medic)
+- SMG main and altfire have been swapped.
+- Adv repair gun nerfed slightly
+	
+=== MECHS ===
 + New heavy mech, Rhino.
 	* Comes with a Shock Cannon, Plasma Cannon, and LRM-10.
-+ All weapon skins now have crouch sprites (except for medic)
 + Wolverine gets a new coat of paint
 + Titan and wolverine now have firing animations.
-! Adv repair gun nerfed slightly
-! Adv technician cost increased from 200 -> 300
-! Adv Tiberium harvesting money reduced.
-! Orca cost increased from 1000 -> 1250
-! Base Crasher and Base Miracle changes.
+- Orca cost increased from 1000 -> 1250
+	
+=== BUILDINGS === 
+- Base Crasher and Base Miracle changes.
 	* Will no longer activate during sudden death, and five minutes before it
 	* Crasher no longer activate if any buildings are below 50% hp.
-~ SMG main and altfire have been swapped.
+- Adv Tiberium harvesting money reduced.
+	
+=== MAPS ===
+++ All maps starting rooms have been standardized.
+
+=== MISC ===
+++ All cvars changed from aow_ to zeta_
+	* This is because we are now using CVARINFO, which doesn't allow us to reuse existing CVARS.
+	
+=== FIXES ===
 - Sandbags should no longer be glitchy when placed near ledges.
 - All Mechs are big again
 - Missile Launcher actually homes onto targets again.
@@ -31,3 +46,4 @@ LEGEND:
 - Base Miracle no longer occurs if your buildings are at full health.
 - You can no longer use C4's while piloting a mech.
 - Many, many ACS fixes.
+	
