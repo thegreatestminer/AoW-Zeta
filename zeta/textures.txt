@@ -1,3 +1,45 @@
+// Grenade, Flashbang, Kamikaze & Firepower icons
+
+graphic ICONADEB, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDNADEB, 0, 0
+}
+
+graphic ICONADER, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDNADER, 0, 0
+}
+
+graphic ICOBANGB, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDBANGB, 0, 0
+}
+
+graphic ICOBANGR, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDBANGR, 0, 0
+}
+
+graphic ICOFIREB, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDFIREB, 0, 0
+}
+
+graphic ICOFIRER, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDFIRER, 0, 0
+}
+
+graphic ICOKAMIB, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDKAMIB, 0, 0
+}
+
+graphic ICOKAMIR, 32, 32 {
+	xscale 3.5 yscale 3.5
+	patch HUDKAMIR, 0, 0
+}
+
 // ============================================================================
 sprite TIBXA0, 128, 128
 {
@@ -989,6 +1031,11 @@ graphic prh_barx, 14, 70 {
 	patch prh_barx, 0, 0
 }
 
+graphic prh_barw, 14, 70 {
+	xscale 2.5 yscale 2.5
+	patch prh_barw, 0, 0
+}
+
 graphic prh_blur, 60, 80 {
 	xscale 2.5 yscale 2.5
 	patch prh_blur, 0, 0
@@ -997,6 +1044,11 @@ graphic prh_blur, 60, 80 {
 graphic prh_fati, 60, 80 {
 	xscale 2.5 yscale 2.5
 	patch prh_fati, 0, 0
+}
+
+graphic prh_invu, 60, 80 {
+	xscale 2.5 yscale 2.5
+	patch prh_invu, 0, 0
 }
 
 graphic prh_pstr, 60, 80 {
