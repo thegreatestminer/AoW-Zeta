@@ -7,14 +7,46 @@ LEGEND:
 
 beta -> release
 
+Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this changelog is relative to the last version of 2.1 largely played.
+
+
+
+=== GAMEPLAY ===
+
+- Armor resistance now increases 1% per grade instead of 2%. This means grade 5 armor now offers 50% damage resistance instead of 60%.
+
+
 === CLASSES ===
-- Chrono Archer speed reduced from 90% to 85%
-- Adv technician cost increased from 200 -> 300
+
+- Chrono Archer: speed reduced to 85%, from 90%
+
+- Technician: price increased to $300, from $200
+
+- Demolitions Expert: speed reduced to 70%, from 75%
+
++ MachineGunner, MiniGunner and Jet Trooper have Bullet Resistance again.
+(Bullet Resistance is 25% less effective than Energy & Explosion resistances)
+
 
 === WEAPONS ===
+
 + All weapon skins now have crouch sprites (except for medic)
-- SMG main and altfire have been swapped.
-- Adv repair gun nerfed slightly
+
++ Chainsaw is back to its Doom self, and no longer insta-kills everything, but still shreds people down very quickly (firing rate reduced)
+
+- SMG: main and altfire have been swapped. Both are also slightly less accurate.
+
+- Gatling Gun shoots twice as many bullets (but damage per bullet is halved), vertical spread lowered.
+Essentially, it is a bit less effective beyond short range.
+
+- Chrono Bow charges nearly twice as fast, bolt speed and damage scales SLIGHTLY less with charging, and maximum damage is slightly lower.
+Blast radius was also reduced considerably. However, Chrono Bow damage completely ignores armor, and can consistently 2-shot even maximum rank infantry.
+
+- Grenade Launcher's grenades have slightly less gravity, thus increased range.
+
+~ Missile Launcher's homing no longer stops working randomly. Blast away!
+
+~ Tiberium and Combustion autorifles have more devastating altfires on their strong version.
 	
 === MECHS ===
 + New heavy mech, Rhino.
