@@ -41,6 +41,7 @@ weapons/up/gatling			weapup04
 weapons/up/artil			weapup05
 weapons/up/rocket			weapup05
 weapons/up/plasmagun		weapup06
+weapons/up/karasawa			weapup06
 weapons/up/bfg				weapup07
 weapons/up/laserrifle		weapup08
 weapons/up/flamer			weapup09

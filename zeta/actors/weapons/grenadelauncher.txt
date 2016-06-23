@@ -70,7 +70,7 @@ actor GrenadeGrenade {
 	Speed 38
 	Damage (50)
 	RenderStyle Normal
-	Alpha 0.8
+	Alpha 0.75
 	Gravity 0.8
 	DamageType "Explosion"
 	DeathSound "weapons/rocklx"

@@ -18,11 +18,11 @@ ACTOR Karasawa : AOWWeapon
         loop
     Ready:
         TNT1 A 0 A_JumpIfInventory("IsBlue",1,"ReadyBlue")
-        KSWR A 0 A_PlaySound("Weapons/KarasawaIdle",CHAN_WEAPON)
+        KSWR A 0 A_PlaySound("Weapons/KarasawaIdle",5)
         KSWR ABCB 4 A_WeaponReady
         goto Ready+1
     ReadyBlue:  
-        KSWB A 0 A_PlaySound("Weapons/KarasawaIdle",CHAN_WEAPON)
+        KSWB A 0 A_PlaySound("Weapons/KarasawaIdle",5)
         KSWB ABCB 4 A_WeaponReady
         loop
     Deselect:
@@ -43,7 +43,7 @@ ACTOR Karasawa : AOWWeapon
  	    TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
 	    TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")	
         TNT1 A 0 A_JumpIfInventory("IsBlue",1,"Fire.Blue")	
-        KSWR A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+        KSWR A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWR A 0 Radius_Quake(3,random(8,12),0,1,0)
 	    KSWR D 1 Bright A_FireCustomMissile("KsawBolt", 0, 1, 0, 0)
         KSWR E 1 Bright A_ZoomFactor(0.990)
@@ -61,7 +61,7 @@ ACTOR Karasawa : AOWWeapon
         KSWR N 6
         goto Ready
     Fire.Blue:  
-        KSWB A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+        KSWB A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWB A 0 Radius_Quake(3,random(8,12),0,1,0)
 	    KSWB D 1 Bright A_FireCustomMissile("KsawBoltBlue", 0, 1, 0, 0)
         KSWB E 1 Bright A_ZoomFactor(0.990)
@@ -82,7 +82,7 @@ ACTOR Karasawa : AOWWeapon
 	    TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
 	    TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")   	
         TNT1 A 0 A_JumpIfInventory("IsBlue",1,"AltFire.Blue") 	
-	    KSWR A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+	    KSWR A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWR A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWR D 1 Bright A_FireCustomMissile("KsawBolt2", 0, 1, 0, 0)
         KSWR E 1 Bright A_ZoomFactor(0.995)
@@ -90,7 +90,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWR G 1 Bright A_ZoomFactor(0.995)  
 		KSWR H 1 Bright A_ZoomFactor(1) 
         KSWR H 0 Bright A_Light2
-		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWR A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWR D 1 Bright A_FireCustomMissile("KsawBolt2", 0, 1, 0, 0)
         KSWR E 1 Bright A_ZoomFactor(0.995)
@@ -98,7 +98,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWR G 1 Bright A_ZoomFactor(0.995)  
 		KSWR H 1 Bright A_ZoomFactor(1) 
         KSWR H 0 Bright A_Light2
-		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWR A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWR D 1 Bright A_FireCustomMissile("KsawBolt2", 0, 1, 0, 0)
         KSWR E 1 Bright A_ZoomFactor(0.995)
@@ -106,7 +106,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWR G 1 Bright A_ZoomFactor(0.995)  
 		KSWR H 1 Bright A_ZoomFactor(1) 
         KSWR H 0 Bright A_Light2		
-		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWR A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWR A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWR D 1 Bright A_FireCustomMissile("KsawBolt2", 0, 1, 0, 0)
         KSWR E 1 Bright A_ZoomFactor(0.995)
@@ -121,7 +121,7 @@ ACTOR Karasawa : AOWWeapon
         KSWR N 12
         Goto Ready
     AltFire.Blue:
-	    KSWB A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+	    KSWB A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWB A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWB D 1 Bright A_FireCustomMissile("KsawBolt2Blue", 0, 1, 0, 0)
         KSWB E 1 Bright A_ZoomFactor(0.995)
@@ -129,7 +129,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWB G 1 Bright A_ZoomFactor(0.995)  
 		KSWB H 1 Bright A_ZoomFactor(1) 
         KSWB H 0 Bright A_Light2
-		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWB A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWB D 1 Bright A_FireCustomMissile("KsawBolt2Blue", 0, 1, 0, 0)
         KSWB E 1 Bright A_ZoomFactor(0.995)
@@ -137,7 +137,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWB G 1 Bright A_ZoomFactor(0.995)  
 		KSWB H 1 Bright A_ZoomFactor(1) 
         KSWB H 0 Bright A_Light2
-		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWB A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWB D 1 Bright A_FireCustomMissile("KsawBolt2Blue", 0, 1, 0, 0)
         KSWB E 1 Bright A_ZoomFactor(0.995)
@@ -145,7 +145,7 @@ ACTOR Karasawa : AOWWeapon
 		KSWB G 1 Bright A_ZoomFactor(0.995)  
 		KSWB H 1 Bright A_ZoomFactor(1) 
         KSWB H 0 Bright A_Light2		
-		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",CHAN_WEAPON)
+		KSWB A 0 A_PlaySound("Weapons/KarasawaFire",5)
 	    KSWB A 0 Radius_Quake(2,random(4,6),0,1,0)
 	    KSWB D 1 Bright A_FireCustomMissile("KsawBolt2Blue", 0, 1, 0, 0)
         KSWB E 1 Bright A_ZoomFactor(0.995)
@@ -171,6 +171,7 @@ Actor KsawBolt
 	+SKYEXPLODE
 	DamageType "Energy"
 	BounceFactor 1.2
+	bouncetype HexenCompat
 	Radius 8
 	Height 4
 	Speed 80

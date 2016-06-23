@@ -23,21 +23,21 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 		ENRG A 3 A_WeaponReady
 		ENRG A 0 A_TakeInventory("PlasmaHeat",2)
 		ENRG A 3 A_WeaponReady
-		ENRG A 0 A_TakeInventory("PlasmaHeat",2)
+		ENRG A 0 A_TakeInventory("PlasmaHeat",3)
 		ENRG A 3 A_WeaponReady
 		ENRG A 0 A_TakeInventory("PlasmaHeat",2)
 		ENRG A 3 A_WeaponReady
-		ENRG A 0 A_TakeInventory("PlasmaHeat",2)
+		ENRG A 0 A_TakeInventory("PlasmaHeat",3)
 		Goto WarningRemove
 	ReadyBlue:
 		ENBG A 3 A_WeaponReady
 		ENBG A 0 A_TakeInventory("PlasmaHeat",2)
 		ENBG A 3 A_WeaponReady
-		ENBG A 0 A_TakeInventory("PlasmaHeat",2)
+		ENBG A 0 A_TakeInventory("PlasmaHeat",3)
 		ENBG A 3 A_WeaponReady
 		ENBG A 0 A_TakeInventory("PlasmaHeat",2)
 		ENBG A 3 A_WeaponReady
-		ENBG A 0 A_TakeInventory("PlasmaHeat",2)
+		ENBG A 0 A_TakeInventory("PlasmaHeat",3)
 		Goto WarningRemove
 	Deselect:
 		ENRG A 0 A_JumpIfInventory("IsBlue",1,"DeselectBlue")
@@ -61,7 +61,7 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 		ENRG A 1 A_GunFlash
 		ENRG A 0 A_PlaySound ("Weapons/PlasmaShot", CHAN_WEAPON)
 		ENRG A 1 Offset(1,35) A_FireCustomMissile("PlasmaShotRed",0,1,2,0)
-		ENRG A 1 Offset(0,37) A_GiveInventory("PlasmaHeat",random(0,3))
+		ENRG A 1 Offset(0,37) A_GiveInventory("PlasmaHeat",2)
 		ENRG A 0 A_JumpIfInventory("PlasmaHeat",75,"Warning")
 		ENRG A 1 A_Refire
 		Goto Ready
@@ -69,7 +69,7 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 		ENBG A 1 A_GunFlash
 		ENBG A 0 A_PlaySound ("Weapons/PlasmaShot", CHAN_WEAPON)
 		ENBG A 1 Offset(1,35) A_FireCustomMissile("PlasmaShotBlue",0,1,2,0)
-		ENBG A 1 Offset(0,37) A_GiveInventory("PlasmaHeat",random(0,3))
+		ENBG A 1 Offset(0,37) A_GiveInventory("PlasmaHeat",2)
 		ENBG A 0 A_JumpIfInventory("PlasmaHeat",75,"Warning")
 		ENBG A 1 A_Refire
 		Goto Ready
@@ -78,11 +78,13 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 		ENRG A 0 A_PlaySound ("Plasma/Vapour", 7)
 		ENRG A 0 A_JumpIfInventory("IsBlue",1,"OverheatBlue")
 		ENRG AAAAAAA 2 A_FireCustomMissile("OverheatSmokeSpawner",0,0,6,-2)
-		ENRG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 3 A_TakeInventory("PlasmaHeat",2)
+		ENRG AAAAAAAAAAAAAAAAAAAAAAAAA 3 A_TakeInventory("PlasmaHeat",2)
+		ENRG AAAAAAAAAAAAAAAAAAAA 2 A_TakeInventory("PlasmaHeat",2)
 		Goto WarningRemove
 	OverheatBlue:
 		ENBG AAAAAAA 2 A_FireCustomMissile("OverheatSmokeSpawner",0,0,6,-2)
-		ENBG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 3 A_TakeInventory("PlasmaHeat",2)
+		ENGG AAAAAAAAAAAAAAAAAAAAAAAAA 3 A_TakeInventory("PlasmaHeat",2)
+		ENBG AAAAAAAAAAAAAAAAAAAA 2 A_TakeInventory("PlasmaHeat",2)
 		Goto WarningRemove
 	WarningRemove:
 		ENRG A 0 A_TakeInventory("WarningChecker", 1)
@@ -101,9 +103,8 @@ ACTOR PlasmaGun : AOWWeapon replaces PlasmaRifle 21087 {
 		ENRR C 0 A_Light0
 		Stop
 	Warning:
-		ENRG A 0
 		ENRG AA 0 A_JumpIfInventory("WarningChecker",1,"Ready")
-		ENRG A 0 A_PlaySoundEx("Plasma/Warning","Voice",0)
+		ENRG A 0 A_PlaySound("Plasma/Warning","Voice",0)
 		ENRG A 0 A_GiveInventory("WarningChecker",1)
 		Goto Ready
 	}
@@ -116,7 +117,7 @@ actor PlasmaShotBlue {
 	Height 8
 	Scale 0.7
 	Speed 28
-	Damage (15)
+	Damage (17)
 	RenderStyle Add
 	Alpha 0.75
 	Translation "224:247=192:207"
