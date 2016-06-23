@@ -627,10 +627,17 @@ graphic arm5icon, 31, 17 {
 	offset -6, -16
 }
 
+graphic arm6icon, 31, 17 {
+	xscale 2.0
+	yscale 2.25
+	patch "arm6a0", 0, 0
+	offset -6, -16
+}
+
 graphic arm7icon, 31, 17 {
 	xscale 2.0
 	yscale 2.25
-	patch "arm7a0", 0, 0
+	patch "arm7b0", 0, 0
 	offset -6, -16
 }
 
@@ -930,6 +937,11 @@ graphic is2rintf, 235, 45 {
 graphic a_bullet, 31, 17 {
 	xscale 2.0 yscale 2.2
 	patch a_bullet, 0, 0
+}
+
+graphic a_bproof, 31, 17 {
+	xscale 2.0 yscale 2.2
+	patch a_bproof, 0, 0
 }
 
 graphic a_chem, 31, 17 {
