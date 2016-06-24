@@ -69,6 +69,14 @@ server	int		zeta_suddendeathtime		=		45;
 server	int		zeta_degeneration			=		0;
 server	int		zeta_degenerationinterval 	=		10;
 
+// [SG] Tickets awarded for killing buildings
+
+server	int		zeta_tickets_repairpad		=		4;
+server	int		zeta_tickets_obelisk		=		5;
+server	int		zeta_tickets_barracks		=		8;
+server	int		zeta_tickets_rescentre		=		8;
+server	int		zeta_tickets_refinery		=		10;
+server	int		zeta_tickets_warfactory		=		10;
 
 
 ////////////////////////////
