@@ -64,6 +64,8 @@ function void AwardBuildingDamage (int what, int team) {
 	}
 }
 
+// [SG] Building deaths now award tickets to the opposite team
+
 //---------------------------BLUE BARRACKS DEATH
 script 101 (VOID)
 {
@@ -88,6 +90,9 @@ script 101 (VOID)
 	AwardBuildingDestruction (TEAM_RED, false);
 	SYNC_UpdateBuildingHealth (BUILDING_BARRACKS, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_BARRACKS, TEAM_BLUE);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_barracks"));
 }
 
 //---------------------------BLUE REFINERY DEATH
@@ -111,6 +116,9 @@ script 102 (VOID)
 	AwardBuildingDestruction (TEAM_RED, false);
 	SYNC_UpdateBuildingHealth (BUILDING_REFINERY, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_REFINERY, TEAM_BLUE);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_refinery"));
 }
 
 //---------------------------BLUE POWERPLANT DEATH
@@ -137,6 +145,9 @@ script 103 (void) {
 	AwardBuildingDamage (BUILDING_RESCENTRE, TEAM_BLUE);
 	SYNC_UpdateBuildingHealth (BUILDING_RESCENTRE, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_PLANT, TEAM_BLUE);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_rescentre"));
 }
 
 //---------------------------BLUE WAR FACTORY DEATH
@@ -164,6 +175,9 @@ script 104 (VOID)
 	AwardBuildingDamage (BUILDING_FACTORY, TEAM_BLUE);
 	SYNC_UpdateBuildingHealth (BUILDING_FACTORY, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_FACTORY, TEAM_BLUE);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_warfactory"));
 }
 
 //---------------------------BLUE REPAIR FACILITY DEATH
@@ -189,6 +203,9 @@ script 105 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_REPAIR, TEAM_BLUE);
 	AwardBuildingDamage (BUILDING_REPAIR, TEAM_BLUE);
 	AwardBuildingDestruction (TEAM_RED, true);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_repairpad"));
 }
 
 //---------------------------BLUE OBELISK DEATH
@@ -212,6 +229,9 @@ script 114 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_OBELISK, TEAM_BLUE);
 	AwardBuildingDamage (BUILDING_OBELISK, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_OBELISK, TEAM_BLUE);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_obelisk"));
 }
 
 //---------------------------RED BARRACKS DEATH
@@ -237,6 +257,9 @@ script 201 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_BARRACKS, TEAM_RED);
 	AwardBuildingDamage (BUILDING_BARRACKS, TEAM_RED);
 	CallEvent (ACTION_DESTROY_BARRACKS, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_barracks"));
 }
 
 //---------------------------RED REFINERY DEATH
@@ -260,6 +283,9 @@ script 202 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_REFINERY, TEAM_RED);
 	AwardBuildingDamage (BUILDING_REFINERY, TEAM_RED);
 	CallEvent (ACTION_DESTROY_REFINERY, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_refinery"));
 }
 
 //---------------------------RED POWERPLANT DEATH
@@ -285,6 +311,9 @@ script 203 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_RESCENTRE, TEAM_RED);
 	AwardBuildingDamage (BUILDING_RESCENTRE, TEAM_RED);
 	CallEvent (ACTION_DESTROY_PLANT, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_rescentre"));
 }
 
 //---------------------------RED WAR FACTORY DEATH
@@ -306,6 +335,9 @@ script 204 (VOID)
 	
 	SYNC_UpdateBuildingHealth (BUILDING_FACTORY, TEAM_RED);
 	CallEvent (ACTION_DESTROY_FACTORY, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_warfactory"));
 	
 	SetFont("BIGFONT");
 		
@@ -338,6 +370,9 @@ script 205 (VOID) {
 	Log(n:0, s:" destroys Red Repair Facility.");
 	AwardBuildingDestruction (TEAM_BLUE, true);
 	AwardBuildingDamage (BUILDING_REPAIR, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_repairpad"));
 }
 
 //---------------------------RED OBELISK DEATH
@@ -362,6 +397,9 @@ script 214 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_OBELISK, TEAM_RED);
 	AwardBuildingDamage (BUILDING_OBELISK, TEAM_RED);
 	CallEvent (ACTION_DESTROY_OBELISK, TEAM_RED);
+	
+	if( (SuddenDeath) || (TicketPool))
+		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_obelisk"));
 }
 
 script 97 (int Structure, int Team) {
