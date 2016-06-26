@@ -41,6 +41,7 @@ ACTOR greencrystal 10701
 }
 ACTOR greencrystalupsidedown : greencrystal 10702
 {
+  scale 0.6
   States
   {
   Spawn:
@@ -57,12 +58,13 @@ ACTOR teleMarker 10703
   +FLOATBOB
   Radius 16
   Height 32
-  Renderstyle add
+  Renderstyle translucent
+  alpha 0.85
   MASS 800000
   States
   {
   Spawn:
-	TFOG ABCDDCBA 6 bright
+	CTFG ABCDDCBA 6 bright
     loop
   }
 }
