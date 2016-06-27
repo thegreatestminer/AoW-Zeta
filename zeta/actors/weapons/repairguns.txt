@@ -109,7 +109,7 @@ actor BombSquadGun : RepairGun {
 		TNT1 A 0 A_JumpIfInventory ("IsInSpawnRoom", 1, "Ready")
 		TNT1 A 0 A_JumpIfInventory ("InMenu", 1, "Ready")
 		REP3 C 2
-		REP3 B 2 bright A_FireBullets (0.0, 0.0, 1, 13, "DisarmPuff", FBF_NORANDOM, 500)
+		REP3 B 2 bright A_FireBullets (0.0, 0.0, 1, 20, "DisarmPuff", FBF_NORANDOM, 500)
 		REP3 C 2 A_Refire
 		Goto Ready
 	AltFire:
