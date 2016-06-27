@@ -101,6 +101,12 @@ function bool CheckResearch (int r) {
 			return false;
 		}
 		break;
+	case RESEARCH_ENHANCEDC4:
+		if (GetConfig (CONFIG_ENHANCEDC4_BLUE + PlayerTeam())) {
+			g_Error = "You already have that!";
+			return false;
+		}
+		break;
 	}
 	
 	// Must afford it
@@ -195,6 +201,10 @@ function bool RC_PurchaseResearch (int r) {
 	case RESEARCH_FLASHBANG:
 		MenuResponse (MSGTYPE_SUCCESS, "Got a flashbang!");
 		SetFragGrenades (GetAmmoCapacity ("FlashbangAmmo") + 1);
+		break;
+	case RESEARCH_ENHANCEDC4:
+		EnhancedC4[PlayerTeam()] = true;
+		SetConfig (CONFIG_ENHANCEDC4_BLUE + PlayerTeam(), EnhancedC4[PlayerTeam()]);
 		break;
 	}
 	

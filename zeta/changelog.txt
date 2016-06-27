@@ -1,81 +1,143 @@
-LEGEND:
+------------------------------------------------------------
+------------------------------------------------------------
+
 ++ Major Change
+
 + New Content
-- Balance
-~ Tweak
+
+- Balance / Tweak
+
+~ Bugfix
+
 * Note
 
-beta -> release
+------------------------------------------------------------
+------------------------------------------------------------
 
 Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this changelog is relative to the last version of 2.1 largely played.
 
 
+--------------------------------------------
+----- GAMEPLAY -----------------------------
+--------------------------------------------
 
-=== GAMEPLAY ===
 
-- Armor resistance now increases 1% per grade instead of 2%. This means grade 5 armor now offers 50% damage resistance instead of 60%.
+- Armor resistance now increases 1% per grade instead of 2% (grade 1 has 8% protection, grade 2 has 9%, etc.);
+
+- Enhanced Refining extra income reduced to $125, from $150;
+
+- Enhanced Timed C4s are now a global team research, instead of being given per-class or per-rank. Standard Timed C4s have 520 health (from 700),
+and the research increases their health to 650 (instead of 700). Enhanced C4s no longer do more damage than regular ones;
+
+- Extra Frag Grenades and Flashbangs now cost $150 each, from $200;
+
+----- CRATES -----
+
+- Base Crasher and Base Miracle can no longer occur during Sudden Death, nor 5 minutes before it;
+
+- Base Crasher can no longer occur if any of the team's buildings are below 50% health (OBE/RES/BAR) or 40% health (REF/WF);
+
+- Base Miracle can no longer occur if all of the team's buildings are already at or above 99% health;
+
+- Random Weapon can no longer give you Plasma Cannon;
+
+- C4 crate now properly sets your maximum C4 amount to 4, so you can safely refill that amount, and can no longer occur if you already have 4;
+
++ Added Grenade Pack crate, which gives you 4 Frag Grenades and 4 Flashbangs;
 
 
-=== CLASSES ===
 
-- Chrono Archer: speed reduced to 85%, from 90%
 
-- Technician: price increased to $300, from $200
+--------------------------------------------
+----- CLASSES ------------------------------
+--------------------------------------------
 
-- Demolitions Expert: speed reduced to 70%, from 75%
+
+- Chrono Archer: speed reduced to 85%, from 90%;
+
+- Shotgunner: speed increased to 90%, from 80%, and grade 1 armor removed;
+
+- Technician: price increased to $300, from $200;
+
+- Demolitions Expert: speed reduced to 70%, from 75%;
 
 + MachineGunner, MiniGunner and Jet Trooper have Bullet Resistance again.
 (Bullet Resistance is 25% less effective than Energy & Explosion resistances)
 
 
-=== WEAPONS ===
 
-+ All weapon skins now have crouch sprites (except for medic)
+--------------------------------------------
+----- WEAPONS ------------------------------
+--------------------------------------------
 
-+ Chainsaw is back to its Doom self, and no longer insta-kills everything, but still shreds people down very quickly (firing rate reduced)
 
-- SMG: main and altfire have been swapped. Both are also slightly less accurate.
++ All weapon skins now have crouch sprites (except for medic);
 
-- Gatling Gun shoots twice as many bullets (but damage per bullet is halved), vertical spread lowered.
-Essentially, it is a bit less effective beyond short range.
++ Chainsaw is back to its Doom self, and no longer insta-kills everything, but still shreds people down VERY quickly (firing rate reduced);
+
+- SMG: main and altfire have been swapped. Both are also SLIGHTLY less accurate;
+
+- Gatling Gun shoots twice as many bullets (but damage per bullet is halved), vertical spread lowered: it is slightly less effective beyond close range;
 
 - Chrono Bow charges nearly twice as fast, bolt speed and damage scales SLIGHTLY less with charging, and maximum damage is slightly lower.
-Blast radius was also reduced considerably. However, Chrono Bow damage completely ignores armor, and can consistently 2-shot even maximum rank infantry.
+Blast radius was also reduced considerably. However, Chrono Bow damage completely ignores armor, and can consistently 2-shot even maximum rank infantry;
 
-- Grenade Launcher's grenades have slightly less gravity, thus increased range.
+- Grenade Launcher's grenades have slightly less gravity, thus increased range;
+
+- Plasma Gun cools down slightly faster, and does 17 damage per shot instead of 15;
+
+- Bomb-Squad Gun disarms explosives about 30% faster;
+
+- Tiberium and Combustion autorifles have more devastating altfires on their strong version;
+
+~ Bomb Pack no longer
 
 ~ Missile Launcher's homing no longer stops working randomly. Blast away!
 
-~ Tiberium and Combustion autorifles have more devastating altfires on their strong version.
-	
-=== MECHS ===
+
+
+--------------------------------------------
+----- MECHS --------------------------------
+--------------------------------------------
+
+
+- Orca: price increased to $1250, from $1000;
+
+- Tortoise: focused on anti-infantry, keeps its energy and bullet attacks but no longer has grenades.
+
++ Wolverine is now fully team-colored;
+
++ Titan and Wolverine now have firing sprites for their explosive attacks;
+
 + New heavy mech, Rhino.
 	* Comes with a Shock Cannon, Plasma Cannon, and LRM-10.
-+ Wolverine gets a new coat of paint
-+ Titan and wolverine now have firing animations.
-- Orca cost increased from 1000 -> 1250
-	
-=== BUILDINGS === 
-- Base Crasher and Base Miracle changes.
-	* Will no longer activate during sudden death, and five minutes before it
-	* Crasher no longer activate if any buildings are below 50% hp.
-- Adv Tiberium harvesting money reduced.
-	
-=== MAPS ===
-++ All maps starting rooms have been standardized.
 
-=== MISC ===
-++ All cvars changed from aow_ to zeta_
-	* This is because we are now using CVARINFO, which doesn't allow us to reuse existing CVARS.
+
+
+--------------------------------------------
+----- MISC & BUGFIXES ----------------------
+--------------------------------------------
+
+
+*** All ACS has its source available in the file. Anyone can recompile the scripts themselves to verify the lack of "hidden" code, which was plentiful in AOW 2.1; ***
+
+++ All CVars had the aow_ prefix changed to zeta_ to prevent conflict with the existing CVars;
 	
-=== FIXES ===
-- Sandbags should no longer be glitchy when placed near ledges.
-- All Mechs are big again
-- Missile Launcher actually homes onto targets again.
-- Ravens no longer spawn when you eject out of a mech.
-- You can no longer destroy your own obelisk with an orca.
-- Timed C4 flames no longer hurt your own base or teammates.
-- Base Miracle no longer occurs if your buildings are at full health.
-- You can no longer use C4's while piloting a mech.
-- Many, many ACS fixes.
+~ Sandbags should no longer be glitchy when placed near ledges;
+
+~ All Mechs look big and imposing again, instead of being shrunk down;
+
+~ Ravens no longer spawn when you eject out of a mech;
+
+~ Mech explosions can no longer damage your own buildings;
+
+~ Timed C4 flames no longer hurt your own base or teammates;
+
+~ You can no longer use C4s while piloting a mech;
+
+~ You can no longer equip Armor just before picking a class or entering a mech - if you do so, it will be lost;
+
+~ Instant Juggernaut no longer keeps your armor;
+
+~ Many, many more ACS fixes.
 	

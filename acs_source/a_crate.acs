@@ -61,8 +61,10 @@
 #define CRATE_BOMBPACK		37
 #define CRATE_IMP			38
 #define CRATE_C4			39
+#define CRATE_GRENADES		40
 // ----
-#define NUM_CRATES			40
+// ----
+#define NUM_CRATES			41
 
 // --------------------------------------------------------------
 #define CRK_NAME		0 // Name of crate
@@ -144,6 +146,7 @@ function void CR_InitCrateList (void) {
 	AddCrateType (CRATE_BOMBPACK,		"bomb pack",			"F",  7, CRT_Item,		(CRF_ANNOUNCE));
 	AddCrateType (CRATE_IMP,			"imp attack",			"S",  8, CRT_Bad,		(CRF_ANNOUNCE));
 	AddCrateType (CRATE_C4,				"C4",					"K", 10, CRT_Item,		(0));
+	AddCrateType (CRATE_GRENADES,		"grenade pack",			"D", 10, CRT_Item,		(0));
 }
 
 // ============================================================================
@@ -165,7 +168,7 @@ function int CheckCrate (int c) {
 	case CRATE_FIREPOWER:
 		return !CheckInventory ("PowerFirepowerUpgrade"); // not if the player already has the upgrade
 	case CRATE_BONUSXP:
-		return (GetRank () < RANK_COMMANDO); // not if the player is already commando
+		return (GetRank () < RANK_COLONEL); // not if the player is already max rank
 	case CRATE_FIREARMOR:
 		return	(!CheckInventory ("FireArmor") && // same logic here as in chemproof
 				!CheckInventory ("PowerFireProof"));
@@ -240,7 +243,8 @@ function int CheckCrate (int c) {
 		// Same logic here as in bomb crate.
 		if (GetRank () >= RANK_LIEUTENANT && !random (0, 2))
 			return false;
-		return !CheckInventory ("IsMech"); // don't disarm a mech
+		return	!CheckInventory ("IsMech") && // don't disarm a mech
+				!CheckWeapon("TimeGun"); // [SG] to prevent infinite hyperspeed
 	case CRATE_FATIGUE:
 		return	!CheckInventory ("PowerFatigue") && // not if the player is already fatigue'd
 				!CheckInventory ("StealthLaserRifle") && // don't slow down stealths or blurred
@@ -266,7 +270,10 @@ function int CheckCrate (int c) {
 	case CRATE_IMP:
 		return	!SuddenDeath; // not during sudden death
 	case CRATE_C4:
-		return	!CheckInventory ("TimedC4") <= 4;
+		return	CheckInventory ("TimedC4") < 4;
+	case CRATE_GRENADES:
+		return	(CheckInventory ("FragGrenadeAmmo") < 4) &&
+				(CheckInventory ("FlashbangAmmo") < 4);
 	}
 	
 	return true;
@@ -606,12 +613,6 @@ script 309 (int c) {
 		IntelMessage ("Turrets cannot see you for 90 seconds", false);
 		break;
 	case CRATE_DISARM:
-		if(checkinventory("timegun"))
-		{
-			delay(1);
-			acs_executealways(309, 0, random(12, 27));
-			terminate;
-		}
 		SetFont ("BIGFONT");
 		HudMessage (s:"Disarm crate!"; HUDMSG_FADEOUT, 240+PlayerNumber(), CR_RED, 0.5, 0.45, 2.0, 1.0);
 		
@@ -640,7 +641,7 @@ script 309 (int c) {
 		CheckAndRemove ("Flashbang");
 		CheckAndRemove ("FragGrenade");
 		CheckAndRemove ("RepairGunUpgrade");
-		if (GetRank () < RANK_COMMANDO)
+		if (GetRank () < RANK_MAJOR)
 			CheckAndRemove ("RepairGun");
 		CheckAndRemove ("HealGun");
 		CheckAndRemove ("BombSquadGun");
@@ -655,6 +656,8 @@ script 309 (int c) {
 		CheckAndRemove ("Karasawa");
 		CheckAndRemove ("CombustionAutorifle");
 		CheckAndRemove ("CombustionAutorifleWeak");
+		CheckAndRemove ("TimeGun");
+		CheckAndRemove ("ChronoBow");
 		
 		if (CheckInventory ("EagerBeaver")) {
 			TakeInventory ("EagerBeaver", 1);
@@ -769,8 +772,14 @@ script 309 (int c) {
 		for (i = 0; i < 4; i++) {
 			ActivatorSound ("c4/use", 127);
 			GiveInventory ("TimedC4", 1);
-			delay (15);
-		}
+			GiveInventory ("TimedC4Count", 1);
+			delay (15); }
+	case CRATE_GRENADES:
+		ActivatorSound ("flash/flashthrow", 127);
+		SetFragGrenades (4);
+		SetFlashbangs (4);
+		break;
+		
 	}
 }
 

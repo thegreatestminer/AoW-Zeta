@@ -41,11 +41,11 @@ int AddOns_int[MAX_ADDONS][MAX_ADDON_KEYS_INT] = {
 /*
 	"Name of class", cost, speed, dependency,
 		armor, armor_mod,
-		frags, c4, enhanced, flags,
+		frags, c4, flags,
 		item0, item1, item2, item3, item4, item5
 */
 function void AddClass (int token, str name, int cost, int speed,
-	int dep, int armor, int armod, int frags, int c4, int c4e, int flags,
+	int dep, int armor, int armod, int frags, int c4, int flags,
 	int item0, int item1, int item2, int item3, int item4, int item5)
 {
 	if (token < 0 || token >= NUMCLASSES) {
@@ -61,7 +61,6 @@ function void AddClass (int token, str name, int cost, int speed,
 	Classes_int[token][CK_ARMOD] = armod;
 	Classes_int[token][CK_FRAGS] = frags;
 	Classes_int[token][CK_C4] = c4;
-	Classes_int[token][CK_ENHANCEDC4] = c4e;
 	Classes_int[token][CK_FLAGS] = flags;
 	Classes_int[token][CK_ITEM0] = item0;
 	Classes_int[token][CK_ITEM1] = item1;
@@ -292,6 +291,11 @@ function int SetClass (int id, int scflags) {
 		SetInventory ("TimedC4", c4);
 		SetInventory ("TimedC4Count", c4);
 	}
+	
+	// [SG] Enhanced C4 is now a team research
+	
+	if(EnhancedC4[PlayerTeam()])
+		GiveInventory("EnhancedTimedC4",1);
 	
 	// Frag grenades & Flashbangs
 	SetFragGrenades (Classes_int[id][CK_FRAGS]);

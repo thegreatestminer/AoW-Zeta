@@ -210,8 +210,10 @@ function int CalcDiscount (int amount) {
 	else if (amount > 1600)
 		d = 75;
 	
-	if (GetRank () >= RANK_LIEUTENANT)
+	if (GetRank () >= RANK_MAJOR)
 		d *= 4;
+	else if (GetRank () >= RANK_LIEUTENANT)
+		d *= 3;
 	else if (GetRank () >= RANK_MASTERSGT)
 		d *= 2;
 	
