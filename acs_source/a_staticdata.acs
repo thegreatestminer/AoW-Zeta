@@ -16,12 +16,13 @@ int MiniRefinery[2];
 int LastAttackMessage;
 
 //RESEARCHES!!!!!!!!
-bool EnhancedRefining[2]; //Increases profits from harvesting by $50 //Costs $2000
-bool AdvancedMechs[2]; //Enables purchase of Juggernaut, Titan and MadCat //Costs $2000
+bool EnhancedC4[2]; // [SG] Increases Team's Timed C4 health; costs $2000
+bool EnhancedRefining[2]; //Increases profits from harvesting by $125 //Costs $2000
+bool AdvancedMechs[2]; //Enables purchase of Heavy mechs //Costs $2000
 int GlobalMedic[2]; //Builds a Team Health Regeneration Cache //Costs $2250
 int GlobalAmmo[2]; //Builds a Team Ammo Regeneration Cache //Costs $2250
 bool AdvancedTurrets[2]; //Allows construction of high level Turrets //Costs $2000
-bool MoreTurrets[2]; //Increases Turret cap by 10 //Costs $2000
+bool MoreTurrets[2]; //Increases Turret cap by 5 //Costs $2000
 int MaxTurrets[2] = {MAX_TURRETS, MAX_TURRETS};
 
 // [Dusk] This is used to determine which portal is alive *and* active
@@ -126,8 +127,10 @@ int g_CrateSeed; // [Dusk] Crate logic
 #define CONFIG_NORADAR					15  // Is the radar forbidden in game?
 #define CONFIG_CREDITCAP				16	// Credit cap
 #define CONFIG_SANDBAGS					17	// Are sandbags allowed?
+#define CONFIG_ENHANCEDC4_BLUE			18	// Does blue team have enhanced C4?
+#define CONFIG_ENHANCEDC4_RED			19	// -- red
 // ----
-#define MAX_CONFIG						18
+#define MAX_CONFIG						20
 int Config[MAX_CONFIG][2];
 
 // Snapshot stuff
@@ -171,7 +174,7 @@ int RandomWeaponCrateItems[MAX_RANDOMWEAPONCRATEITEMS] = {
 	ITEM_LASERRIFLE,
 	ITEM_MACHINEGUN,
 	ITEM_MISSILE,
-	ITEM_PlasmaCannon,
+	ITEM_KARASAWA,
 	ITEM_PLASMA,
 	ITEM_RIFLE,
 	ITEM_SHOCKRIFLE,
@@ -181,7 +184,7 @@ int RandomWeaponCrateItems[MAX_RANDOMWEAPONCRATEITEMS] = {
 // -- 20
 	ITEM_TIBRIFLE,
 	ITEM_COMBUSTRIFLE,
-	ITEM_TIMEGUN
+	ITEM_TIMEGUN,
 // -- 23
 };
 

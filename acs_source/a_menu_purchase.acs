@@ -47,10 +47,6 @@ script 703 (int m0, int m1, int y) CLIENTSIDE {
 		int armor = Classes_int[id][CK_ARMOR];
 		int armod = Classes_int[id][CK_ARMOD];
 		
-		str enhanced = "";
-		if (Classes_int[id][CK_ENHANCEDC4])
-			enhanced = "+";
-		
 		str item0 = Items_Str[Classes_int[id][CK_ITEM0]][IK_NAME];
 		str item1 = Items_str[Classes_int[id][CK_ITEM1]][IK_NAME];
 		str item2 = Items_str[Classes_int[id][CK_ITEM2]][IK_NAME];
@@ -100,7 +96,7 @@ script 703 (int m0, int m1, int y) CLIENTSIDE {
 		// Write down the rest of the info
 		classinfo = strparam (s:classinfo,
 			s:"\nGrenades: \cD", d:Classes_int[id][CK_FRAGS],
-			s:"\nC4: \cD", d:Classes_int[id][CK_C4], s:enhanced,
+			s:"\nC4: \cD", d:Classes_int[id][CK_C4],
 			s:"\n----\n\cD",
 			s:item0, s:"\n\cD", s:item1, s:"\n\cD", s:item2, s:"\n\cD",
 			s:item3, s:"\n\cD", s:item4, s:"\n\cD", s:item5, s:"\n\cD");

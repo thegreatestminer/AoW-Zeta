@@ -29,8 +29,7 @@ actor DoubleShotgun : AOWWeapon replaces SuperShotgun 21086 {
 		SHT2 A 3
 		SHT2 A 0 Radius_Quake(3,7,0,1,0)
 		SHT2 A 0 Bright A_GunFlash
-		SHT2 A 0 Bright A_FireBullets (13.5, 9.4, 20, 5, "HandgunPuff", 1, 1024)
-		SHT2 A 2
+		SHT2 A 2 Bright A_FireBullets (15.7, 11.7, 20, 5, "HandgunPuff", 1, 1024)
 		SHT2 A 5
 		SHT2 B 7
 		SHT2 C 7 A_CheckReload

@@ -2,7 +2,7 @@
 // AOW KEYCONF
 weaponsection AOW2
 setslot 0 RemoverGun RepairGun HealGun BombSquadGun
-setslot 1 Unarmed EagerBeaver FragGrenade RemoteC4 Knife
+setslot 1 Unarmed EagerBeaver FragGrenade Flashbang RemoteC4 Knife
 setslot 2 Handgun Rifle SniperRifleWeak SniperRifle BloodRevolver
 setslot 3 Boomstick DoubleShotgun
 setslot 4 SubMachineGun MachineGun GatlingGun JumpjetGatlingGun

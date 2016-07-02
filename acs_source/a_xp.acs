@@ -115,8 +115,10 @@ function int GetExpNeed (int r) {
 		case RANK_MASTERSGT: need = XPREQ_MASTERSGT; break;
 		case RANK_OFFICER: need = XPREQ_OFFICER; break;
 		case RANK_LIEUTENANT: need = XPREQ_LIEUTENANT; break;
+		case RANK_CAPTAIN: need = XPREQ_CAPTAIN; break;
 		case RANK_MAJOR: need = XPREQ_MAJOR; break;
-		case RANK_COMMANDO: need = XPREQ_COMMANDO; break;
+		case RANK_LTCOLONEL: need = XPREQ_LTCOLONEL; break;
+		case RANK_COLONEL: need = XPREQ_COLONEL; break;
 		default: return 0;
 	}
 	
@@ -135,8 +137,10 @@ function str GetRankPic (int p) {
 		case RANK_MASTERSGT: return "RANK04";
 		case RANK_OFFICER: return "RANK05";
 		case RANK_LIEUTENANT: return "RANK06";
-		case RANK_MAJOR: return "RANK07";
-		case RANK_COMMANDO: return "RANK08";
+		case RANK_CAPTAIN: return "RANK07";
+		case RANK_MAJOR: return "RANK08";
+		case RANK_LTCOLONEL: return "RANK09";
+		case RANK_COLONEL: return "RANK10";
 	}
 	return -1;
 }
@@ -153,8 +157,10 @@ script 91 (void) {
 		case RANK_MASTERSGT: newhealth = 110; break;
 		case RANK_OFFICER: newhealth = 115; break;
 		case RANK_LIEUTENANT: newhealth = 120; break;
-		case RANK_MAJOR: newhealth = 125; break;
-		case RANK_COMMANDO: newhealth = 130; break;
+		case RANK_CAPTAIN: newhealth = 125; break;
+		case RANK_MAJOR: newhealth = 130; break;
+		case RANK_LTCOLONEL: newhealth = 135; break;
+		case RANK_COLONEL: newhealth = 140; break;
 	}
 	
 	SetSpawnHealth (newhealth);
@@ -173,21 +179,28 @@ script 91 (void) {
 		if (rank >= RANK_SERGEANT)
 			GiveInventory ("SubMachineGun", 1);
 		
-		if (rank >= RANK_MASTERSGT && GetAmmoCapacity ("FragGrenadeAmmo") < 2) {
+		if (rank >= RANK_OFFICER && GetAmmoCapacity ("FragGrenadeAmmo") < 2) {
 			SetFragGrenades (2);
-		} else if (rank >= RANK_LIEUTENANT && GetAmmoCapacity ("FragGrenadeAmmo") < 3) {
+		} else if (rank >= RANK_MAJOR && GetAmmoCapacity ("FragGrenadeAmmo") < 3) {
 			SetFragGrenades (3);
+		} else if (rank == RANK_COLONEL && GetAmmoCapacity ("FragGrenadeAmmo") < 4) {
+			SetFragGrenades (4);
 		}
 		
-		if (rank >= RANK_OFFICER)
-			GiveInventory ("EnhancedTimedC4", 1);
+		if (rank >= RANK_OFFICER && GetAmmoCapacity ("FlashbangAmmo") < 2) {
+			SetFlashbangs (2);
+		} else if (rank >= RANK_MAJOR && GetAmmoCapacity ("FlashbangAmmo") < 3) {
+			SetFlashbangs (3);
+		} else if (rank == RANK_COLONEL && GetAmmoCapacity ("FlashbangAmmo") < 4) {
+			SetFlashbangs (4);
+		}
 		
-		if (rank >= RANK_MAJOR) {
-			GiveInventory ("EagerBeaver", 1);
+		if (rank >= RANK_CAPTAIN) {
+			GiveInventory ("EagerBeaver", 1);	
 			TakeInventory ("Unarmed", 1);
 		}
 		
-		if (rank == RANK_COMMANDO) {
+		if (rank == RANK_MAJOR) {
 			if (CheckInventory("RepairGun") && !CheckInventory("RepairGunUpgrade"))
 				GiveInventory ("RepairGunUpgrade", 1);
 			else

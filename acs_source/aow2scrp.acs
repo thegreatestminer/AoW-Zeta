@@ -35,10 +35,12 @@
 #define RANK_MASTERSGT 3
 #define RANK_OFFICER 4
 #define RANK_LIEUTENANT 5
-#define RANK_MAJOR 6
-#define RANK_COMMANDO 7
+#define RANK_CAPTAIN 6
+#define RANK_MAJOR 7
+#define RANK_LTCOLONEL 8
+#define RANK_COLONEL 9
 // ----
-#define MAX_RANKS 8
+#define MAX_RANKS 10
 
 // These determine XP requirements for level-up
 #define XPREQ_CORPORAL 250
@@ -46,8 +48,10 @@
 #define XPREQ_MASTERSGT 1000
 #define XPREQ_OFFICER 1500
 #define XPREQ_LIEUTENANT 2000
-#define XPREQ_MAJOR 2500
-#define XPREQ_COMMANDO 3250
+#define XPREQ_CAPTAIN 2500
+#define XPREQ_MAJOR 3250
+#define XPREQ_LTCOLONEL 4000
+#define XPREQ_COLONEL 5000
 
 // ============================================================================
 // Hudmessage values
@@ -306,9 +310,8 @@
 #define CK_ARMOD 		10
 #define CK_FRAGS 		11
 #define CK_C4 			12
-#define CK_ENHANCEDC4 	13
-#define CK_FLAGS 		14
-#define MAX_CLASSKEYS_int 15
+#define CK_FLAGS 		13
+#define MAX_CLASSKEYS_int 14
 
 // Class flags
 #libdefine CF_NoPistol			1 << 0
