@@ -83,17 +83,16 @@ map aow12 "Missile Site" {
 	sky1 = "sky14"
 }
 
+map aow13 "Strange World" {
+	music = "d_catamap"
+	sky1 = "softsky"
+	next = "aow01"
+}
+
 map mirror "Mirror" 
 {
 	music = "d_aow09"
 	sky1 = "sky14"
-}
-
-map catamap "Strange World"
-{
-	music = "d_catamap"
-	sky1 = "softsky"
-	next = "aow01"
 }
 
 skill Normal {
