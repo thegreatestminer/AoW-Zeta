@@ -84,7 +84,7 @@ map aow12 "Missile Site" {
 }
 
 map aow13 "Strange World" {
-	music = "d_catamap"
+	music = "d_aow13"
 	sky1 = "softsky"
 	next = "aow01"
 }
