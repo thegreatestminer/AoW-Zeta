@@ -26,10 +26,12 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 
 - Enhanced Refining extra income reduced to $125, from $150;
 
-- Enhanced Timed C4s are now a global team research, instead of being given per-class or per-rank. Standard Timed C4s have 520 health (from 700),
+- Enhanced Timed C4s are now a global team research, instead of being given per-class or per-rank. Standard Timed C4s have 520 health (from 500),
 and the research increases their health to 650 (instead of 700). Enhanced C4s no longer do more damage than regular ones;
 
 - Extra Frag Grenades and Flashbangs now cost $150 each, from $200;
+
+- All maps now have research centre panels in the spawn room as well as in the building itself
 
 ----- CRATES -----
 
