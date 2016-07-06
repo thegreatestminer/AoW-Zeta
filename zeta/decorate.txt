@@ -79,6 +79,7 @@
 #include "actors/weapons/shockrifle.txt"
 #include "actors/weapons/shotgun.txt"
 #include "actors/weapons/sniperrifle.txt"
+#include "actors/weapons/sniperrifleadvanced.txt"
 #include "actors/weapons/subby.txt"
 #include "actors/weapons/tiberiumautorifle.txt"
 #include "actors/weapons/combustionautorifle.txt"

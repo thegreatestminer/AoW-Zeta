@@ -469,8 +469,9 @@
 #libdefine CLASS_CombustionGunner		29
 #libdefine CLASS_ChronoArcher			30
 #libdefine CLASS_KarasawaSoldier		31
+#libdefine CLASS_AdvancedSniper			32
 // ----
-#libdefine NUMCLASSES					32
+#libdefine NUMCLASSES					33
 
 // Item identifiers
 #define ITEM_None				0
@@ -521,8 +522,9 @@
 #define ITEM_SniperRifleWeak	42
 #define ITEM_CryoBow			43
 #define ITEM_Karasawa			44
+#define ITEM_AdvancedSniper		45
 // -- Total of items
-#define MAX_ITEMS				45 // Amount of items in the above list
+#define MAX_ITEMS				46 // Amount of items in the above list
 
 // ============================================================================
 // Miscallenous stuff

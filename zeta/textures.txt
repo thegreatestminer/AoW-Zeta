@@ -1244,3 +1244,161 @@ walltexture step3   ,  32,  16 {patch step3   , 0, 0}
 walltexture step4   ,  64,  16 {patch step4   , 0, 0}
 walltexture step5   ,  32,  16 {patch step5   , 0, 0}
 walltexture step6   , 128,  16 {patch step6   , 0, 0}
+
+//Sniper rifle advanced
+Sprite SNP2A0, 640, 240
+{
+	Patch YEPPA0, 65, -66
+}
+
+Sprite SNP2B0, 640, 240
+{
+	Patch YEPPB0, 68, -63
+}
+
+Sprite SNP2C0, 640, 240
+{
+	Patch YEPPC0, 73, -59
+}
+
+Sprite SNP2D0, 640, 240
+{
+	Patch YEPPD0, 80, -53
+}
+
+Sprite SNP2E0, 640, 240
+{
+	Patch YEPPE0, 83, -50
+}
+
+Sprite SNP2F0, 640, 240
+{
+	Patch YEPPA0, 85, -48
+}
+
+Sprite SNP2G0, 640, 240
+{
+	Patch YEPPA0, 80, -45
+}
+
+Sprite SNP2H0, 640, 240
+{
+	Patch YEPPA0, 75, -42
+}
+
+Sprite SNP2I0, 640, 240
+{
+	Patch YEPPA0, 69, -40
+}
+
+Sprite SNP2J0, 640, 240
+{
+	Patch YEPPA0, 62, -38
+}
+
+Sprite SNP2K0, 640, 240
+{
+	Patch YEPPA0, 54, -36
+}
+
+Sprite SNP2L0, 640, 240
+{
+	Patch YEPPA0, 46, -35
+}
+
+Sprite SNP2M0, 640, 240
+{
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2N0, 640, 240
+{
+	Patch YES3, 255, 185
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2O0, 640, 240
+{
+	Patch YES3, 243, 170
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2P0, 640, 240
+{
+	Patch YES3, 232, 153
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2Q0, 640, 240
+{
+	Patch YES3, 212, 137
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2R0, 640, 240
+{
+	Patch YES3, 198, 129
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2S0, 640, 240
+{
+	Patch YES3, 200, 134
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2T0, 640, 240
+{
+	Patch YES3, 201, 138
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2U0, 640, 240
+{
+	Patch YES3, 210, 148
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2V0, 640, 240
+{
+	Patch YES3, 213, 152
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2W0, 640, 240
+{
+	Patch YES3, 218, 157
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2X0, 640, 240
+{
+	Patch YES3, 222, 161
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP2Y0, 640, 240
+{
+	Patch YES3, 227, 169
+	Patch YEPPA0, 38, -34
+}
+
+Sprite SNP3A0, 640, 240
+{
+	Patch YEPPA0, 69, -64
+}
+
+Sprite SNP3B0, 640, 240
+{
+	Patch YEPPA0, 73, -59
+}
+
+Sprite SNP3C0, 640, 240
+{
+	Patch YEPPA0, 80, -53
+}
+
+Sprite SNP3D0, 640, 240
+{
+	Patch YEPPA0, 83, -50
+}

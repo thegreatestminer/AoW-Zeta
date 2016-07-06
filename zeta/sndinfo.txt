@@ -1058,3 +1058,10 @@ player/berserk dsbersrk
 
 // [Cata] Rhino.
 RHINOSTE RHINOSTE
+
+// [Cata] Adv sniper
+awpfire awpfire
+awpback awpback
+awpford awpford
+awpzoom awpzoom
+awpreld awpreld

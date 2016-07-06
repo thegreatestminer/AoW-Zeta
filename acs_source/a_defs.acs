@@ -88,11 +88,12 @@ str Items_Str[MAX_ITEMS][MAX_ITEMKEYS_str] = {
 	{"Sniper Rifle (weak)", "SniperRifleWeak", "SniperAmmo", ""},
 	{"Chrono Bow", "ChronoBow", "ChronoBolt", ""},
 	{"Karasawa", "Karasawa", "KarasawaAmmo", ""},
+	{"Advanced Sniper Rifle", "AdvancedSniperRifle", "RifleAmmo", ""},
 };
 
 int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] = 
 {
-	// amount0, amount1, amount2, resell value
+	// num weps to give, ammo for main fire, ammo for alt fire, resell value
 	{0, 0, 0, 0}, // Mandatory empty entry for no item
 	{1, 400, 0, 5}, //handgun
 	{1, 400, 0, 25}, //smg
@@ -140,6 +141,7 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
 	{1, 40, 0, 125}, //sniper rifle(weak)
 	{1, 25, 0, 300}, //chrono bow
 	{1, 50, 0, 125}, // karasawa
+	{1, 40, 0, 0}, //adv sniper rifle
 };
 
 /*============================================================================
@@ -359,6 +361,11 @@ function void InitClasses (void) {
 		2, ARMOD_ENERGY,
 		2, 1, 0,
 		ITEM_KARASAWA, 0, 0, 0, 0, 0);
+		
+	AddClass (CLASS_AdvancedSniper, "Advanced Sniper", 1000, 0.55, DEP_CENTRE,
+		-1, ARMOD_NOCHANGE,
+		2, 1, CF_IsSniper,
+		ITEM_ADVANCEDSNIPER, 0, 0, 0, 0, 0);
 }
 
 #define RESEARCH_ENHANCEDREFINING 0
