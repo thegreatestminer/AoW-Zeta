@@ -20,12 +20,12 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 - 	All maps now have research centre panels in the spawn room as well as in the building itself
 
 ----- CRATE CHANGES ------
++ 	Added Grenade Pack crate, which gives you 4 Frag Grenades and 4 Flashbangs;
 - 	Base Crasher and Base Miracle can no longer occur during Sudden Death, nor 5 minutes before it;
 - 	Base Crasher can no longer occur if any of the team's buildings are below 50% health (OBE/RES/BAR) or 40% health (REF/WF);
 - 	Base Miracle can no longer occur if all of the team's buildings are already at or above 99% health;
 - 	Random Weapon can no longer give you Plasma Cannon;
 - 	C4 crate now properly sets your maximum C4 amount to 4, so you can safely refill that amount, and can no longer occur if you already have 4;
-+ 	Added Grenade Pack crate, which gives you 4 Frag Grenades and 4 Flashbangs;
 
 ------------------------------------------------------------
 ----- CLASSES
@@ -34,11 +34,11 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 	* They do still have resistance to certain weapon types. For example, flamer is no longer weak against chem
 	but is still resistant against fire-based weapons.
 +	New class, Advanced Sniper
-		* Weapon: Advanced sniper rifle. Pinpoint accurate unscoped and will two-shot most infantry.
-		* 55% movement speed
-		* -1 Grade armor
-		* Costs $1000
-		* Drops weakened sniper rifle on death.
+	* Weapon: Advanced sniper rifle. Pinpoint accurate unscoped and will two-shot most infantry.
+	* 55% movement speed
+	* -1 Grade armor
+	* Costs $1000
+	* Drops weakened sniper rifle on death.
 + 	Karasawa Soldier imported.
 +	Chem sprayer has his own skin now.
 - 	Chrono Archer: speed reduced to 85%, from 90%;
@@ -53,8 +53,8 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 ------------------------------------------------------------
 + 	All weapon skins now have crouch sprites (except for medic);
 + 	Chainsaw rework. 
-		* It is back to its Doom self, and no longer insta-kills everything. 
-		* Still shreds people down VERY quickly (firing rate reduced);
+	* It is back to its Doom self, and no longer insta-kills everything. 
+	* Still shreds people down VERY quickly (firing rate reduced);
 +	Flashbangs imported.
 - 	SMG: main and altfire have been swapped. Both are also SLIGHTLY less accurate;
 - 	Gatling Gun: shoots twice as many bullets (but damage per bullet is halved), vertical spread lowered: it is slightly less effective beyond close range;
@@ -72,8 +72,8 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 ----- MECHS
 ------------------------------------------------------------
 + 	New heavy mech, Rhino.
-		* Comes with a Shock Cannon, Plasma Cannon, and LRM-10.
-		* Can't give out any other detail, we're not sure on pricing, speed, etc.
+	* Comes with a Shock Cannon, Plasma Cannon, and LRM-10.
+	* Can't give out any other detail, we're not sure on pricing, speed, etc.
 + 	Wolverine is now fully team-colored;
 + 	Titan and Wolverine now have firing sprites for their explosive attacks;
 - 	Orca: price increased to $1250, from $1000;
