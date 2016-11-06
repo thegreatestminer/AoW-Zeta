@@ -457,9 +457,10 @@ script 697 (void) {
 	else if (CheckInventory ("WolverineWeapons")) MechType = 2;
 	else if (CheckInventory ("MadCatWeapons")) MechType = 3;
 	else if (CheckInventory ("TitanWeapons")) MechType = 4;
-	else if (CheckInventory ("RhinoWeapons")) MechType = 5;
-	else if (CheckInventory ("JuggernautWeapons")) MechType = 6;
-	else if (CheckInventory ("TortoiseWeapons")) MechType = 7;
+	else if (CheckInventory ("JuggernautWeapons")) MechType = 5;
+	else if (CheckInventory ("TortoiseWeapons")) MechType = 6;
+	else if (CheckInventory ("RhinoWeapons")) MechType = 7;
+	else log(s:"ERR: Script 697 - someone ran this script without mech weapons!");
 	
 	if(MechType == -1) terminate;
 	/*

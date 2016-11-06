@@ -10,7 +10,7 @@ actor Rhino : MechPlayer_Base {
 	player.maxhealth 4000
 	Player.ViewHeight 96
 	Player.MorphWeapon "RhinoWeapons"
-	scale 2.0
+	scale 2.5
 	states 
 	{
 	Spawn:
@@ -68,7 +68,7 @@ actor Rhino : MechPlayer_Base {
 		PGRD IJ 1 
 		PGRD K 1 A_SpawnItemEx ("RhinoExplosionSmall", 0,0,0,0,0,0,0, SXF_NOCHECKPOSITION)
 		PGRD LM 1 bright 
-		TNT1 A 1
+		DISR Z -1 A_SetTranslucent(0,0.0)
 		Stop
 	Death.IonExplosion:
 		TNT1 A 0
