@@ -468,3 +468,4 @@ Generator LaserChaingun BulletChip
 Generator Rifle BigBulletChip
 Generator SniperRifle BigBulletChip
 Generator SniperRifleWeak BigBulletChip
+Generator AdvancedSniperRifle BigBulletChip
