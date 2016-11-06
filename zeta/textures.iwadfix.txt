@@ -5710,6 +5710,8 @@ Flat "FLOOR5_4", 64, 64 {
 	}
 }
 
+// [Cata] - Dumb yellow red repair pad color.
+/*
 Flat "FLOOR6_1", 64, 64 {
 	Offset 0, 0
 	Patch "FLOOR6_1", 0, 0 {
@@ -5721,6 +5723,7 @@ Flat "FLOOR6_1", 64, 64 {
 			"238:239=59:60", "240:246=204:207", "248:248=162:162", "249:249=130:130", "250:254=176:185"
 	}
 }
+*/
 
 Flat "FLOOR6_2", 64, 64 {
 	Offset 0, 0
