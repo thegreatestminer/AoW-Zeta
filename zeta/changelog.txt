@@ -81,6 +81,11 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 - 	Tortoise: focused on anti-infantry, keeps its energy and bullet attacks but no longer has grenades. Priced at $1500.
 ~	Mechs can no longer switch teams, get out of them first.
 
+------------------------------------------------------------
+----- MAPS
+------------------------------------------------------------
+++ Updated various maps to the last change Dusk's team did.
++ New map "Strange World" AOW13
 
 ------------------------------------------------------------
 ----- MISC / BUG FIXES

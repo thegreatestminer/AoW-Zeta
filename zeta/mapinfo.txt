@@ -15,78 +15,91 @@ map aow01 "Red Zone" {
 	next = "aow02"
 	sky1 = "stsky2"
 	music = "d_aow01"
+	levelnum = 1
 }
 
 map aow02 "Barrens" {
 	next = "aow03"
 	sky1 = "stsky2"
 	music = "d_aow02"
+	levelnum = 2
 }
 
 map aow03 "Oasis" {
 	next = "aow04"
 	sky1 = "sky04", 0.1
 	music = "d_aow03"
+	levelnum = 3
 }
 
 map aow04 "Glacier" {
 	next = "aow05"
 	sky1 = "stsky14"
 	music = "d_aow04"
+	levelnum = 4
 }
 
 map aow05 "Valley" {
 	next = "aow06"
 	music = "d_aow05"
 	sky1 = "skyFOG0", 0.1
+	levelnum = 5
 }
 
 map aow06 "Floating City" {
 	next = "aow07"
 	sky1 = "stars"
 	music = "d_aow06"
+	levelnum = 6
 }
 
 map aow07 "Canyon" {
 	next = "aow08"
 	sky1 = "stsky2"
 	music = "d_aow07"
+	levelnum = 7
 }
 
 map aow08 "Renegade 2030" {
 	next = "aow09"
 	music = "d_aow08"
 	sky1 = "stars"
+	levelnum = 8
 }
 
 map aow09 "Infected" {
 	next = "aow10"
 	sky1 = "sky7", 0.1
 	music = "d_aow09"
+	levelnum = 9
 }
 
 map aow10 "Renegade 2032" {
 	next = "aow11"
 	music = "d_aow10"
 	sky1 = "stars"
+	levelnum = 10
 }
 
 map aow11 "Waste Plant" {
 	next = "aow12"
 	music = "d_aow11"
 	sky1 = "sky14"
+	levelnum = 11
 }
 
 map aow12 "Missile Site" {
-	next = "aow01"
+	next = "aow13"
 	music = "d_aow12"
 	sky1 = "sky14"
+	levelnum = 12
 }
 
 map aow13 "Strange World" {
 	music = "d_aow13"
 	sky1 = "softsky"
 	next = "aow01"
+	levelnum = 13
 }
 
 map mirror "Mirror" 

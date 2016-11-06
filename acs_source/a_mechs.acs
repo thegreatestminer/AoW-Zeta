@@ -159,13 +159,26 @@ script SC_MECHMORPH (int mech) {
 	}
 	delay (18);
 	
+	
+	// [Cata] Special conditions for AOW13 (strange world)
+	if(getlevelinfo(LEVELINFO_LEVELNUM) == 13)
+	{
+		Plat_DownWaitUpStay (door, 64, 35*3);
+		delay(35 + 35/2);
+	}
+	
 	// Open the door.
-	Door_Open (door, 64);
-	TagWait (door);
+	else
+	{
+		Door_Open (door, 64);
+		TagWait (door);
+	}
+	
 	
 	// [NG] This will thrust the player out of the hanger.
 	ThrustThing (GetActorAngle (dest) >> 8, 35, 1, 0);
 	delay (35);
+	
 	
 	// Set the mech free
 	SetPlayerProperty (0, 0, PROP_FROZEN);
@@ -214,7 +227,6 @@ script SC_MECHMORPH (int mech) {
 	Spawn ("AntiUtilityExplosion", x1, y1, z);
 	Spawn ("AntiUtilityExplosion", x2, y2, z);
 	
-	// Crap is cleared, close the door now
 	Door_Close (door, 64);
 	
 	TagWait(door);
@@ -654,19 +666,35 @@ script 84 (void) {
 		HUDMSG_FADEOUT, 240+PlayerNumber(), CR_DarkRed, 0.5, 0.45, 2.0, 1.0); */
 }
 
-script 86 (int x) {
+script 86 (int x) 
+{
+
+	// dont run if on roof on aow13
+	if(getactorz(activatortid()) > 342.0 && getlevelinfo(LEVELINFO_LEVELNUM) == 13) terminate;
+
+	// [Cata] push back based on tele. No more weird directions.
+	int team = getplayerinfo(playernumber(), PLAYERINFO_TEAM);
+	int angle;
+	
+	if(team == 0) // blue
+	angle = (getactorangle(108)) >> 8;
+	else //red
+	angle = (getactorangle(208)) >> 8;
+	
+	
 	if (LineSide ())
 		terminate;
 	
 	DisplayCross ();
 	SetFont ("BIGFONT");
+	
+	
 	HudMessage (s:"You can't enter here!";
 		HUDMSG_FADEOUT, 240+PlayerNumber(), CR_DarkRed, 0.5, 0.45, 2.0, 1.0);
-	
 	if (!CheckInventory("IsMech"))
-		ThrustThing (GetActorAngle(6000 + x) >> 8, 35, 1, 0);
+		ThrustThing (angle, 35, 1, 0);
 	else
-		ThrustThing (GetActorAngle(6000 + x) >> 8, 20, 0, 0);
+		ThrustThing (angle, 35, 0, 0);
 }
 
 // Duplicates..
