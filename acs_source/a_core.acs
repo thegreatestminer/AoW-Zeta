@@ -434,12 +434,14 @@ script SC_CL_PLAYERENTER ENTER CLIENTSIDE {
 	int y = 0.3;
 	
 	SetFont ("BIGFONT");
-	HudMessage(s:"Welcome to \cFAll Out War 2!";
+	HudMessage(s:"Welcome to \cFAll Out War 2: \cdZeta\cf!";
 		HUDMSG_FADEINOUT|HUDMSG_LOG, 0, CR_WHITE, 0.5, y, 7.0, 0.5, 1.0);
 	y += 0.15;
 	
 	SetHUDFont ();
 	
+	// [Cata] No being overwhelmed with messages. It's just ugh.
+	/*
 	HUDMessage (s:"You are running version ", s:VersionString ();
 		HUDMSG_FADEINOUT|HUDMSG_LOG, 0, CR_WHITE, 0.5, y, 7.0, 0.5, 1.0);
 	y += SMALLSPACE;
@@ -447,7 +449,7 @@ script SC_CL_PLAYERENTER ENTER CLIENTSIDE {
 	HudMessage (s:"\nSee \cFOptions \cN-> \cFCustomise Controls\c- for keybinds!";
 		HUDMSG_FADEINOUT|HUDMSG_LOG, 0, CR_WHITE, 0.5, y, 7.0, 0.5, 1.0);
 	y += SMALLSPACE;
-	
+	*/
 	if (GetConfig (CONFIG_ALTEXP)) {
 		HudMessage (s:"This server uses alternate experience mode.\n",
 			s:"Rank needs are down to a third\n",
