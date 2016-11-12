@@ -549,7 +549,9 @@ script 697 (void) {
 	}
 	
 	// [Dusk] {9/15/12} Inform teammates
-	TeamMessage (TMSG_MECHEJECT, MechType, playernumber());
+	
+	// [Cata] Deprecated, useless info.
+	// TeamMessage (TMSG_MECHEJECT, MechType, playernumber());
 	
 	UnMorphActor (0, 0);
 	
