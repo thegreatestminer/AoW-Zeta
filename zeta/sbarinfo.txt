@@ -120,12 +120,16 @@ statusbar fullscreen, forcescaled, fullscreenoffsets {
 	}
 
 	// Frag Grenades
-	InInventory FragGrenadeAmmo {	
-		InInventory IsRed {
-			drawimage "ICOFRAGR", -58, -29;
+	InInventory FragGrenadeAmmo 
+	{	
+		InInventory IsRed 
+		{
+			drawimage "ICONADER", -58, -29;
 		}	
-	InInventory Not IsRed {
-			drawimage "ICOFRAGB", -58, -29;	
+		
+		InInventory Not IsRed 
+		{
+			drawimage "ICONADEB", -58, -29;	
 		}
 	    drawnumber 1, INDEXFONT, White, ammo FragGrenadeAmmo, -45,  -27;			
 	}	
