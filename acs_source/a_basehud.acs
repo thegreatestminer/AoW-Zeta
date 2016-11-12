@@ -39,7 +39,9 @@ function void CL_DisplayBuildingHud (void) {
 		s:ColorCodeHealth(PortalHealth (TID_TELENODE_BLUE2)), d:PortalHealth (TID_TELENODE_BLUE2), s:"\cc%";
 		HUDMSG_PLAIN, 8850, CR_BLUE, 0.012, bluey, 0.0);
 	
-	HudMessageBold (s:ExistsBuilding (201), s:"Barracks\cc: ",
+	HudMessageBold (
+		s:"\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+		s:ExistsBuilding (201), s:"Barracks\cc: ",
 		s:ColorCodeHealth(GetActorSpeed (201)), d:GetActorSpeed (201), s:"\cc%\n",
 		s:ExistsBuilding (203), s:"Refinery\cc: ",
 		s:ColorCodeHealth(GetActorSpeed (203)), d:GetActorSpeed (203), s:"\cc%\n",
@@ -60,7 +62,7 @@ function void CL_DisplayBuildingHud (void) {
 		s:PortalLinkColor (TEAM_RED, 0), s:"++", s:PortalLinkColor (TEAM_RED, 1), s:"Teleporter\cc: ",
 		s:ColorCodeHealth(PortalHealth (TID_TELENODE_RED1)), d:PortalHealth (TID_TELENODE_RED1), s:"\cc% / ",
 		s:ColorCodeHealth(PortalHealth (TID_TELENODE_RED2)), d:PortalHealth (TID_TELENODE_RED2), s:"\cc%";
-		HUDMSG_PLAIN, 8851, CR_RED, 0.012, 0.74, 0.0);
+		HUDMSG_PLAIN, 8851, CR_RED, 0.012, bluey, 0.0);
 	
 	/*int bluelives = GetActorSpeed (TID_TICKETCOUNTER_BLUE);
 	int redlives = GetActorSpeed (TID_TICKETCOUNTER_RED);*/
@@ -68,11 +70,13 @@ function void CL_DisplayBuildingHud (void) {
 	int redlives = Tickets[TEAM_RED];
 	if (GetCVar ("zeta_forcelivehud") || bluelives || redlives) {
 		int startlives = Config[CONFIG_STARTTICKETS][PEER_CLIENT];
-		SetFont ("SMALLFONT");
+		//SetFont ("SMALLFONT");
 		HudMessageBold (
+			s:"\n \n \n \n \n \n \n \n \n \n \n \n \n\cd--------\n",
 			s:"\cHLives\cC: ", s:FractionColor (bluelives, startlives), d:bluelives,
-			s:"\n\cGLives\cC: ", s:FractionColor (redlives, startlives), d:redlives;
-			HUDMSG_PLAIN, 8852, CR_BLUE, 0.012, 0.4, 0.0);
+			s:"\n\cGLives\cC: ", s:FractionColor (redlives, startlives), d:redlives,
+			s:"\n\cd--------";
+			HUDMSG_PLAIN, 8852, CR_BLUE, 0.012, 0.44, 0.0);
 	}
 }
 
