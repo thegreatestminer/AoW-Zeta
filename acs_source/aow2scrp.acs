@@ -528,6 +528,7 @@
 #define MAX_ITEMS				46 // Amount of items in the above list
 #define ITEM_maxGrenades		4
 #define ITEM_maxFlashBangs		4
+#define ITEM_maxC4 				4
 
 
 // ============================================================================

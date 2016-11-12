@@ -54,13 +54,17 @@ function bool CheckResearch (int r) {
 		}
 		
 		// Classes that don't have C4 aren't supposed to buy any
-		if (!CheckInventory ("TimedC4Count")) {
+		// [Cata] Deprecated.
+		/*
+		if (!CheckInventory ("TimedC4Count")) 
+		{
 			g_Error = "You don't have any C4 to add up to!";
 			return false;
 		}
+		*/
 		
-		if (CheckInventory ("TimedC4Count") >= 4) {
-			g_Error = "You already have four!";
+		if (CheckInventory ("TimedC4Count") >= ITEM_maxC4) {
+			g_Error = "You hhave the maximum amount of c4's!";
 			return false;
 		}
 		break;
