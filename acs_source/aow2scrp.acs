@@ -654,6 +654,10 @@ int NetState = NETSTATE_UNKNOWN;
 // [Dusk] Amount of deaths on this server
 global int 63:deathtoll;
 
+// For intro msg
+#define introMsgID 5200
+#define maxIntroMsg 10
+
 // ============================================================================
 // FILE INCLUDES
 
