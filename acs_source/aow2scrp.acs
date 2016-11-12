@@ -311,7 +311,8 @@
 #define CK_FRAGS 		11
 #define CK_C4 			12
 #define CK_FLAGS 		13
-#define MAX_CLASSKEYS_int 14
+#define CK_FLASH		14	
+#define MAX_CLASSKEYS_int 15
 
 // Class flags
 #libdefine CF_NoPistol			1 << 0
@@ -525,6 +526,9 @@
 #define ITEM_AdvancedSniper		45
 // -- Total of items
 #define MAX_ITEMS				46 // Amount of items in the above list
+#define ITEM_maxGrenades		4
+#define ITEM_maxFlashBangs		4
+
 
 // ============================================================================
 // Miscallenous stuff

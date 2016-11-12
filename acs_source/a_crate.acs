@@ -769,15 +769,15 @@ script 309 (int c) {
 		
 		break;
 	case CRATE_C4:
-		for (i = 0; i < 4; i++) {
+		for (i = 0; i < ITEM_maxGrenades; i++) {
 			ActivatorSound ("c4/use", 127);
 			GiveInventory ("TimedC4", 1);
 			GiveInventory ("TimedC4Count", 1);
 			delay (15); }
 	case CRATE_GRENADES:
 		ActivatorSound ("flash/flashthrow", 127);
-		SetFragGrenades (4);
-		SetFlashbangs (4);
+		SetFragGrenades (ITEM_maxGrenades);
+		SetFlashbangs (ITEM_maxFlashBangs);
 		break;
 		
 	}

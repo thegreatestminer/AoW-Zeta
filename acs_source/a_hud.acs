@@ -240,7 +240,8 @@ script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
 	}
 	
 	// Build the string from incoming data
-	switch (msgtype) {
+	switch (msgtype) 
+	{
 	case TMSG_NEWCLASS:
 		msg = strparam (n:pnum+1, s:"\c- becomes \cd", s:Classes_str[x0][CK_NAME]);
 		break;

@@ -68,6 +68,7 @@ function void AddClass (int token, str name, int cost, int speed,
 	Classes_int[token][CK_ITEM3] = item3;
 	Classes_int[token][CK_ITEM4] = item4;
 	Classes_int[token][CK_ITEM5] = item5;
+	Classes_int[token][CK_FLASH] = 1; // todo: change amount of flash per class
 }
 
 // =============================================================================
@@ -298,8 +299,22 @@ function int SetClass (int id, int scflags) {
 		GiveInventory("EnhancedTimedC4",1);
 	
 	// Frag grenades & Flashbangs
-	SetFragGrenades (Classes_int[id][CK_FRAGS]);
-	SetFlashbangs (Classes_int[id][CK_FRAGS]); // [SG] for convenience, same amount as grenades
+	// [Cata] Changed to work with research in spawn room.
+	int nades, flashs; 
+	
+	nades = Classes_int[id][CK_FRAGS] + CheckInventory ("fraggrenadeammo");
+	flashs = Classes_int[id][CK_FLASH] + CheckInventory ("FlashbangAmmo");
+	
+	if(CheckInventory ("fraggrenadeammo") > Classes_int[id][CK_FRAGS]) nades = CheckInventory ("fraggrenadeammo");
+	if(CheckInventory ("FlashbangAmmo") > Classes_int[id][CK_FLASH]) flashs = CheckInventory ("FlashbangAmmo");
+	
+	
+	if(nades > ITEM_maxGrenades) nades = ITEM_maxGrenades;
+	if(flashs > ITEM_maxFlashBangs) flashs = ITEM_maxFlashBangs;
+	
+	
+	SetFragGrenades (nades); 
+	SetFlashbangs (flashs); // [SG] for convenience, same amount as grenades
 	
 	// [SG] If the player is changing his armor, cancel that action.
 	

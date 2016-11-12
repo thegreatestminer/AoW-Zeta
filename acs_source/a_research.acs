@@ -90,13 +90,13 @@ function bool CheckResearch (int r) {
 		}
 		break;
 	case RESEARCH_FRAGNADE:
-		if (GetAmmoCapacity ("FragGrenadeAmmo") >= 4) {
+		if (GetAmmoCapacity ("FragGrenadeAmmo") >= ITEM_maxGrenades) {
 			g_Error = "You already have four!";
 			return false;
 		}
 		break;
 	case RESEARCH_FLASHBANG:
-		if (GetAmmoCapacity ("FlashbangAmmo") >= 4) {
+		if (GetAmmoCapacity ("FlashbangAmmo") >= ITEM_maxFlashBangs) {
 			g_Error = "You already have four!";
 			return false;
 		}
@@ -200,7 +200,7 @@ function bool RC_PurchaseResearch (int r) {
 		break;
 	case RESEARCH_FLASHBANG:
 		MenuResponse (MSGTYPE_SUCCESS, "Got a flashbang!");
-		SetFragGrenades (GetAmmoCapacity ("FlashbangAmmo") + 1);
+		SetFlashBangs (GetAmmoCapacity ("FlashbangAmmo") + 1);
 		break;
 	case RESEARCH_ENHANCEDC4:
 		EnhancedC4[PlayerTeam()] = true;

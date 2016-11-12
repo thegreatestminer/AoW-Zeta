@@ -247,13 +247,20 @@ function str FractionColor (int perc, int max) {
 
 // ============================================================================
 // shortcuts
-function void SetFragGrenades (int grenades) {
+function void SetFragGrenades (int grenades) 
+{
 	if (!CheckInventory ("FragGrenade"))
 		GiveInventory ("FragGrenade", 1);
+		
 	SetAmmoCapacity ("FragGrenadeAmmo", grenades);
-	if (CheckInventory ("FragGrenadeAmmo") < grenades) {
+	
+	if (CheckInventory ("FragGrenadeAmmo") < grenades) 
+	{
 		GiveInventory ("FragGrenadeAmmo", grenades);
-	} else if (CheckInventory ("FragGrenadeAmmo") > grenades) {
+	} 
+	
+	else if (CheckInventory ("FragGrenadeAmmo") > grenades) 
+	{
 		TakeInventory ("FragGrenadeAmmo", 10);
 		GiveInventory ("FragGrenadeAmmo", grenades);
 	}
