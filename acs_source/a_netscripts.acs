@@ -31,7 +31,9 @@ str throwBindOldWep[64];
 
 script "SC_USEGRENADEWEPSWITCH" (void)
 {
+	if(checkinventory("IsUsingBindFragGrenade") || checkinventory("IsUsingBindFlashbang") || checkinventory("IsUsingBindRemoteC4")) terminate;
 	SetWeapon(throwBindOldWep[playernumber()]);
+	throwBindOldWep[playernumber()] = "";
 }
 
 script SC_USEGRENADE (int whichnade) NET {
