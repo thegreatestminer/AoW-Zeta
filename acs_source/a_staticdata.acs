@@ -45,9 +45,10 @@ int NumTimeCops[2];
 // Interpolation
 int HUDInterpolationCounter[2];
 
-str RankTitles[8] = {
+str RankTitles[10] = {
 	"Private", "Corporal", "Sergeant", "Master Sgt.",
-	"Officer", "Lieutenant", "Major", "General"
+	"Officer", "Lieutenant", "Captain", "Major",
+	"Lt. Colonel", "Colonel"
 };
 
 bool Bots[MAX_MARINES];
