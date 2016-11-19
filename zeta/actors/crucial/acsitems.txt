@@ -39,3 +39,4 @@ actor Experience : Inventory {
 }
 
 actor HasRankUpgrades : Inventory {}
+actor instantNadeCast : Inventory {inventory.maxamount 1}

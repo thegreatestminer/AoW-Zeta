@@ -13,7 +13,6 @@ bool GotRepair[2];
 bool GotObelisk[2];
 int MiniRefinery[2];
 
-int LastAttackMessage;
 
 //RESEARCHES!!!!!!!!
 bool EnhancedC4[2]; // [SG] Increases Team's Timed C4 health; costs $2000
@@ -44,7 +43,6 @@ int NumPlasmaCannons[3];
 int NumTimeCops[2];
 
 // Interpolation
-int InterpolatorActive = false;
 int HUDInterpolationCounter[2];
 
 str RankTitles[8] = {
@@ -91,21 +89,17 @@ int Tickets[2];
 int PlayerSpeeds[MAXPLAYERS];
 int MechGetter[2]; // which player is in the hanger?
 
-int PlasmaCooldownTime; // plasma cannon cooldown time (CVar)
 int PlasmaCooldown[MAXPLAYERS]; // same for plasma cannon (individual counters)
 
-int RepairBonus[32];
-int MedicBonus[32];
-int MedicBonusNeed;
+int RepairBonus[64];
+int MedicBonus[64];
 int AIMarines[2]; // compensation-spawned only
 
-int AIMarineCount; // how many AI marines are there overall?
 
 // [Dusk] Class meta-table
 str Classes_str[NUMCLASSES][MAX_CLASSKEYS_STR];
 int Classes_int[NUMCLASSES][MAX_CLASSKEYS_INT];
 
-int g_CrateSeed; // [Dusk] Crate logic
 
 // [Dusk] CVars that get synced from server to client
 // Index 0 is for the server and 1 is for the client.
@@ -135,17 +129,15 @@ int Config[MAX_CONFIG][2];
 
 // Snapshot stuff
 int SnapshotTime[MAXPLAYERS];
-int GotSnapshot = false;
+int AIMarineCount; // how many AI marines are there overall?
 
 // Top-level name of the menu
-int MenuName;
 // Names for categories
 int MenuCategories[MAX_MENU_CATEGORIES];
 // Items
 int MenuItems[MAX_MENU_CATEGORIES][MAX_MENU_ITEMS];
 
 // How many tics shall the menu be frozen for?
-int MenuFrozen;
 
 int MenuClasses[4][MAX_MENU_ITEMS];
 int MenuResearches[3][MAX_MENU_ITEMS];
@@ -240,7 +232,6 @@ str LocationNames[NUM_LOCATIONS] = {
 
 str g_Error = 0;
 
-int g_CreditDelta = 0;
 
 // ============================================================================
 // [Dusk] MapConfig[] - map-specific configuration

@@ -790,7 +790,7 @@ function void DisplayUtilityLimit (int clear) {
 	return;
 	
 /*
-	SetActivator (3800+ConsolePlayer);
+	SetActivator (3800+intHolder[i_consoleplayer]);
 	if (!CheckWeapon ("UtilityGun"))
 		ClearHudMessage (HID_UTILITY_SIDEHUD);
 	

@@ -198,7 +198,7 @@ bool MenuActive = false;
 script SC_MENU (int player) CLIENTSIDE {
 	// If it wasn't us who went to menu, then do nothing
 	// Maybe display a menu icon above his head?
-	if (player != consoleplayer || MenuActive)
+	if (player != intHolder[i_consoleplayer] || MenuActive)
 		terminate;
 		
 	// Clear intro msg (welcome to all out war!!!)
@@ -303,7 +303,7 @@ function int IsActionCategory (int i) {
 // ============================================================================
 // Cursor moves up/down
 function void MoveMenuCursorVertical (bool up) {
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		return;
 	
 	LocalAmbientSound ("menu/cursor", 127);
@@ -341,7 +341,7 @@ function void MoveMenuCursorVertical (bool up) {
 // ============================================================================
 // Cursor moves right/left
 function void MoveMenuCursorHorizontal (bool right) {
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		return;
 	
 	// Can't move "action categories"

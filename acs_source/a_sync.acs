@@ -171,18 +171,18 @@ script SC_SYNC_GETSNAPSHOT (void) NET {
 // [CLIENTSIDE] Server tells us results of snapshotting
 script sC_CL_SYNC_GETSNAPSHOT (int player, int time) CLIENTSIDE {
 	// If it wasn't us, ignore
-	if (player != consoleplayer)
+	if (player != intHolder[i_consoleplayer])
 		terminate;
 	
 	// If there was no limit time, snapshotting was successful
 	if (!time) {
-		GotSnapshot = true;
+		intHolder[i_GotSnapshot] = true;
 		terminate;
 	}
 	
 	// Hm. We hit the limit while asking for the snapshot, but we never
 	// got one in the first place. Wait a while and ask again
-	if (!GotSnapshot) {
+	if (!intHolder[i_GotSnapshot]) {
 		SetActivator (-1);
 		delay (time*35);
 		CL_RequestSnapshot ();

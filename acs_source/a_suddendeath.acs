@@ -19,7 +19,7 @@ script SC_SuddenDeathCounter OPEN {
 
 script SC_SuddenDeath (void) {
 	SetActivator (-1);
-	SuddenDeath = true;
+	intHolder[i_SuddenDeath] = true;
 	
 	GiveActorInventory (100, "SuddenDeathVulnerability", 1);
 	GiveActorInventory (101, "SuddenDeathVulnerability", 1);
@@ -56,7 +56,7 @@ script SC_SuddenDeath (void) {
 	Log (s:"=== Sudden Death begins ===");
 	
 	// If not in tournament mode, give everybody beacons
-	if (!TournamentMode)
+	if (!intHolder[i_TournamentMode])
 		GiveToAll ("BeaconItem", 1);
 	
 	// Big notice
@@ -75,7 +75,7 @@ script SC_SuddenDeath (void) {
 	}
 	
 	// If ticket pool was not active in regular play, activate it now
-	if (!TicketPool) {
+	if (!intHolder[i_TicketPool]) {
 		SetTickets (TEAM_BLUE, GetCVAR ("zeta_tickets"));
 		SetTickets (TEAM_RED, GetCVAR ("zeta_tickets"));
 	}

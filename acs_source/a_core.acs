@@ -27,7 +27,7 @@ script SC_GAMEINIT OPEN {
 		GotObelisk[i] = True;
 	}
 	
-	StartingTickets = GetCVAR ("zeta_tickets");
+	intHolder[i_StartingTickets] = GetCVAR ("zeta_tickets");
 	
 	SetLineSpecial (159, ACS_Execute, 342);
 	
@@ -40,12 +40,12 @@ script SC_GAMEINIT OPEN {
 	
 	// Activate developer mode if the proper cvar is set.
 	if (GetCVAR ("zeta_developer")) {
-		DeveloperSafetyLock = 0x7FFFFFFF;
+		intHolder[i_DeveloperSafetyLock] = 0x7FFFFFFF;
 		ACS_ExecuteAlways (SC_DEVELOPERMODE, 0);
 	}
 	
 	// If we have ticket pool active, set the initial tickets now.
-	if (TicketPool) {
+	if (intHolder[i_TicketPool]) {
 		SetTickets (TEAM_Blue, GetCVAR ("zeta_tickets"));
 		SetTickets (TEAM_RED, GetCVAR ("zeta_tickets"));
 	}
@@ -83,7 +83,7 @@ script SC_GAMEINIT OPEN {
 	switch (GetLevelInfo (LEVELINFO_LEVELNUM)) {
 	case 2:
 	case 3:
-		UseTeleporterNodes = 0;
+		intHolder[i_UseTeleporterNodes] = 0;
 		break;
 	}
 	// [SG] With these moved to CVarInfo, this is no longer needed
@@ -171,7 +171,7 @@ script SC_SERVERSETTINGS OPEN
 	
 	// [Dusk] Enforce no pointlimit until game is considered over. However, the pointlimit
 	// is also used to end the game when needed.
-	if (!gameover && GetCVAR ("pointlimit") != 0)
+	if (!intHolder[i_gameover] && GetCVAR ("pointlimit") != 0)
 		ConsoleCommand ("pointlimit 0");
 	
 	// [Dusk] Weapon stay must be disabled to prevent infinite weapons
@@ -295,22 +295,22 @@ script SC_SERVERSETTINGS OPEN
 	if(getcvar("sv_aircontrol") == 0) ConsoleCommand ("sv_aircontrol 0.00390625");
 	
 	// TODO: get rid of these variables and replace with direct GetCVAR calls
-	CreditFragAward = GetCVAR("zeta_creditfrag");
-	CreditAwardTime = GetCVAR("zeta_bonustime");
-	CreditAwardAmount = GetCVAR("zeta_bonusamount");
-	CreditRepairAmount = GetCVAR("zeta_repairbonus");
-	TicketPool = GetCVAR("zeta_ticketpool");
-	TournamentMode = GetCVAR("zeta_tournamentmode");
-	BeaconPurchaseDelay = GetCVAR("zeta_nukepurchasedelay") * 60;
-	PlasmaCooldownTime = GetCVAR("zeta_plasmacooldown") * MINUTETICS;
-	MedicBonusNeed = GetCVAR ("zeta_medicbonusneed");
+	intHolder[i_CreditFragAward] = GetCVAR("zeta_creditfrag");
+	intHolder[i_CreditAwardTime] = GetCVAR("zeta_bonustime");
+	intHolder[i_CreditAwardAmount] = GetCVAR("zeta_bonusamount");
+	intHolder[i_CreditRepairAmount] = GetCVAR("zeta_repairbonus");
+	intHolder[i_TicketPool] = GetCVAR("zeta_ticketpool");
+	intHolder[i_TournamentMode] = GetCVAR("zeta_tournamentmode");
+	intHolder[i_BeaconPurchaseDelay] = GetCVAR("zeta_nukepurchasedelay") * 60;
+	intHolder[i_PlasmaCooldownTime] = GetCVAR("zeta_plasmacooldown") * MINUTETICS;
+	intHolder[i_MedicBonusNeed] = GetCVAR ("zeta_medicbonusneed");
 	
 	// ======================================================================
 	// [Dusk] Synchronized configurations!
 	SetConfig (CONFIG_ALTEXP, GetCVAR ("zeta_altexp"));
 	SetConfig (CONFIG_STARTTICKETS, GetCVAR ("zeta_tickets"));
 	SetConfig (CONFIG_MECHS, (!CheckMapFlags (MAPF_NOMECHS) && !GetCVAR ("zeta_nomechs")));
-	SetConfig (CONFIG_TOURNAMENTMODE, TournamentMode);
+	SetConfig (CONFIG_TOURNAMENTMODE, intHolder[i_TournamentMode]);
 	SetConfig (CONFIG_MAXTIMECOPS, GetCVAR ("zeta_maxtimecopsperteam"));
 	SetConfig (CONFIG_JUGGERNAUTLIMIT, GetCVAR ("zeta_juggernautlimit"));
 	SetConfig (CONFIG_C4DELAY, GetCVAR ("zeta_c4delay"));
@@ -358,8 +358,8 @@ script SC_PLAYERRESPAWN RESPAWN {
 
 script SC_CL_Respawn RESPAWN CLIENTSIDE {
 	// [Dusk] Mark down if we respawned
-	if (PlayerNumber() == consoleplayer)
-		consoledead = false;
+	if (PlayerNumber() == intHolder[i_consoleplayer])
+		intHolder[i_consoledead] = false;
 }
 
 script SC_PLAYERENTER ENTER {
@@ -427,7 +427,7 @@ Script SC_PLAYERDISCONNECT (int gone) DISCONNECT {
 // =============================================================================
 // Client-side end
 script SC_CL_PLAYERENTER ENTER CLIENTSIDE {
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		terminate;
 	
 	// START UP MESSAGES
@@ -473,7 +473,7 @@ script SC_CL_PLAYERENTER ENTER CLIENTSIDE {
 	
 	// =========================================================================
 	// [Dusk] We joined the game - refresh the HUD
-	if (PlayerNumber () == consoleplayer) {
+	if (PlayerNumber () == intHolder[i_consoleplayer]) {
 		DisplayStatusHUD ();
 		// DrawTeamLogHeader ();
 	}
@@ -486,9 +486,9 @@ script 92 (void) {}
 script SC_CL_PLAYERDISCONNECT (int gone) DISCONNECT CLIENTSIDE {
 	// If we DISCONNECTed, yet this script executed,
 	// we became a spectator.
-	if (gone == ConsolePlayer) {
+	if (gone == intHolder[i_consoleplayer]) {
 		// We're no longer dead
-		consoledead = false;
+		intHolder[i_consoledead] = false;
 		
 		// Refresh the HUD to clear out the credits/exp display.
 		DisplayStatusHUD ();
@@ -515,7 +515,7 @@ function void InitPlayer (void) {
 	UnawardedDamage[PlayerNumber ()] = 0;
 	
 	// [Dusk] If we're in developer mode, make him gamemaster.
-	if (Developer) {
+	if (intHolder[i_Developer]) {
 		IsAdmin[PlayerNumber()] = true;
 		
 		SetFont ("BIGFONT");
@@ -533,7 +533,7 @@ script SC_GameOver (int team, int small) {
 		terminate;
 	
 	// No buildings left standing, thus the game is over.
-	gameover = true;
+	intHolder[i_gameover] = true;
 	Delay (1);
 	
 	// Give the end-of-game points to the winning team.

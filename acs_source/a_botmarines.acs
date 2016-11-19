@@ -214,7 +214,7 @@ script SC_MARINE_DEATH (int i) {
 	if (PlayerNumber() != -1 && PlayerTeam() != AITeam) {
 		LocalAmbientSound ("game/boink", 127);
 		AddExperience (100);
-		GiveCredits (CreditFragAward);
+		GiveCredits (intHolder[i_CreditFragAward]);
 		TakeTickets (AITeam, 1);
 		Team_GivePoints (PlayerTeam(), 2, false);
 	}

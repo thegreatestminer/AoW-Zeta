@@ -30,7 +30,7 @@ script SC_DEATH DEATH {
 	
 	// Activate Plasma Cannon cooldown, if player had one
 	if (CheckInventory ("PlasmaCannon"))
-		PlasmaCooldown[PlayerNumber()] = Timer() + PlasmaCooldownTime;
+		PlasmaCooldown[PlayerNumber()] = Timer() + intHolder[i_PlasmaCooldownTime];
 	
 	// How much is this thing worth?
 	int points = 1;
@@ -98,14 +98,14 @@ script SC_DEATH DEATH {
 			GivePoints (2*points);
 			
 			LocalAmbientSound ("game/boink", 127);
-			GiveCredits (CreditFragAward);
+			GiveCredits (intHolder[i_CreditFragAward]);
 			AddExperience (100);
 			
 			delay (5);
 			
-			if (!FirstBlood) {
+			if (!intHolder[i_FirstBlood]) {
 				// We got first blood!
-				FirstBlood = true;
+				intHolder[i_FirstBlood] = true;
 				IntelMessage (strparam (n:0, s:"\c- gets first blood!"), true);
 			}
 		}
@@ -116,16 +116,16 @@ script SC_DEATH DEATH {
 script SC_CL_PLAYERDEATH DEATH CLIENTSIDE {
 	// If we want our killer's health, request it now
 	int killernum = GetTargetInfo (TARGETINFO_PlayerNum);
-	if (PlayerNumber () == consoleplayer &&
-		killernum != consoleplayer &&
+	if (PlayerNumber () == intHolder[i_consoleplayer] &&
+		killernum != intHolder[i_consoleplayer] &&
 		GetCVar ("zeta_cl_killerhealth"))
 	{
 		Puke (-919);
 	}
 	
 	// [Dusk] Mark down if we died.
-	if (PlayerNumber() == consoleplayer)
-		consoledead = true;
+	if (PlayerNumber() == intHolder[i_consoleplayer])
+		intHolder[i_consoledead] = true;
 }
 
 // Juggernaut stomp health

@@ -13,7 +13,7 @@
 // [Dusk] This now alternates between 1 and 2 rather than randomly.
 int SpectatorTeleportNumber = 1;
 script SC_CL_SPECTATORTELEPORT (void) NET CLIENTSIDE {
-	if (PlayerNumber() != consoleplayer || PlayerInGame (consoleplayer))
+	if (PlayerNumber() != intHolder[i_consoleplayer] || PlayerInGame (intHolder[i_consoleplayer]))
 		terminate;
 	
 	SpectatorTeleportNumber = !SpectatorTeleportNumber;
@@ -27,6 +27,12 @@ script SC_CL_SPECTATORTELEPORT (void) NET CLIENTSIDE {
 str whichnadeweap[3] = { "FragGrenade", "Flashbang", "RemoteC4" };
 str whichnadeammo[3] = { "FragGrenadeAmmo", "FlashbangAmmo", "RemoteC4" }; // you can detonate remotes with no ammo left
 str whichnadedinv[3] = { "IsUsingBindFragGrenade", "IsUsingBindFlashbang", "IsUsingBindRemoteC4" }; */
+str throwBindOldWep[64];
+
+script "SC_USEGRENADEWEPSWITCH" (void)
+{
+	SetWeapon(throwBindOldWep[playernumber()]);
+}
 
 script SC_USEGRENADE (int whichnade) NET {
 	// this copypaste is only here because of static variable limits, else the above arrays would've been used
@@ -37,6 +43,8 @@ script SC_USEGRENADE (int whichnade) NET {
 	
 	GiveInventory(whichnadedinv[whichnade],1);
 	SetWeapon(whichnadeweap[whichnade]); */
+	
+	throwBindOldWep[playernumber()] = GetWeapon();
 	
 	switch(whichnade)
 	{

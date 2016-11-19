@@ -91,7 +91,7 @@ script 101 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_BARRACKS, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_BARRACKS, TEAM_BLUE);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_barracks"));
 }
 
@@ -117,7 +117,7 @@ script 102 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_REFINERY, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_REFINERY, TEAM_BLUE);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_refinery"));
 }
 
@@ -146,7 +146,7 @@ script 103 (void) {
 	SYNC_UpdateBuildingHealth (BUILDING_RESCENTRE, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_PLANT, TEAM_BLUE);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_rescentre"));
 }
 
@@ -176,7 +176,7 @@ script 104 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_FACTORY, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_FACTORY, TEAM_BLUE);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_warfactory"));
 }
 
@@ -204,7 +204,7 @@ script 105 (VOID)
 	AwardBuildingDamage (BUILDING_REPAIR, TEAM_BLUE);
 	AwardBuildingDestruction (TEAM_RED, true);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_repairpad"));
 }
 
@@ -230,7 +230,7 @@ script 114 (VOID)
 	AwardBuildingDamage (BUILDING_OBELISK, TEAM_BLUE);
 	CallEvent (ACTION_DESTROY_OBELISK, TEAM_BLUE);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_RED, Tickets[TEAM_RED] + GetCVar ("zeta_tickets_obelisk"));
 }
 
@@ -258,7 +258,7 @@ script 201 (VOID)
 	AwardBuildingDamage (BUILDING_BARRACKS, TEAM_RED);
 	CallEvent (ACTION_DESTROY_BARRACKS, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_barracks"));
 }
 
@@ -284,7 +284,7 @@ script 202 (VOID)
 	AwardBuildingDamage (BUILDING_REFINERY, TEAM_RED);
 	CallEvent (ACTION_DESTROY_REFINERY, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_refinery"));
 }
 
@@ -312,7 +312,7 @@ script 203 (VOID)
 	AwardBuildingDamage (BUILDING_RESCENTRE, TEAM_RED);
 	CallEvent (ACTION_DESTROY_PLANT, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_rescentre"));
 }
 
@@ -336,7 +336,7 @@ script 204 (VOID)
 	SYNC_UpdateBuildingHealth (BUILDING_FACTORY, TEAM_RED);
 	CallEvent (ACTION_DESTROY_FACTORY, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_warfactory"));
 	
 	SetFont("BIGFONT");
@@ -371,7 +371,7 @@ script 205 (VOID) {
 	AwardBuildingDestruction (TEAM_BLUE, true);
 	AwardBuildingDamage (BUILDING_REPAIR, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_repairpad"));
 }
 
@@ -398,15 +398,15 @@ script 214 (VOID)
 	AwardBuildingDamage (BUILDING_OBELISK, TEAM_RED);
 	CallEvent (ACTION_DESTROY_OBELISK, TEAM_RED);
 	
-	if( (SuddenDeath) || (TicketPool))
+	if( (intHolder[i_SuddenDeath]) || (intHolder[i_SuddenDeath]) || (intHolder[i_TicketPool]))
 		SetTickets (TEAM_BLUE, Tickets[TEAM_BLUE] + GetCVar ("zeta_tickets_obelisk"));
 }
 
 script 97 (int Structure, int Team) {
 	// stfu during degeneration
-	if (SuddenDeath && GetCVar ("zeta_degeneration")) terminate;
+	if (intHolder[i_SuddenDeath] && GetCVar ("zeta_degeneration")) terminate;
 	
-	if ( Timer() > LastAttackMessage+35*15 ) {
+	if ( Timer() > intHolder[i_LastAttackMessage]+35*15 ) {
 		if(Structure == 1 && Team == 0)
 			AmbientSound("red/barracks",255);
 		if(Structure == 2 && Team == 0)
@@ -427,7 +427,7 @@ script 97 (int Structure, int Team) {
 			AmbientSound("blue/factory",255);
 		if(Structure == 6 && Team == 1)
 			AmbientSound("blue/obelisk",255);
-		LastAttackMessage = Timer();
+		intHolder[i_LastAttackMessage] = Timer();
 	}
 }
 

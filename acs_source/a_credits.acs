@@ -180,16 +180,16 @@ script 330 (int amount) {
 
 // CREDIT BONUS
 Script 326 OPEN {
-	while (CreditAwardTime <= 0)
+	while (intHolder[i_CreditAwardTime] <= 0)
 		delay (5 * 35);
 	
-	delay (CreditAwardTime * MINUTETICS);
+	delay (intHolder[i_CreditAwardTime] * MINUTETICS);
 	
-	GiveCreditsBold (CreditAwardAmount);
+	GiveCreditsBold (intHolder[i_CreditAwardAmount]);
 	
 	AmbientSound ("powerup/credsound", 127);
 	SetFont ("SMALLFONT");
-	IntelMessage (strparam (s:"Credit bonus! You all get \cQ$\cD", d:CreditAwardAmount, s:"\cJ!"), true);
+	IntelMessage (strparam (s:"Credit bonus! You all get \cQ$\cD", d:intHolder[i_CreditAwardAmount], s:"\cJ!"), true);
 	restart;
 }
 

@@ -186,7 +186,7 @@ function void RecountPlasma (void) {
 // This sets tickets to given values, and ends the game if ticket
 // loss is detected.
 function void TakeTickets (int team, int count) {
-	if (!SuddenDeath && !TicketPool)
+	if (!intHolder[i_SuddenDeath] && !intHolder[i_TicketPool])
 		return;
 	
 	int delta;
@@ -209,7 +209,7 @@ function void TakeTickets (int team, int count) {
 		Log (s:TeamNames[team], s:" loses out of ticket loss");
 		
 		// End the game
-		gameover = true;
+		intHolder[i_gameover] = true;
 		ConsoleCommand (strparam (s:"pointlimit ", d:GetTeamProperty (!team, TPROP_Score) + 50));
 		Team_GivePoints (!team, delta + 50, 0);
 	}
@@ -218,7 +218,7 @@ function void TakeTickets (int team, int count) {
 // ============================================================================
 function void SetTickets (int team, int count) {
 	// Don't set tickets if they are not used.
-	if (!SuddenDeath && !TicketPool)
+	if (!intHolder[i_SuddenDeath] && !intHolder[i_TicketPool])
 		return;
 	
 	Tickets[team] = count;
@@ -298,7 +298,7 @@ function int GetPlayerTeam (int p) {return GetPlayerInfo (p, PLAYERINFO_TEAM);}
 
 function int CheckBaseCrasher (int team)
 {
-	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
+	if( (intHolder[i_SuddenDeath]) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
 		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
 		
 	if(!team)		// not if any building is at low health on this team
@@ -342,7 +342,7 @@ function int CheckBaseCrasher (int team)
 
 function int CheckBaseMiracle (int team)
 {
-	if( (SuddenDeath) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
+	if( (intHolder[i_SuddenDeath]) || (GetConfig(CONFIG_TOURNAMENTMODE)) || (GetCVar("zeta_suddendeathtime") <= 5) || (CheckMinutes(GetCVar("zeta_suddendeathtime") - 5)) )
 		return 0;	// not in tournament mode, or beyond 5 minutes before sudden death
 		
 	if(!team)		// not if all buildings are already at full health
@@ -606,7 +606,7 @@ function int TemporaryTID (void) {
 // =============================================================================
 // Returns the team of the console player
 function int ConsoleTeam (void) {
-	return GetPlayerInfo (ConsolePlayer, PLAYERINFO_TEAM);
+	return GetPlayerInfo (intHolder[i_consoleplayer], PLAYERINFO_TEAM);
 }
 
 // ============================================================================
@@ -735,7 +735,7 @@ function int cond (int a, int b, int c) {
 // ============================================================================
 // [Dusk] {11/10/12} Check distance to console player.
 script SC_CONSOLEPLAYERDISTANCE (int max) {
-	if (!PlayerInGame (consoleplayer)) {
+	if (!PlayerInGame (intHolder[i_consoleplayer])) {
 		SetResultValue (0);
 		terminate;
 	}
@@ -744,7 +744,7 @@ script SC_CONSOLEPLAYERDISTANCE (int max) {
 	if (max == 0)
 		max = 96.0;
 	
-	int dist = AproxDistance (0, 3800 + consoleplayer);
+	int dist = AproxDistance (0, 3800 + intHolder[i_consoleplayer]);
 	SetResultValue (dist <= max);
 }
 

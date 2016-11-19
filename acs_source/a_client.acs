@@ -2,7 +2,7 @@
 // [Dusk] Clientside code hub
 script SC_CLIENT OPEN CLIENTSIDE {
 	// Store the local player number
-	consoleplayer = ConsolePlayerNumber ();
+	intHolder[i_consoleplayer] = ConsolePlayerNumber ();
 	
 	NetState |= NETSTATE_Client;
 	
@@ -85,7 +85,7 @@ script SC_CLIENT OPEN CLIENTSIDE {
 
 // =============================================================================
 script SC_WHOAMI (void) NET CLIENTSIDE {
-	Log (s:"I am player ", d:consoleplayer, s:" named ", n:consoleplayer+1);
+	Log (s:"I am player ", d:intHolder[i_consoleplayer], s:" named ", n:intHolder[i_consoleplayer]+1);
 }
 
 // =============================================================================
@@ -113,8 +113,8 @@ script SC_CL_EFFECTS (void) NET CLIENTSIDE {
 				SpawnSpotForced ("TiberiumChemSmokePlayer", tid, 0, GetActorAngle(tid)>>8);
 			
 			// Flicker friendly stealths
-			int teammate = (GetPlayerInfo (i, PLAYERINFO_TEAM) == ConsoleTeam ()) || !PlayerInGame (consoleplayer);
-			if (teammate && i != consoleplayer && (CheckActorInventory (tid, "StealthMode") == 2)) {
+			int teammate = (GetPlayerInfo (i, PLAYERINFO_TEAM) == ConsoleTeam ()) || !PlayerInGame (intHolder[i_consoleplayer]);
+			if (teammate && i != intHolder[i_consoleplayer] && (CheckActorInventory (tid, "StealthMode") == 2)) {
 				SetActorProperty (tid, APROP_RenderStyle, STYLE_Translucent);
 				SetActorProperty (tid, APROP_Alpha, 0.6);
 			}
@@ -124,29 +124,29 @@ script SC_CL_EFFECTS (void) NET CLIENTSIDE {
 				SpawnSpotForced ("JumpjetFire", tid, 0, GetActorAngle (tid)>>8);
 			
 			// Spawn invulnerability particles
-			if (CheckActorInventory (tid, "PowerSpawnInvulnerability") && i != consoleplayer)
+			if (CheckActorInventory (tid, "PowerSpawnInvulnerability") && i != intHolder[i_consoleplayer])
 				ACS_ExecuteAlways (977, 0, 0, tid);
 			
 			// Time gun boost particles
 			if ((CheckActorInventory (tid, "PowerTimeGunBoost") ||
 				CheckActorInventory (tid, "PowerTimeGunFloat") ||
 				CheckActorInventory (tid, "PowerTimeGunSpeed")) &&
-				i != consoleplayer)
+				i != intHolder[i_consoleplayer])
 				ACS_ExecuteAlways (977, 0, 1, tid);
 			
 			// negative effects
 			if ((CheckActorInventory (tid, "PowerTimeGunSlow") ||
 				CheckActorInventory (tid, "PowerTimeGunWeaken")) &&
-				i != consoleplayer)
+				i != intHolder[i_consoleplayer])
 				ACS_ExecuteAlways (977, 0, 2, tid);
 		}
 		
 		/*
 		// If we're targeting a teammate tortoise, draw its passenger list
 		if (tick % 3 == 0) {
-			if (SetActivator (3800 + consoleplayer) && !CheckInventory ("IsMech")) {
+			if (SetActivator (3800 + intHolder[i_consoleplayer]) && !CheckInventory ("IsMech")) {
 				targ = GetTargetInfo (TARGETINFO_TID);
-				teammate = (GetPlayerInfo (targ - 3800, PLAYERINFO_TEAM) == ConsoleTeam ()) || !PlayerInGame (consoleplayer);
+				teammate = (GetPlayerInfo (targ - 3800, PLAYERINFO_TEAM) == ConsoleTeam ()) || !PlayerInGame (intHolder[i_consoleplayer]);
 				if (targ != ActivatorTID() && CheckActorInventory (targ, "TortoiseWeapons") && teammate)
 					DrawTortoiseHUD (targ, 1.0);
 			}
@@ -221,7 +221,7 @@ function bool SpawnTrail (int src, int dest, str type, int interval, int rand,
 				  int xoff0, int yoff0, int zoff0, int xoff1, int yoff1, int zoff1)
 {
 	// The server may not do this
-	if (consoleplayer == -1)
+	if (intHolder[i_consoleplayer] == -1)
 		return false;
 	
 	int x, y, z;
@@ -321,8 +321,8 @@ script SC_CL_FXCVAR (void) CLIENTSIDE {
 // =============================================================================
 // [Dusk] Missile launcher targeter
 script SC_CL_MISSILETARGETER (void) CLIENTSIDE {
-	if (ActivatorTID () != 3800 + ConsolePlayer) terminate;
-	int mytid = 3800 + ConsolePlayer;
+	if (ActivatorTID () != 3800 + intHolder[i_consoleplayer]) terminate;
+	int mytid = 3800 + intHolder[i_consoleplayer];
 	int t;
 	int team = PlayerTeam ();
 	
@@ -373,14 +373,14 @@ script SC_CL_SNIPERZOOM (void) CLIENTSIDE {
 
 // =============================================================================
 function void DrawRadarBlip (int tid, str blipname) {
-	int d = AproxDistance (3800 + consoleplayer, tid) / RADAR_FOV;
+	int d = AproxDistance (3800 + intHolder[i_consoleplayer], tid) / RADAR_FOV;
 	
 	if (d >= RADAR_SIZE)
 		return; // Too far away
 	
-	int va = VectorAngle (GetActorX (tid) - GetActorX (3800+consoleplayer),
-		GetActorY (tid) - GetActorY (3800+consoleplayer));
-	int a = (va - GetActorAngle (3800+consoleplayer) + 1.5) % 1.0;
+	int va = VectorAngle (GetActorX (tid) - GetActorX (3800+intHolder[i_consoleplayer]),
+		GetActorY (tid) - GetActorY (3800+intHolder[i_consoleplayer]));
+	int a = (va - GetActorAngle (3800+intHolder[i_consoleplayer]) + 1.5) % 1.0;
 	int x = FixedMul (sin(a), d);
 	int y = FixedMul (cos(a), d);
 	
@@ -398,10 +398,10 @@ script SC_CL_RADAR (void) NET CLIENTSIDE {
 		delay (6);
 		
 		if (GetConfig (CONFIG_NORADAR) || // server disabled the radar
-			!PlayerInGame (consoleplayer) || // consoleplayer is spectating
+			!PlayerInGame (intHolder[i_consoleplayer]) || // consoleplayer is spectating
 			(
 				!GetCVar ("zeta_cl_alwaysradar") && // player has no radar and cvar is disabled
-				!CheckActorInventory (3800+consoleplayer, "PowerRadar")
+				!CheckActorInventory (3800+intHolder[i_consoleplayer], "PowerRadar")
 			))
 		{
 			continue;
@@ -414,7 +414,7 @@ script SC_CL_RADAR (void) NET CLIENTSIDE {
 			
 			// Thermal cloak cloaks you from the radar, too
 			if (GetPlayerInfo (i, PLAYERINFO_TEAM) != ConsoleTeam() &&
-				(!CheckActorInventory (3800+consoleplayer, "PowerRadar") ||
+				(!CheckActorInventory (3800+intHolder[i_consoleplayer], "PowerRadar") ||
 				CheckActorInventory (3800+i, "ThermalCloakingTime")))
 			{
 				continue; // not on our team
@@ -533,7 +533,7 @@ script SC_PREF_MENUTOGGLE (void) net clientside {
 	}
 	
 	// Check whether we're eligible to use the pref menu
-	if (!PR_CheckValid (consoleplayer))
+	if (!PR_CheckValid (intHolder[i_consoleplayer]))
 		terminate;
 	
 	g_PreferencesOpen = true;
@@ -748,7 +748,7 @@ function void PR_Dismiss (void) {
 
 // =============================================================================
 script SC_PREF_REQUESTFREEZE (int set) clientside {
-	if (!PR_CheckValid (consoleplayer))
+	if (!PR_CheckValid (intHolder[i_consoleplayer]))
 		terminate;
 	
 	// Because there is no client->server packet loss countering, we keep

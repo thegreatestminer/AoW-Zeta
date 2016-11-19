@@ -618,37 +618,66 @@
 // ============================================================================
 // VARIABLES
 
-int Developer;
-int DeveloperSafetyLock;
+int intHolder[256] =
+{
+	0,
+	0,
+	0,
+	1, //useteleporternodes
+	-1, //consoleplayer
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	300, //RedBeaconTime
+	300, //BlueBeaconTime
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	
+	0 // end
+};
 
-int FirstBlood;
+#define i_Developer 0
+#define i_DeveloperSafetyLock 1
+#define i_FirstBlood 2
+#define i_UseTeleporterNodes 3
+#define i_consoleplayer 4
+#define i_consoledead 5
+#define i_CreditFragAward 6
+#define i_CreditAwardTime 7
+#define i_CreditAwardAmount 8
+#define i_CreditRepairAmount 9
+#define i_SuddenDeath 10
+#define i_TicketPool 11
+#define i_StartingTickets 12
+#define i_TournamentMode 13
+#define i_BeaconPurchaseDelay 14
+#define i_RedBeaconTime 15
+#define i_BlueBeaconTime 16
+#define i_gameover 17
+#define i_LastAttackMessage 18
+#define i_InterpolatorActive 19
+#define i_MedicBonusNeed 20
+#define i_g_CreditDelta 21
+#define i_MenuFrozen 22
+#define i_GotSnapshot 23
+#define i_g_CrateSeed 24
+#define i_PlasmaCooldownTime 25
 
-int UseTeleporterNodes = 1;
-
-// [SP] Current Console Player IDX (client-side only)
-// Defaults to -1, this will be the "server" - anytime ConsolePlayer is -1
-// it means the client-side script did not execute, therefore this is the server.
-int consoleplayer = -1;
-
-// [Dusk] Is the consoleplayer dead?
-bool consoledead = false;
-
-int CreditFragAward;
-int CreditAwardTime;
-int CreditAwardAmount;
-int CreditRepairAmount;
-
-bool SuddenDeath = False;
-bool TicketPool = False;
-int StartingTickets;
-int TournamentMode;
-int BeaconPurchaseDelay;
-
-int RedBeaconTime = 300;
-int BlueBeaconTime = 300;
-
-int gameover; // Is the game over?
-
+str MenuName;
 // [Dusk] Network state
 #libdefine NETSTATE_Unknown		0 // [Dusk] not determined yet
 #libdefine NETSTATE_Client		1

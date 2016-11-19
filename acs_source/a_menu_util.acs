@@ -114,7 +114,7 @@ script 708 (int m0, int m1) {
 	SetInventory ("MenuSelection2", m1);
 	
 	// Convenience.
-	if (Developer)
+	if (intHolder[i_Developer])
 		GiveInventory ("Utility_Percent", 75);
 	
 	SetResultValue (1);

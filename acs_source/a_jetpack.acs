@@ -109,7 +109,7 @@ script SC_JetpackToggle (void) NET {
 // Quake the view while jetting
 script SC_CL_JETPACKQUAKE (void) CLIENTSIDE {
 	// But not if it's not us.
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		terminate;
 	
 	int i;

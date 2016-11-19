@@ -57,7 +57,7 @@ script 650 (int amount, int repairtype, int turret) {
 			terminate;
 		
 		// No repairing of main buildings in sudden death
-		if (SuddenDeath && tid < 900)
+		if (intHolder[i_SuddenDeath] && tid < 900)
 			terminate;
 		
 		// Heal the terminal actor
@@ -90,7 +90,7 @@ script 650 (int amount, int repairtype, int turret) {
 		
 		// Every 10 count, give him some cash and exp
 		if (!(RepairBonus[pn] % 10)) {
-			GiveCredits (CreditRepairAmount);
+			GiveCredits (intHolder[i_CreditRepairAmount]);
 			AddExperience (2 + !(RepairBonus[pn] % 20));
 		}
 		
@@ -135,7 +135,7 @@ script 650 (int amount, int repairtype, int turret) {
 		// Award the healer
 		if (!CheckInventory ("PowerNoHealXP")) {
 			SetActivator (3800+pn);
-			if (MedicBonus[pn] < MedicBonusNeed) {
+			if (MedicBonus[pn] < intHolder[i_MedicBonusNeed]) {
 				MedicBonus[pn] += bonus;
 			} else {
 				MedicBonus[pn] = 0;
@@ -145,7 +145,7 @@ script 650 (int amount, int repairtype, int turret) {
 			}
 			
 			if (!(MedicBonus[pn] % 6))
-				GiveCredits (CreditRepairAmount);
+				GiveCredits (intHolder[i_CreditRepairAmount]);
 		}
 	}
 }
@@ -159,7 +159,7 @@ script 823 (int check, int team) {
 	SetResultValue (0);
 	int tid = GetTargetInfo (TARGETINFO_TID);
 	
-	if (SuddenDeath && tid < 900) {
+	if (intHolder[i_SuddenDeath] && tid < 900) {
 		// It's sudden death. We can't repair here, so
 		// transform into a klaxon turret instead!
 		// SetActorState (0, "NoLongerMrNiceGuy");
@@ -210,7 +210,7 @@ script 823 (int check, int team) {
 // =============================================================================
 // [Dusk] Display health of friendly players while healing them
 script SC_RepairHUD (void) CLIENTSIDE {
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		terminate;
 	
 	int myteam = PlayerTeam ();

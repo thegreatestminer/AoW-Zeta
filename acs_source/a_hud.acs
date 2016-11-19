@@ -69,7 +69,7 @@ script SC_HUDINTERPOLATOR (void) NET CLIENTSIDE {
 		terminate;
 	
 	// Only one interpolator may be ever active
-	if (InterpolatorActive)
+	if (intHolder[i_InterpolatorActive])
 		terminate;
 	
 	// If we want less effects, disable interpolation
@@ -81,7 +81,7 @@ script SC_HUDINTERPOLATOR (void) NET CLIENTSIDE {
 		terminate;
 	}
 	
-	InterpolatorActive = true;
+	intHolder[i_InterpolatorActive] = true;
 	bool done = false;
 	int d;
 	
@@ -112,7 +112,7 @@ script SC_HUDINTERPOLATOR (void) NET CLIENTSIDE {
 		delay (1);
 	}
 	
-	InterpolatorActive = false;
+	intHolder[i_InterpolatorActive] = false;
 }
 
 // ============================================================================
@@ -141,7 +141,7 @@ function void DisplayStatusHUD (void) {
 	
 	// [Dusk] Don't update the HUD when dead. When the player is dead, his credits
 	// appear to be zero.
-	if (consoledead)
+	if (intHolder[i_consoledead])
 		return;
 	
 	// [Dusk] Set appropriate font for the HUD
@@ -153,27 +153,27 @@ function void DisplayStatusHUD (void) {
 		col = "\cA";
 	
 	// [Dusk] We're not in game, display a different HUD
-	if (!PlayerInGame (consoleplayer)) {
+	if (!PlayerInGame (intHolder[i_consoleplayer])) {
 		HudMessage (s:"Credits: \cQ$\cD----\n",
 			s:"Experience: \cD-\cQ/\cD- XP\n\cJ----";
 			HUDMSG_PLAIN, 50, CR_WHITE, HUDX (-0.685), -0.8, 0);
 		return;
 	}
 	
-	int moni = CheckActorInventory (3800 + consoleplayer, "Credit");
-	int xp = CheckActorInventory (3800 + consoleplayer, "Experience");
-	int xpneed = GetExpNeed (GetPlayerRank (ConsolePlayer) + 1);
-	str rankname = RankTitles[GetPlayerRank (ConsolePlayer)];
+	int moni = CheckActorInventory (3800 + intHolder[i_consoleplayer], "Credit");
+	int xp = CheckActorInventory (3800 + intHolder[i_consoleplayer], "Experience");
+	int xpneed = GetExpNeed (GetPlayerRank (intHolder[i_consoleplayer]) + 1);
+	str rankname = RankTitles[GetPlayerRank (intHolder[i_consoleplayer])];
 	
 	// [Dusk] This code showed how much credits the player actually gained.
 	// However, it doesn't really work well with credit flow...
 /*
 	str creditDeltaInfo = "";
-	if (g_CreditDelta > 0)
-		creditDeltaInfo = strparam (s:"\\cH(+$\\cN", d:g_CreditDelta, s:"\\cH)");
-	else if (g_CreditDelta < 0)
-		creditDeltaInfo = strparam (s:"\\cR(+$\\cG", d:g_CreditDelta, s:"\\cR)");
-	g_CreditDelta = 0;
+	if (intHolder[i_g_CreditDelta] > 0)
+		creditDeltaInfo = strparam (s:"\\cH(+$\\cN", d:intHolder[i_g_CreditDelta], s:"\\cH)");
+	else if (intHolder[i_g_CreditDelta] < 0)
+		creditDeltaInfo = strparam (s:"\\cR(+$\\cG", d:intHolder[i_g_CreditDelta], s:"\\cR)");
+	intHolder[i_g_CreditDelta] = 0;
 	
 	HUDMessageBold (s:creditDeltaInfo; HUDMSG_FadeOut, 51, CR_White, -0.825, -0.8, 0.25, 0.5);
 */
@@ -181,7 +181,7 @@ function void DisplayStatusHUD (void) {
 	if (xp < GetExpNeed (MAX_RANKS - 1)) {
 		HudMessageBold (s:col, s:"Credits: \cQ$\cD", d:moni, s:"\n",
 			s:col, s:"Experience: \cD",d:xp, s:"\cQ/\cD", d:xpneed, s:" XP\n",
-			s:rankname, s:", \cC", s:DisplayName (consoleplayer);
+			s:rankname, s:", \cC", s:DisplayName (intHolder[i_consoleplayer]);
 			HUDMSG_PLAIN, 50, CR_WHITE, HUDX (-0.685), -0.8, 0);
 	} else {
 		// [Dusk] We are at highest rank, so a different hud is displayed,
@@ -189,12 +189,12 @@ function void DisplayStatusHUD (void) {
 		// appears white to indicate maximum.
 		HudMessageBold (s:col, s:"Credits: \cQ$\cD", d:moni, s:"\n",
 			s:col, s:"Experience: \cJ", d:xp, s:" XP\n",
-			s:rankname, s:", \cC", s:DisplayName (consoleplayer);
+			s:rankname, s:", \cC", s:DisplayName (intHolder[i_consoleplayer]);
 			HUDMSG_PLAIN, 50, CR_WHITE, HUDX (-0.685), -0.8, 0);
 	}
 	
 	// Display rank pic
-	SetFont (GetRankPic (consoleplayer));
+	SetFont (GetRankPic (intHolder[i_consoleplayer]));
 	HudMessage (s:"a";
 		HUDMSG_PLAIN, 5000, CR_LIGHTBLUE, HUDX (-0.922), -0.78, 0);
 }
@@ -304,7 +304,7 @@ function void CL_TeamMessage (str incoming) {
 	if (GetCVar ("zeta_cl_noteamlog"))
 		return; // User doesn't want team intel, period.
 	
-	if (!PlayerInGame (consoleplayer) || PlayerTeam() != ConsoleTeam())
+	if (!PlayerInGame (intHolder[i_consoleplayer]) || PlayerTeam() != ConsoleTeam())
 		return; // Not a teammate or we're not in-game
 	
 	int slot, i, j;
@@ -331,10 +331,10 @@ script SC_HUDDaemon OPEN CLIENTSIDE {
 		delay (1);
 		
 		// This all is irrelevant if we're spectating.
-		if (!PlayerInGame (consoleplayer))
+		if (!PlayerInGame (intHolder[i_consoleplayer]))
 			continue;
 		
-		SetActivator (3800 + consoleplayer);
+		SetActivator (3800 + intHolder[i_consoleplayer]);
 		
 		// Set the IsConsolePlayer amount to make sure that
 		// we are always marked.

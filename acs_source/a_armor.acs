@@ -234,7 +234,7 @@ script SC_ARMORITEMUSE (int modtype) {
 
 // [Dusk] Client-side progress prediction
 script SC_CL_ARMORPREDICT (int modtype) CLIENTSIDE {
-	if (PlayerNumber() != consoleplayer)
+	if (PlayerNumber() != intHolder[i_consoleplayer])
 		terminate;
 	
 	TakeInventory ("ArmorChangeProgress", 175);
