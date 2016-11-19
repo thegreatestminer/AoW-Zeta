@@ -233,10 +233,10 @@ script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
 	}
 	
 	switch (x0) {
-	case 0: cname = "mini-refinery";
-	case 1: cname = "health regen";
-	case 2: cname = "ammo regen";
-	case 3: cname = "portal node";
+	case 0: cname = "mini-refinery"; break;
+	case 1: cname = "health regen"; break;
+	case 2: cname = "ammo regen"; break;
+	case 3: cname = "portal node"; break;
 	}
 	
 	// Build the string from incoming data
