@@ -169,7 +169,7 @@ script 104 (VOID)
 	
 	SetFont("BIGFONT");
 	
-	HudMessageBold(s:"The \chBlue WarFactory\cd has been destroyed!!"; HUDMSG_FADEOUT, 0, CR_Green, 0.5, 0.7, 2.0, 1.0);
+	HudMessageBold(s:"The \chBlue War Factory\cd has been destroyed!!"; HUDMSG_FADEOUT, 0, CR_Green, 0.5, 0.7, 2.0, 1.0);
 	Log(n:0, s:" destroys Blue War Factory.");
 	AwardBuildingDestruction (TEAM_RED, false);
 	AwardBuildingDamage (BUILDING_FACTORY, TEAM_BLUE);
