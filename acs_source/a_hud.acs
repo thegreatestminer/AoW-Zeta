@@ -220,6 +220,14 @@ function void TeamMessage (int msgtype, int x0, int pnum)
 script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
 	if (GetCVar ("zeta_cl_noteamlog"))
 		terminate;
+		
+	
+	// Print it out on the team log
+	if (GetCVar ("zeta_cl_noteamlog"))
+		terminate; // User doesn't want team intel, period.
+	
+	if (!PlayerInGame (intHolder[i_consoleplayer]) || PlayerTeam() != ConsoleTeam())
+		terminate; // Not a teammate or we're not in-game
 	
 	str ec, elc, ac, alc;
 	str cname, msg;
@@ -293,13 +301,13 @@ script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
 			s:"\ckEither the server is sending me bad data or there's a bug in the code!");
 		terminate;
 	}
-	
-	// Print it out on the team log
-	CL_TeamMessage (msg);
+		
+	Log (s:TeamColors[ConsoleTeam ()], s:"<TEAM>\c- ", s:msg);
 }
 
 // =============================================================================
 // [Dusk] {9/15/12} CL_TeamMessage - Adds a new message into the team log.
+/* // [Cata] Deprecated as strings can't be passed as parameters. This was leading to broken messages.
 function void CL_TeamMessage (str incoming) {
 	if (GetCVar ("zeta_cl_noteamlog"))
 		return; // User doesn't want team intel, period.
@@ -312,7 +320,7 @@ function void CL_TeamMessage (str incoming) {
 	
 	Log (s:TeamColors[ConsoleTeam ()], s:"<TEAM>\c- ", s:incoming);
 }
-
+*/
 // =============================================================================
 // [Dusk] {11/1/12} Hub function for HUD updating.
 function void UpdateHUD (void) {

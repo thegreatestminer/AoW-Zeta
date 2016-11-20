@@ -130,6 +130,13 @@ script SC_CL_BeaconPlanted (int p) CLIENTSIDE {
 	// Not if the planter is not on our team.
 	if (GetPlayerTeam (p) != ConsoleTeam ())
 		terminate;
+		
+	// Write it into the team log
+	if (GetCVar ("zeta_cl_noteamlog"))
+		terminate; // User doesn't want team intel, period.
+	
+	if (!PlayerInGame (intHolder[i_consoleplayer]) || PlayerTeam() != ConsoleTeam())
+		terminate; // Not a teammate or we're not in-game
 	
 	// Try determine where the nuke is.
 	int location = EstimateLocation (3800 + p);
@@ -141,8 +148,7 @@ script SC_CL_BeaconPlanted (int p) CLIENTSIDE {
 	else
 		message = strparam (n:p + 1, s:"\c- has planted a beacon somewhere");
 	
-	// Write it into the team log
-	CL_TeamMessage (message);
+	Log (s:TeamColors[ConsoleTeam ()], s:"<TEAM>\c- ", s:message);
 }
 
 // =============================================================================
