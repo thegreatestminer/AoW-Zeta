@@ -357,8 +357,8 @@ actor Utility_C4BoxMarker : Utility_MarkerBase {
 actor Utility_ArmourMarker : Utility_MarkerBase {
 	states {
 	Spawn:
-		ARM3 A 6 bright 
-		ARM3 AAAAA 2 bright A_FadeOut(0.1)
+		ARM7 A 6 bright 
+		ARM7 AAAAA 2 bright A_FadeOut(0.1)
 		stop
 	}
 }

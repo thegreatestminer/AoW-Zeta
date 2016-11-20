@@ -214,6 +214,13 @@ function void BuyAddon (int id) {
 		return;
 	}
 	
+	// [Cata] Moved this here to avoid logical errors where people could buy nukes/ions without enough money
+	// Check cost
+	if (GetCredits () < cost - CalcDiscount(cost)) {	// [SG] calculate discount when checking for the price
+		MenuResponse (MSGTYPE_ERROR, "You need more credits!");
+		return;
+	}
+	
 	// Item-specific checks
 	switch (item) {
 	case ITEM_PlasmaCannon:
@@ -274,12 +281,6 @@ function void BuyAddon (int id) {
 		// Give the beacon manually to ensure the player gets it.
 		GiveInventory (cond (PlayerTeam() == TEAM_Blue, "IonCannonBeacon", "NuclearStrikeBeacon"), 1);
 		break;
-	}
-	
-	// Check cost
-	if (GetCredits () < cost - CalcDiscount(cost)) {	// [SG] calculate discount when checking for the price
-		MenuResponse (MSGTYPE_ERROR, "You need more credits!");
-		return;
 	}
 	
 	// Item is good, give it to the player
