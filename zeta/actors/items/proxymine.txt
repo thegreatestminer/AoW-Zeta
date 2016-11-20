@@ -75,7 +75,7 @@ Actor ProxyMineRed {
 	
 	States {
 	Spawn:
-		PC4T AA 0 A_CheckSight("Death.Deconstruction")
+		PC4T AA 0 //A_CheckSight("Death.Deconstruction") [Cata] Unintended behavior from Zandro 3.0. Deprecating this.
 		PC4T A 0 ACS_ExecuteAlways (980, 0)
 		PC4T A 0 A_ChangeFlag("Friendly", 0)
 	Idle:

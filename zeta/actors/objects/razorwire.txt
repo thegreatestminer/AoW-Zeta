@@ -17,7 +17,7 @@ actor RazorWire {
 	Tag "Razor wire (red)"
 	states {
 	Spawn:
-		WIRE AA 0 A_CheckSight("Death.Deconstruction")
+		WIRE AA 0 //A_CheckSight("Death.Deconstruction") [Cata] Unintended behavior from Zandro 3.0. Deprecating this.
 		WIRE AAAAAAAAAA 3 A_FadeIn (0.1)
 		WIRE A 0 A_ChangeFlag ("NOCLIP", 0)
 		WIRE A 35 A_Gravity
@@ -44,7 +44,7 @@ actor RazorWireBlue : RazorWire {
 	Tag "Razor wire (blue)"
 	States {
 	Spawn:
-		WIRE AA 0 A_CheckSight("Death.Deconstruction")
+		WIRE AA 0 //A_CheckSight("Death.Deconstruction") [Cata] Unintended behavior from Zandro 3.0. Deprecating this.
 		WIRE AAAAAAAAAA 3 A_FadeIn (0.1)
 		WIRE A 0 A_ChangeFlag ("NOCLIP", 0)
 		WIRE A 35 A_Gravity
