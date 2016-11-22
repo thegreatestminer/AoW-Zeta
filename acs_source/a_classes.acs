@@ -492,6 +492,14 @@ function int GetPlayerClass (int i) {
 	return CheckActorInventory (3800 + i, "ClassID")-1;
 }
 
+// [Cata] This is for the menu to gray out classes once a building is destroyed.
+function int menuPurchase_ExistsBuilding (int b, int t) 
+{
+	if (GetActorSpeed (BaseTIDs[2*b + t]) > 0) 
+			return true;
+	return false;
+}
+
 // ============================================================================
 // Returns true if the given class can be bought, false if it can't
 // This is just client-side prediction on the menu.
@@ -508,19 +516,20 @@ function int CheckClassAvailability (int id) {
 		return false;
 	
 	// Check building dependencies
-	switch (Classes_int[id][CK_DEPENDENCY]) {
-	case DEP_BARRACKS:
-		if (!CheckBuilding (BUILDING_BARRACKS, ct))
-			return false;
-		break;
-	case DEP_CENTRE:
-		if (!CheckBuilding (BUILDING_RESCENTRE, ct))
-			return false;
-		break;
-	case DEP_REFINERY:
-		if (!CheckBuilding (BUILDING_REFINERY, ct))
-			return false;
-		break;
+	switch (Classes_int[id][CK_DEPENDENCY]) 
+	{
+		case DEP_BARRACKS:
+			if (!menuPurchase_ExistsBuilding (BUILDING_BARRACKS, ct))
+				return false;
+			break;
+		case DEP_CENTRE:
+			if (!menuPurchase_ExistsBuilding (BUILDING_RESCENTRE, ct))
+				return false;
+			break;
+		case DEP_REFINERY:
+			if (!menuPurchase_ExistsBuilding (BUILDING_REFINERY, ct))
+				return false;
+			break;
 	}
 	
 	// Check timecop limit

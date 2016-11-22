@@ -17,8 +17,10 @@ script 702 (void) CLIENTSIDE {
 	int i, j, c;
 	
 	// Names of classes
-	for (i = 0; i <= 3; i++) {
-		for (j = 0; j < MAX_MENU_ITEMS; j++) {
+	for (i = 0; i <= 3; i++) 
+	{
+		for (j = 0; j < MAX_MENU_ITEMS; j++) 
+		{
 			c = MenuClasses[i][j];
 			
 			if (c >= 0 && c < NUMCLASSES)
@@ -141,7 +143,8 @@ script 709 (int m0, int m1) {
 	SetResultValue (0);
 	
 	// Classes
-	if (m0 <= 3) {
+	if (m0 <= 3) 
+	{
 		// Find class ID from the table
 		int id = MenuClasses[m0][m1];
 		
@@ -151,7 +154,10 @@ script 709 (int m0, int m1) {
 			MenuResponse (MSGTYPE_ERROR, g_Error);
 			terminate;
 		}
-	} else if (m0 == 4) {
+	} 
+	
+	else if (m0 == 4) 
+	{
 		// Add-ons
 		BuyAddon (m1);
 		
@@ -161,12 +167,18 @@ script 709 (int m0, int m1) {
 		
 		SetResultValue (0);
 		terminate;
-	} else if (m0 == 5) {
+	} 
+	
+	else if (m0 == 5) 
+	{
 		// Resign
 		ACS_ExecuteAlways (95, 0);
 		SYNC_RefreshMenu ();
 		terminate;
-	} else if (m0 == 6) {
+	} 
+	
+	else if (m0 == 6) 
+	{
 		// Surrender
 		VoteSurrender ();
 		terminate;
@@ -179,17 +191,22 @@ script 709 (int m0, int m1) {
 // MENU LIMIT
 script 713 (int m0, int m1, int y) CLIENTSIDE {
 	int limited;
-	if (m0 <= 3) {
+	if (m0 <= 3) 
+	{
 		limited = !CheckClassAvailability (MenuClasses[m0][m1]);
-	} else {
+	} 
+	else 
+	{
 		if (CheckInventory (Items_Str[Addons_int[m1][ADK_ITEM]][IK_ITEM0]))
 			limited = true; // Must not have it already
 		else if (CheckInventory ("Credit") < Addons_int[m1][ADK_COST])
 			limited = true; // Must afford it
-		else if (
+		else if 
+		(
 			(Addons_int[m1][ADK_ITEM] == ITEM_BEACON) &&
 			(CheckInventory ("IonCannonBeacon") || CheckInventory ("NuclearStrikeBeacon"))
-		) {
+		) 
+		{
 			// Beacons need to check the actual beacon items as the item name is a shortcut.
 			limited = true;
 		}
