@@ -79,13 +79,21 @@ function void DonateCredits (int donatee, int dosh) {
 		dosh = 100;
 	
 	// Validity check
-	if (GetPlayerTeam (donatee) != PlayerTeam() || donatee == PlayerNumber())
+	if (GetPlayerTeam (donatee) != PlayerTeam() || donatee == PlayerNumber()) 
 		return;
 	
 	if (GetCredits () < dosh) {
 		DisplayCross ();
 		IntelMessageNoLog ("\cgYou can't afford this!", false);
 		return;
+	}
+	
+	// [Cata] Don't donate to overcapped players.
+	if(Credits[donatee] >= CONFIG_CREDITCAP)
+	{
+		DisplayCross ();
+		IntelMessageNoLog ("\cgThat player cannot carry any more credits!", false);
+		return;		
 	}
 	
 	GiveCredits (-dosh);
