@@ -162,7 +162,7 @@ actor ThrowFlashbang : Inventory
 
 // =============================================================================
 actor FlashbangThrown {
-    Obituary "$OB_Flashbang"
+    Obituary "$OB_FLASHBANG"
     Radius 5
     Height 5	
     Speed 17	

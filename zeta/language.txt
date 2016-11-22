@@ -63,7 +63,7 @@ OB_SNIPER = "%o found %k's bullet in %p head.";
 OB_SUBBY = "%o was whittled down by %k's sub-machinegun.";
 OB_FRAGGRENADE = "%o was blown to pieces by %k's frag grenade."
 OB_FRAGGRENADESHRAPNEL = "%o was finished off by %k's frag grenade shrapnel."
-
+OB_FLASHBANG = "%o was blinded to death by %k's flashbang."
 // =============================================================================
 // Mech obits
 OB_ORCA = "%o was pinned down by %k's Orca.";
