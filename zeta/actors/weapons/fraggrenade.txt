@@ -18,6 +18,7 @@ actor FragGrenade : AOWWeapon {
 	Weapon.UpSound "weapons/up/fragnade"
 	Tag "Fragmentation Grenade"
 	DropItem "FragGrenadeAmmo"
+	Obituary "$OB_FRAGGRENADE"
 	Scale 0.25
 	States {
 	Ready:
@@ -207,7 +208,7 @@ actor FragGrenadeShrapnel {
 	Height 8
 	Damage (4)
 	Speed 60
-	Obituary "$OB_FRAGGRENADE"
+	Obituary "$OB_FRAGGRENADESHRAPNEL"
 	Scale 0.3
 	Gravity 0.6
 	BounceCount 10
