@@ -4,7 +4,7 @@ actor HHBulletPuff : bulletpuff
 	+NOINTERACTION
 	+FORCEXYBILLBOARD
 	+PUFFGETSOWNER
-	+PUFFONACTORS
+	// +PUFFONACTORS [Cata] Stop puff from spawning metal hit on actors.
 	states 
 	{
 		Spawn:
