@@ -658,12 +658,10 @@ Object PlasmaFlameDecay
     frame TNT1A { light PlasmaReds }
 }
 
-/* [TT] Deprecated
 Object PlasmaFlameDecayBlue
 {
     frame TNT1A { light Plasma }
 }
-*/
 
 Object PlasmaCannonBall
 {
