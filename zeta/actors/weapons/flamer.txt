@@ -215,7 +215,7 @@ actor PhosphorusGrenade {
 	DeathSound "weapons/rocklx"
 	DamageType "Fire"
 	Decal "Scorch"
-	Translation "2:31=146:159"
+	translation "1:31=128:143", "32:39=174:174"
 	States {
 	Spawn:
 		SGRN A 2 bright A_SpawnItemEx ("PulseBallSmokePuff", -25)
