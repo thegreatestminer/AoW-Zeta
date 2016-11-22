@@ -11,7 +11,6 @@ actor TiberiumAutorifleWeak : AOWWeapon 21084 {
 	weapon.ammotype2 "TE21CalAmmo"
 	weapon.ammouse2 1
 	weapon.ammogive2 20
-	obituary "%o was skewered by %k's Tiberium Autorifle."
 	Weapon.PreferredSkin "MarineMachineGun"
 	Weapon.UpSound "weapons/up/tibrifle"
 	states
@@ -242,6 +241,7 @@ actor TiberiumDart : FastProjectile {
 	alpha 0.85
 	scale 0.15
 	deathsound "toxin/explode"
+	obituary "$OB_TIBAUTORIFLE"
 	decal "ChemScorch"
 	states {
 	Spawn:
@@ -262,6 +262,7 @@ actor TiberiumDartExplosion {
 	PROJECTILE
 	+NOCLIP
 	DamageType "Chemical"
+	obituary "$OB_TIBAUTORIFLEEXPLOSION"
 	states {
 	Spawn:
 		TNT1 A 0
