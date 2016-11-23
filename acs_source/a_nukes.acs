@@ -4,6 +4,15 @@ script SC_BeaconInventory (int team) {
 	if (CheckInventory ("PlantingBeacon"))
 		terminate;
 	
+	// [Cata] Prevent trolling as Zandro doesn't have specate trolling fixed yet... sigh.
+	if(isNearTeamTerminal(getplayerinfo(playernumber(), PLAYERINFO_TEAM), 512.0))
+	{
+		GenericError ("Are you crazy soldier?! You can't place this here!");
+		if (PlayerTeam () == TEAM_BLUE) giveinventory("IonCannonBeacon", 1);
+		else giveinventory("NuclearStrikeBeacon", 1);
+		terminate;
+	}
+	
 	// Safety lock
 	if (!CheckInventory ("BeaconUseToken")) {
 		GiveInventory ("BeaconUseToken", 1);

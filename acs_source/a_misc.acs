@@ -93,23 +93,12 @@ script SC_CHECKC4TIMER (void)
 }
 
 // [Cata] Helper function for SC_CheckC4Placement
-function int isNearTeamTerminal(int team)
+function int isNearTeamTerminal(int team, int dist)
 {
-	int i;
-
-	// red
-	if(team == 1)
-	{	
-		for(i = 0; i < MAX_BUILDINGS; i++)
-			if(CheckBuilding(i, 1) && AproxDistance (BaseTIDs[2*i+1], activatortid()) < 256.0)
-				return true;
-		return false;
-	}
-	
-	//blue
-	for(i = 0; i < MAX_BUILDINGS; i++)
-		if(CheckBuilding(i, 0) && AproxDistance (BaseTIDs[2*i], activatortid()) < 256.0)
+	for(int i = 0; i < MAX_BUILDINGS; i++)
+		if(CheckBuilding(i, team) && AproxDistance (BaseTIDs[2*i+team], activatortid()) < dist)
 			return true;
+
 	return false;
 }
 
@@ -117,18 +106,14 @@ function int isNearTeamTerminal(int team)
 script SC_CheckC4Placement (int team) 
 {
 	// We check if we can spawn this...
-	if(isNearTeamTerminal(team) == true)
+	if(isNearTeamTerminal(team, 352.0) == true)
 	{
 		// Can't spawn, too close to team's terminal
-		printbold(s:"Failed; Too close to building."); 
 		SetResultValue(0);
 		terminate;
 	}
-		
-	
 	
 	// We're OK, spawn the c4
-	printbold(s:"Success!");
 	SetResultValue(1);
 }
 
