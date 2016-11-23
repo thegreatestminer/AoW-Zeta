@@ -15,6 +15,7 @@ actor Flashbang : AOWWeapon {
 	Weapon.AmmoGive2 0	
     Weapon.UpSound "weapons/up/flashbang"	
 	Weapon.PreferredSkin "MarineFist"
+    Obituary "$OB_FLASHBANG"
 	DropItem "FlashbangAmmo"	
     States {
     Ready:
