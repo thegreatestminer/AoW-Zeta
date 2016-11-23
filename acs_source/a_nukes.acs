@@ -60,7 +60,7 @@ script SC_BeaconInventory (int team) {
 		}
 		
 		// Tell teammates where the beacon was planted.
-		ACS_ExecuteAlways (SC_CL_BeaconPlanted, 0);
+		ACS_ExecuteAlways (SC_CL_BeaconPlanted, playernumber());
 		
 		// Tell the enemy team a warning
 		ACS_ExecuteAlways (SC_CL_NukeTimeWarning, 0, !PlayerTeam(), GetCVAR ("zeta_nukecountdown"));

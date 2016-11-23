@@ -217,11 +217,8 @@ function void TeamMessage (int msgtype, int x0, int pnum)
 // [Dusk] Script 982: Client recieves data from server about a team
 // message. Build the string from recieved information and add it to team log.
 // [Cata] pnum addon.
-script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE {
-	if (GetCVar ("zeta_cl_noteamlog"))
-		terminate;
-		
-	
+script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE 
+{
 	// Print it out on the team log
 	if (GetCVar ("zeta_cl_noteamlog"))
 		terminate; // User doesn't want team intel, period.
