@@ -576,6 +576,17 @@ script 697 (void) {
 	SetActorProperty (0, APROP_SPEED, PlayerSpeeds[PlayerNumber()]);
 }
 
+// [Cata] Orca troll check
+script 698 (void) 
+{
+	if(isNearTeamTerminal(getplayerinfo(playernumber(), PLAYERINFO_TEAM), 312.0))
+	{
+		setresultvalue(1);
+		terminate;
+	}
+	setresultvalue(0);
+}
+
 // Get in Mech animation
 script 699 (void) {
 	delay (1);

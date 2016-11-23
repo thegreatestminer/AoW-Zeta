@@ -269,10 +269,15 @@ actor EjectedOrca {
 		ORCV A 0 A_ChangeFlag("NOCLIP",0)
 		goto Spawn+3
 	Death:
-		TNT1 A 0 A_StopSound (5)
-		TNT1 A 0 A_StopSound (6)
-		TNT1 A 0 A_SpawnItemEx ("MechExplosionSmall", 0,0,0,0,0,0,0, SXF_NOCHECKPOSITION|SXF_SETMASTER) // [TT] Prevent team damage.
+		ORCV A 0 A_StopSound (5)
+		ORCV A 0 A_StopSound (6)
+		ORCV A 0 a_jumpif(acs_executewithresult(698) == 1, "Death.NoTeamKill")
+		ORCV A 3 
+		ORCV A 0 A_SpawnItemEx ("MechExplosionSmall", 0,0,0,0,0,0,0, SXF_NOCHECKPOSITION|SXF_SETMASTER) // [TT] Prevent team damage.
 		stop
+	Death.NoTeamKill:
+		ORCV A 1 A_FadeOut (0.05)
+		wait
 	}
 }
 
