@@ -82,13 +82,54 @@ script SC_WEAPONCHECK OPEN {
 	restart;
 }
 
-script SC_CHECKC4TIMER (void) {
+script SC_CHECKC4TIMER (void) 
+{
 	if (!TimeDelay (GetConfig (CONFIG_C4DELAY), true)) {
 			//g_Error = "It is too early to use this!";
 			SetResultValue(0);
 		}
 	else
 		SetResultValue(1);
+}
+
+// [Cata] Helper function for SC_CheckC4Placement
+function int isNearTeamTerminal(int team)
+{
+	int i;
+
+	// red
+	if(team == 1)
+	{	
+		for(i = 0; i < MAX_BUILDINGS; i++)
+			if(CheckBuilding(i, 1) && AproxDistance (BaseTIDs[2*i+1], activatortid()) < 256.0)
+				return true;
+		return false;
+	}
+	
+	//blue
+	for(i = 0; i < MAX_BUILDINGS; i++)
+		if(CheckBuilding(i, 0) && AproxDistance (BaseTIDs[2*i], activatortid()) < 256.0)
+			return true;
+	return false;
+}
+
+// [Cata] To prevent spectate griefing.
+script SC_CheckC4Placement (int team) 
+{
+	// We check if we can spawn this...
+	if(isNearTeamTerminal(team) == true)
+	{
+		// Can't spawn, too close to team's terminal
+		printbold(s:"Failed; Too close to building."); 
+		SetResultValue(0);
+		terminate;
+	}
+		
+	
+	
+	// We're OK, spawn the c4
+	printbold(s:"Success!");
+	SetResultValue(1);
 }
 
 script 320 (int Which)
