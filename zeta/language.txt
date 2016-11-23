@@ -61,13 +61,13 @@ OB_SHOCKRIFLE = "%o was overloaded by %k's shock rifle.";
 OB_SHOTGUN = "%o was smacked by %k's shotgun.";
 OB_SNIPER = "%o found %k's bullet in %p head.";
 OB_SUBBY = "%o was whittled down by %k's sub-machinegun.";
-OB_FRAGGRENADE = "%o was blown to pieces by %k's frag grenade."
-OB_FRAGGRENADESHRAPNEL = "%o was finished off by %k's frag grenade shrapnel."
-OB_FLASHBANG = "%o was blinded to death by %k's flashbang."
-OB_TIBAUTORIFLE = "%o was skewered by %k's tiberium autorifle."
-OB_TIBAUTORIFLEEXPLOSION = "%o was mutated by %k's tiberium autorifle."
-OB_COMBAUTORIFLE = "%o was ignited by %k's combustion autorifle."
-OB_COMBAUTORIFLEEXPLOSION = "%o was set ablaze by %k's combustion autorifle."
+OB_FRAGGRENADE = "%o was blown to pieces by %k's frag grenade.";
+OB_FRAGGRENADESHRAPNEL = "%o was finished off by %k's frag grenade shrapnel.";
+OB_FLASHBANG = "%o was blinded to death by %k's flashbang.";
+OB_TIBAUTORIFLE = "%o was skewered by %k's tiberium autorifle.";
+OB_TIBAUTORIFLEEXPLOSION = "%o was mutated by %k's tiberium autorifle.";
+OB_COMBAUTORIFLE = "%o was ignited by %k's combustion autorifle.";
+OB_COMBAUTORIFLEEXPLOSION = "%o was set ablaze by %k's combustion autorifle.";
 
 // =============================================================================
 // Mech obits
