@@ -9,7 +9,7 @@ script 94 (int Team) {
 	}
 	
 	TakeInventory("IsInSpawnRoom",1);
-	
+
 	ACS_ExecuteAlways (SC_DOTELEPORTTOFIELD, 0, Team);
 }
 
@@ -97,28 +97,22 @@ script 90 (void) {
 }
 
 // Teleport the player to base.
-script SC_DOTELEPORTTOFIELD (int team) {
+script SC_DOTELEPORTTOFIELD (int team) 
+{
 	int i;
 	bool failed = true;
 	
 	// [Dusk] Try to teleport 10 times. This way, if one teleport destination is blocked,
 	// we'll still be able to teleport onto another.
-	/*if (GetLevelInfo (LEVELINFO_LEVELNUM) == 20 || GetLevelInfo (LEVELINFO_LEVELNUM) == 21) {
-		// Renegade levels need NoStop. Maybe there could be a cleaner way to do this?
-		for (i = 0; i < 10; i++) {
-			if (Teleport_NoStop (1+(1-team), 0)) {
-				failed = false;
-				break;
-			}
+	for (i = 0; i < 10; i++) 
+	{
+		if (Teleport (1+(1-team))) 
+		{
+			failed = false;
+			break;
 		}
-	} else {*/
-		for (i = 0; i < 10; i++) {
-			if (Teleport (1+(1-team))) {
-				failed = false;
-				break;
-			}
-		}
-	//}
+	}
+
 	
 	if (failed)
 	{
@@ -126,5 +120,7 @@ script SC_DOTELEPORTTOFIELD (int team) {
 		GiveInventory ("IsInSpawnRoom", 1);
 	}
 	else
+	{
 		TakeInventory ("IsInSpawnRoom", 1);
+	}
 }

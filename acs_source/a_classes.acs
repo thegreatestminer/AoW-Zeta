@@ -202,7 +202,6 @@ function int SetClass (int id, int scflags) {
 		SetAmmoCapacity ("FragGrenadeAmmo", 1);
 		SetAmmoCapacity ("FlashbangAmmo", 1);
 		SetActorProperty (0, APROP_SPEED, 1.0);
-		SetHealth (GetSpawnHealth ());
 		SetActorProperty (0, APROP_RenderStyle, STYLE_Normal);
 		SetActorProperty (0, APROP_Alpha, 1.0);
 		SetInventory ("Credit", Credits[PlayerNumber()]);

@@ -328,7 +328,8 @@ script SC_SERVERSETTINGS OPEN
 }
 
 //Setting Player scripts
-script SC_PLAYERRESPAWN RESPAWN {
+script SC_PLAYERRESPAWN RESPAWN 
+{
 	if (StartTime[PlayerNumber()] == 0)
 		InitPlayer();
 	
@@ -354,6 +355,11 @@ script SC_PLAYERRESPAWN RESPAWN {
 	GiveInventory ("Experience", Experience[PlayerNumber()]);
 	
 	SetInventory ("IsAdmin", IsAdmin[PlayerNumber()]);
+	
+	// [Cata] Set player health for consistency.
+	acs_executealways(91, 0, 0, 0, 0);
+	delay(5);
+	SetHealth (GetSpawnHealth ());
 }
 
 script SC_CL_Respawn RESPAWN CLIENTSIDE {
