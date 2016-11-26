@@ -17,7 +17,8 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 - 	Enhanced Timed C4s are now a global team research, instead of being given per-class or per-rank. Standard Timed C4s have 520 health (from 500),
 	and the research increases their health to 650 (instead of 700). Enhanced C4s no longer do more damage than regular ones;
 - 	Extra Frag Grenades and Flashbangs now cost $150 each, from $200;
-- 	All maps now have research centre panels in the spawn room as well as in the building itself
+- 	All maps now have research centre panels in the spawn room as well as in the building itself.
+-	Anti-troll mechanics are in-place now. Any Orcas, C4's, Nukes/Ions thrown near friendly terminals will disappear.
 
 ----- CRATE CHANGES ------
 + 	Added Grenade Pack crate, which gives you 4 Frag Grenades and 4 Flashbangs;
@@ -67,6 +68,7 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 -	Remover Gun: Deconstruction speed greatly increased,
 ~ 	Suicide Bomb Pack should consistently play sound now instead of randomly stopping.
 ~ 	Missile Launcher's homing no longer stops working randomly. Blast away!
+~	Hand Grenades have kill messages now.
 
 ------------------------------------------------------------
 ----- MECHS
@@ -92,6 +94,7 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 ------------------------------------------------------------
 *** All ACS has its source available in the file. Anyone can recompile the scripts themselves to verify the lack of "hidden" code, which was plentiful in AOW 2.1; ***
 ++ All CVars had the aow_ prefix changed to zeta_ to prevent conflict with the existing CVars;
++ Intel messages revamped, multiple intel messages can now be displayed at once.
 + New remixed sudden death songs.
 ~ Sandbags should no longer be glitchy when placed near ledges;
 ~ All Mechs look big and imposing again, instead of being shrunk down;
@@ -102,4 +105,6 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 ~ You can no longer equip armor just before picking a class or entering a mech - if you do so, it will be lost;
 ~ Instant Juggernaut no longer keeps your armor;
 ~ All startup warnings fixed.
+~ Players now correctly respawn with their ranking health instead of 100
+~ This no longer changes your hud_scale settings anymore.
 ~ Many, many more hidden ACS fixes.
