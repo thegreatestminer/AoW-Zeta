@@ -71,6 +71,9 @@ function void FixFuckedUpArrays (void) {
 // [Dusk] hud_scale is forced true to get around a missing SBARINFO feature.
 // When Zandronum SBARINFO gets the forcescaled option, be sure to nuke this
 // script from orbit! And make sure nothing is left!
+
+// [Cata] And thus it was sent to orbit thanks to Zandro 3.0!
+/*
 script 666 OPEN CLIENTSIDE {
 	while (1) {
 		if (!GetCVAR ("hud_scale"))
@@ -78,3 +81,4 @@ script 666 OPEN CLIENTSIDE {
 		delay (1);
 	}
 }
+*/
