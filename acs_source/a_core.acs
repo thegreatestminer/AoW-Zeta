@@ -178,6 +178,10 @@ script SC_SERVERSETTINGS OPEN
 	if (GetCVAR ("sv_weaponstay"))
 		ConsoleCommand ("sv_weaponstay 0");
 	
+	
+	if (GetCVAR ("sv_nomedals"))
+		ConsoleCommand ("sv_nomedals 0");
+	
 	// [SG] With these moved to CVarInfo, this is no longer needed
 	/*
 	
