@@ -140,9 +140,9 @@ function bool RC_PurchaseResearch (int r) {
 		
 		SetFont("SMALLFONT");
 		if (PlayerTeam() == TEAM_RED)
-			IntelMessage (strparam (s:"\cARed Team\cJ researches \cD", s:Researches_Str[r][RCK_NAME], s:"!"), false);
+			IntelMessage (strparam (s:"\cARed Team\cJ researches \cD", s:Researches_Str[r][RCK_NAME], s:"!"), true);
 		else
-			IntelMessage (strparam (s:"\cNBlue Team\cJ researches \cD", s:Researches_Str[r][RCK_NAME], s:"!"), false);
+			IntelMessage (strparam (s:"\cNBlue Team\cJ researches \cD", s:Researches_Str[r][RCK_NAME], s:"!"), true);
 		
 		
 		Log (n:0, s:" researches ", s:Researches_str[r][RCK_NAME], s:" for ", s:TeamNames[PlayerTeam()], s:" team.");

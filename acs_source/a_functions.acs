@@ -668,22 +668,39 @@ function void _IntelMessage (str text, bool bold, bool nolog) {
 	
 	// Determine y-pos
 	int ypos = INTEL_YPOS;
-	if (multiline)
-		ypos = INTEL_YPOS2;
+	//if (multiline)
+		//ypos = INTEL_YPOS2;
 	
 	// [Dusk] {10/30/12} Don't log it to console if not desired.
 	int flags = HUDMSG_FADEOUT;
 	if (!nolog)
 		flags |= HUDMSG_LOG;
 	
+	
+	// [Cata] Adding support for multiple intel messages on hud.
+	if(bold == true)
+	{
+		int i;
+		for(i = 0; i < intel_maxMessages; i++)
+			if(intel_activeMsg[i] == 0)
+				break;
+		
+		intel_activeMsg[i] = (35 * 4) + 10;
+		if(multiline)
+		{
+			intel_activeMsg[i+1] = (35 * 4) + 10;
+		}		
+	}
+	
+	setfont("smallfont");
 	if (bold)
 		HudMessageBold (s:text;
-			flags, 15000, CR_WHITE,
-			INTEL_XPOS, ypos, 2.0, 1.0);
+			flags, intel_msgBaseID + i, CR_WHITE,
+			INTEL_XPOS, ypos + fixedmul(intel_msgSpacing, i << 16), 3.0, 1.0);
 	else
 		HudMessage (s:text;
-			flags, 15000, CR_WHITE,
-			INTEL_XPOS, ypos, 2.0, 1.0);
+			flags, intel_msgBaseID + intel_maxMessages + 1, CR_WHITE,
+			intel_xposlocal, intel_yposlocal, 3.0, 1.0);
 }
 
 function void IntelMessage (str text, bool bold) {

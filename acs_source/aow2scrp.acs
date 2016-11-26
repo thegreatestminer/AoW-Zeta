@@ -24,8 +24,17 @@
 // ============================================================================
 // Intel HudMessage coords
 #define INTEL_XPOS 0.5
-#define INTEL_YPOS 0.055
-#define INTEL_YPOS2 0.0475
+#define INTEL_YPOS 0.065
+#define INTEL_YPOS2 0.0575
+
+// [Cata] Supporting multiple messages on intel now.
+#define intel_maxMessages 18 	// Max amount of intel on the screen
+#define intel_msgSpacing 0.02	// Spacing between each intel message
+#define intel_msgBaseID 15000	// Base id of intel messages, so this will range from 15000 to 15000+intel_maxMessages
+int intel_activeMsg[intel_maxMessages];	//States whether or not a message is being displayed.
+#define intel_ticrate 5 // Update rate of active messages, would be 1 but changed to 5 to see how it affects performance.
+#define intel_yposlocal -0.79 // Global intel messages, like warnings take up the top area, so local messages (like you have ranked up..) are elsewhere.
+#define intel_xposlocal 0.5
 
 // ============================================================================
 // Rank identifiers
@@ -261,7 +270,7 @@
 #libdefine SC_DONATEHUD					989
 #libdefine SC_MARINE_COMENSATION		990
 #libdefine SC_CL_PLAYERDEATH			991
-//										992
+#libdefine SC_TEAMMESSAGE_TICKER		992
 //										993
 #libdefine SC_Death						994
 //										995

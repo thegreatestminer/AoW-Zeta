@@ -313,6 +313,18 @@ script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE
 	Log (s:TeamColors[ConsoleTeam ()], s:"<TEAM>\c- ", s:msg);
 }
 
+// [Cata] This script keeps track of active intel messages
+script SC_TEAMMESSAGE_TICKER open
+{
+	while(1)
+	{
+		for(int i = 0; i < intel_maxMessages; i++)
+			if(intel_activeMsg[i] >= intel_ticrate)
+				intel_activeMsg[i]-= intel_ticrate;
+		delay(intel_ticrate);
+	}
+}
+
 // =============================================================================
 // [Dusk] {9/15/12} CL_TeamMessage - Adds a new message into the team log.
 /* // [Cata] Deprecated as strings can't be passed as parameters. This was leading to broken messages.
