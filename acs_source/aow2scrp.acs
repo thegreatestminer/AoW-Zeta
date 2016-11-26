@@ -613,8 +613,9 @@
 #define TMSG_DESTRUCT 10
 #define TMSG_TELELINK 11
 #define TMSG_TEAMSWITCH 12
+#define TMSG_IONNUKE 13
 // ----
-#define NUM_MSGTYPES 13
+#define NUM_MSGTYPES 14
 
 // ============================================================================
 // VARIABLES

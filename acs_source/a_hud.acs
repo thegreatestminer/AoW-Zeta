@@ -292,6 +292,17 @@ script SC_CL_TeamLog (int msgtype, int x0, int pnum) NET CLIENTSIDE
 		else
 			msg = strparam (n:pnum+1, s:" \cdswitches from the enemy team. Say hi!");
 		break;
+	case TMSG_IONNUKE:
+		// Try determine where the nuke is.
+		int location = EstimateLocation (3800 + pnum);
+		
+		// Build the message
+		if (location != -1)
+		msg = strparam (n:pnum + 1, s:"\c- has planted a beacon near \cD", s:LocationNames[location]);
+		else
+		msg = strparam (n:pnum + 1, s:"\c- has planted a beacon somewhere");
+
+		break;
 	default:
 		Log (s:"\ckACS: Recieved unknown team message (", d:msgtype, s:", ", d:x0,
 			s:", ", d:pnum, s:") (activator: #", d:PlayerNumber(), s:" - ", n:pnum+1, s:"\ck)\n",
