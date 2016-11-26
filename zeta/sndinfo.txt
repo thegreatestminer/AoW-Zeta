@@ -1,3 +1,16 @@
+// [Cata] Spree announcer stuff
+double double
+multi multi
+ultra ultra
+monster monster
+
+killings killings
+rampage rampage
+dominati dominati
+unstoppa unstoppa
+godlike godlike
+wicked wicked
+
 // $rolloff * 400 3600
 
 blanksnd			blanksnd

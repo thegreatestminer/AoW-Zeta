@@ -94,6 +94,7 @@ Note: Zeta is not based on AOW 2.1, however, for ease of understanding, this cha
 ------------------------------------------------------------
 *** All ACS has its source available in the file. Anyone can recompile the scripts themselves to verify the lack of "hidden" code, which was plentiful in AOW 2.1; ***
 ++ All CVars had the aow_ prefix changed to zeta_ to prevent conflict with the existing CVars;
+++ Imported Sprees from Cata-WepZ, say hello to your lovely monster kills.
 + Intel messages revamped, multiple intel messages can now be displayed at once.
 + New remixed sudden death songs.
 ~ Sandbags should no longer be glitchy when placed near ledges;

@@ -412,3 +412,26 @@ actor NoIceChunkHead : IceChunkHead replaces IceChunkHead {
 		goto Super::Spawn
 	}
 }
+
+// [Cata] For sprees
+
+// For airshot, longshot, etc...
+
+Actor playerDeathHelper
+{
+	+NOCLIP
+	-SOLID
+	+NOGRAVITY
+	speed 0
+	vspeed 0
+	mass 99999999
+	States
+	{
+	  Spawn:
+		NULL A 35
+		loop
+	  Death:
+		NULL A 5
+		stop
+	}
+}
