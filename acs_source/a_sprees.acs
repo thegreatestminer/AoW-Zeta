@@ -65,25 +65,16 @@ script 6600 (int type, int arg1, int arg2) EVENT
 		
 		// End spree if we killed someone on one.
 		if(spreeTracker[arg1] >= 5)
-			clearSpreeTracker(arg1, playernumber());
+			clearSpreeTracker(arg1, playernumber(), false);
 		else
 			spreeTracker[arg1] = 0;
-			
-		// Remove Old dummy for longshot.
-		thing_remove(arg1 + 3800 + playerAdjust);
-		
-		// Add new...
-		spawnDummy(arg1);
 		
 		// Do first blood...
 		if(intHolder[i_FirstBlood] == false)
 			doFirstBlood(playernumber());
 		
-		// Collatoral + LongShot...
+		// Collatoral
 		acs_executealways(6606, 0, playernumber(), arg1, 0);
-
-		// Self-explanatory
-		doAirShot(playernumber(), arg1);
 	}
 }
 
@@ -106,12 +97,14 @@ function void incrementSpreeTracker(int pnum)
 	}
 }
 
-function void clearSpreeTracker(int pnum, int killernum)
+function void clearSpreeTracker(int pnum, int killernum, bool notPlayer)
 {
 	str msg;
 	
 	
-	if(pnum != killernum)
+	if(notPlayer == true)
+			msg = strParam(n:pnum+1, s:"\cj's ", s:spreeArr[(spreeTracker[pnum] / 5) - 1][spreeMsgClient], s:" (", d:spreeTracker[pnum], s:") ", s:" \cjwas ended by \ct", s:GetActorClass(0));
+	else if(pnum != killernum)
 			msg = strParam(n:pnum+1, s:"\cj's ", s:spreeArr[(spreeTracker[pnum] / 5) - 1][spreeMsgClient], s:" (", d:spreeTracker[pnum], s:") ", s:" \cjwas ended by ", n:killernum+1);
 	else if(killernum == -1)
 			msg = strParam(n:pnum+1, s:"\cj's ", s:spreeArr[(spreeTracker[pnum] / 5) - 1][spreeMsgClient], s:" (", d:spreeTracker[pnum], s:") ", s:" \cjwas ended by a map hazard");
@@ -130,21 +123,6 @@ function void clearSpreeTracker(int pnum, int killernum)
 	}
 	intelMessage(msg, true);
 	spreeTracker[pnum] = 0;
-}
-
-
-// For suicides.
-script 6602 death
-{
-	int killed = playernumber();
-	setactivatortotarget(0);
-	int killer = playernumber();
-	
-	if(killed != killer) terminate;
-	if(spreeTracker[killed] >= 5)
-		clearSpreeTracker(killed, killer);
-	if(activatortid() == -1)
-		clearSpreeTracker(killed, -1);
 }
 
 //******************
@@ -216,11 +194,6 @@ function void incrementComboKills(int pnum)
 	LocalAmbientSound(comboArr[comboKillTracker[pnum] - 2][comboSound], 127);
 }
 
-script 6604 death
-{
-	comboKillTimeTracker[playernumber()] = 1;
-}
-
 //******************
 // Achieve Variables
 //******************
@@ -271,26 +244,26 @@ function void doLongShot(int who, int fdist)
 function void doAirShot(int who, int killed)
 {
 	int tid = killed + 3800 + playerAdjust;
-	//print(f:getactorz(tid), s:" ", f:getactorfloorz(tid));
-	if(getActorZ(tid) - getActorFloorZ(tid) < 84.0) return;
+	if(getActorZ(tid) - getActorFloorZ(tid) < 64.0) return;
 	setactivator(who+3800);
 	acs_executealways(6610, 0, 0, 0, 0);
 }
 
-function void spawnDummy(int pnum)
+function int spawnDummy(int pnum)
 {
 	int tid = pnum+3800;
 	int x = getActorX(tid);
 	int y = getActorY(tid);
 	int z = getActorZ(tid);
 	spawnForced("playerDeathHelper", x, y, z, tid+playerAdjust);	
+	return tid+playerAdjust;
 }
 
-script 6606 (int who, int killed) // Collatoral + long shot script.
+script 6606 (int who, int killed) // Collatoral
 {
+	// [Cata] Collatoral Kill 
 	ticKillCounter[who]++;
 	int max = ticKillCounter[who];
-	doLongShot(playernumber(), fdistance(who + 3800, killed + 3800 + playerAdjust));
 	delay(1);	
 	if(ticKillCounter[who] < 2)
 	{
@@ -311,7 +284,7 @@ script 6606 (int who, int killed) // Collatoral + long shot script.
 	intelMessage(msg, true);
 	
 	setactivator(who+3800);
-	acs_executealways(6610, 0, 1, max, 0);
+	acs_executealways(6610, 0, 2, max, 0);
 	ticKillCounter[who] = 0;
 }
 
@@ -346,16 +319,6 @@ function int fdistance (int tid1, int tid2)
 	else len = fixeddiv(len, cos(ang));
 
 	return len;
-}
-
-// fixerrr xdd
-script 6608 death
-{
-	int tid = playernumber()+3800;
-	int x = getActorY(tid);
-	int y = getActorY(tid);
-	int z = getActorY(tid);
-	spawnForced("playerDeathHelper", x, y, z, tid+playerAdjust);
 }
 
 script 6609 enter
@@ -401,4 +364,50 @@ script 6611 respawn clientside
 		
 		delay(1);
 	}
+}
+
+// For stuff that the event script just can't cover.
+script 6602 death
+{
+	// End the playayer's kill tracker, we set it to 1 so msg displays that his combo ended.
+	comboKillTimeTracker[playernumber()] = 1;
+	
+	// Record who died.
+	int killed = playernumber();
+	
+	// Record who killed him.
+	setactivatortotarget(0);
+	int killer = PlayerNumber();
+	
+	//Check if activator is a player.
+	if(killer != -1)
+	{	
+		// Committed sodoku
+		if(killed == killer)
+		{
+			if(spreeTracker[killed] >= 5)
+				clearSpreeTracker(killed, killer, false);
+			terminate;
+		}
+	
+		// [Cata] Longshot
+		int tid = spawnDummy(killed); // spawns dummy where this player died.
+		delay(2);
+
+		doAirShot(playernumber(), killed);
+		doLongShot(playernumber(), fdistance(playernumber() + 3800, tid));
+		delay(2);
+		thing_remove(tid);
+
+		terminate;
+	}
+	
+	// Is not a player.
+	else
+	{
+		if(spreeTracker[killed] >= 5)
+			clearSpreeTracker(killed, -1, true);
+	}
+	
+	
 }
