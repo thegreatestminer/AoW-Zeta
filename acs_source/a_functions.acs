@@ -398,18 +398,22 @@ function str DisplayName (int pn) {
 	if (CheckActorInventory (tid, "IsMech")) { // Mech morphs
 		if (CheckActorInventory (tid, "OrcaWeapons"))
 			return"\cCOrca";
-		if (CheckActorInventory (tid, "RavenWeapons"))
+		else if (CheckActorInventory (tid, "RavenWeapons"))
 			return"\cCRaven";
-		if (CheckActorInventory (tid, "WolverineWeapons"))
+		else if (CheckActorInventory (tid, "WolverineWeapons"))
 			return"\cCWolverine";
-		if (CheckActorInventory (tid, "MadCatWeapons"))
+		else if (CheckActorInventory (tid, "MadCatWeapons"))
 			return"\cCMadCat";
-		if (CheckActorInventory (tid, "TitanWeapons"))
+		else if (CheckActorInventory (tid, "TitanWeapons"))
 			return"\cCTitan";
-		if (CheckActorInventory (tid, "JuggernautWeapons"))
+		else if (CheckActorInventory (tid, "JuggernautWeapons"))
 			return"\cCJuggernaut MKII";
-		if (CheckActorInventory (tid, "TortoiseWeapons"))
+		else if (CheckActorInventory (tid, "TortoiseWeapons"))
 			return"\cCTortoise";
+		else if (CheckActorInventory (tid, "RhinoWeapons"))
+			return"\cCRhino";
+		else
+			return"\cCERR: DisplayName()";
 	} else if (CheckActorInventory (tid, "PowerBerserk")) // Berserk
 		return "\cGBerserker";
 	else if (CheckActorInventory (tid, "IsAdmin")) // Admin morph
