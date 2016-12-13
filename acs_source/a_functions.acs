@@ -231,7 +231,7 @@ function void SetTickets (int team, int count) {
 // Returns color code by fraction of perc/max
 function str FractionColor (int perc, int max) {
 	if (perc > max) // > 100%
-		return "\cH";
+		return "\cQ";
 	else if (perc == max) // 100%
 		return "\cQ";
 	else if ((perc*4)/3 >= max) // 75%
