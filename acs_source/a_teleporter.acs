@@ -137,10 +137,10 @@ script SC_TELENODE_INIT (void) {
 	
 	// Spawn the other needed actors now.
 	x = GetActorX (tid); y = GetActorY (tid); z = GetActorFloorZ (tid); angle = GetActorAngle (tid);
-	Spawn ("TeleportDest", x + (cos(angle+0.00)*64), y + (sin(angle+0.00)*64), z, tid_teledest, angle >> 8);
-	Spawn ("TeleportDest", x + (cos(angle+0.325)*64), y + (sin(angle+0.325)*64), z, tid_teledest, (angle+0.325) >> 8);
-	Spawn ("TeleportDest", x + (cos(angle+0.50)*64), y + (sin(angle+0.50)*64), z, tid_teledest, (angle+0.50) >> 8);
-	Spawn ("TeleportDest", x + (cos(angle+0.675)*64), y + (sin(angle+0.675)*64), z, tid_teledest, (angle+0.675) >> 8);
+	Spawn ("TeleportDest", x + (cos(angle+0.00)*32), y + (sin(angle+0.00)*32), z, tid_teledest, angle >> 8);
+	Spawn ("TeleportDest", x + (cos(angle+0.325)*32), y + (sin(angle+0.325)*32), z, tid_teledest, (angle+0.325) >> 8);
+	Spawn ("TeleportDest", x + (cos(angle+0.50)*32), y + (sin(angle+0.50)*32), z, tid_teledest, (angle+0.50) >> 8);
+	Spawn ("TeleportDest", x + (cos(angle+0.675)*32), y + (sin(angle+0.675)*32), z, tid_teledest, (angle+0.675) >> 8);
 	Spawn ("TeleporterNodeStand", x + (cos(angle+0.25)*80), y + (sin(angle+0.25)*80), z + 32.0, tid_effects);
 	Spawn ("TeleporterNodeStand", x + (cos(angle+0.75)*80), y + (sin(angle+0.75)*80), z + 32.0, tid_effects);
 	Spawn (spheretype, x + (cos(angle+0.25)*80), y + (sin(angle+0.25)*80), z + 56.0, tid_effects);
