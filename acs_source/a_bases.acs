@@ -251,10 +251,11 @@ script 201 (VOID)
 	
 	if (!CheckMapFlags (MAPF_NoDefEvents)) {
 		SetLineTexture(2,SIDE_FRONT,TEXTURE_BOTTOM,"MCT2");
-		SetLineTexture(4,SIDE_FRONT,TEXTURE_MIDDLE,"MCT3");
+		//SetLineTexture(4,SIDE_FRONT,TEXTURE_MIDDLE,"MCT3"); [Cata] Deprecated.
 		
 		SetLineTexture(2,SIDE_BACK,TEXTURE_BOTTOM,"MCT2");
-		SetLineTexture(4,SIDE_BACK,TEXTURE_MIDDLE,"MCT3");
+		//SetLineTexture(4,SIDE_BACK,TEXTURE_MIDDLE,"MCT3"); [Cata] Deprecated.
+		
 		ReddenSector (3);
 		//ReddenSector (4); [Cata] Deprecated
 	}

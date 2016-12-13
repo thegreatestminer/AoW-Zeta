@@ -77,8 +77,10 @@ script SC_BeaconTimer (int team, int ancrwarning) {
 	int timeleft = GetCVAR ("zeta_nukecountdown") - CheckInventory ("BeaconCountdown");
 	
 	// We're just playing the announcer warning
-	if (ancrwarning) {
-		if (timeleft == GetCVAR ("zeta_nukecountdown")) {
+	if (ancrwarning) 
+	{
+		if (timeleft == GetCVAR ("zeta_nukecountdown")) 
+		{
 			// Initial warning
 			AmbientSound (cond (team == TEAM_Blue, "eva/iondeployed", "eva/nukedeployed"), 127);
 			delay (93);
@@ -87,7 +89,10 @@ script SC_BeaconTimer (int team, int ancrwarning) {
 				terminate; // Was disarmed mid-announce
 			
 			AmbientSound (cond (team == TEAM_Blue, "eva/ionapproach", "eva/nukeapproach"), 127);
-		} else if (timeleft == 30 || timeleft == 15) {
+		} 
+		
+		else if (timeleft == 30 || timeleft == 15) 
+		{
 			// Secondary warning
 			AmbientSound ("eva/youhave", 127);
 			delay (32);
@@ -121,11 +126,15 @@ script SC_BeaconTimer (int team, int ancrwarning) {
 		SpawnSpotForced (cond (team == TEAM_Blue, "BeaconFX", "BeaconFXRed"), 0, 0, 0);
 	
 	// Time-specific stuff:
-	if (timeleft == GetCVAR ("zeta_nukecountdown") || timeleft == 30 || timeleft == 15) {
+	if (timeleft == GetCVAR ("zeta_nukecountdown") || timeleft == 30 || timeleft == 15) 
+	{
 		// [Dusk] Has to be executed WithResult or it will only get executed
 		// after the countdown has been incremented - we don't want that.
 		ACS_ExecuteWithResult (SC_BeaconTimer, team, true);
-	} else if (timeleft <= 10) {
+	} 
+	
+	else if (timeleft <= 10) 
+	{
 		// 10 second countdown
 		AmbientSound (strparam (s:"eva/", d:timeleft, s:"sec"), 127);
 	}
