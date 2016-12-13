@@ -30,12 +30,12 @@ Combiner ChemAnim
 	DecalFade
 }
 
-//Now for decals
-
-decal BulletChip1
+///////////////////////////////////////////
+// For shotguns, smgs, etc. No rifle weps.
+///////////////////////////////////////////
+decal BigBulletChip
 {
 	pic CHIP1
-	translucent 0.85
 	shade "00 00 00"
 	x-scale 0.5
 	y-scale 0.5
@@ -44,64 +44,24 @@ decal BulletChip1
 	randomflipy
 }
 
-decal BulletChip2
+
+decal BulletChip
 {
-	pic CHIP2
-	translucent 0.85
-	shade "00 00 00"
-	x-scale 0.5
-	y-scale 0.5
-	animator DecalFade
-	randomflipx
-	randomflipy
+	Pic PUFFA0
+	Add 1.0
+	FullBright
+	Animator GoAway
+	X-scale 0.45
+	Y-scale 0.45
+	LowerDecal BigBulletChip
+	RandomFlipx
+	RandomFlipy
 }
 
-decal BulletChip3
-{
-	pic CHIP3
-	translucent 0.85
-	shade "00 00 00"
-	x-scale 0.5
-	y-scale 0.5
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decal BulletChip4
-{
-	pic CHIP4
-	translucent 0.85
-	shade "00 00 00"
-	x-scale 0.5
-	y-scale 0.5
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decal BulletChip5
-{
-	pic CHIP5
-	translucent 0.85
-	shade "00 00 00"
-	x-scale 0.5
-	y-scale 0.5
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decalgroup BulletChip
-{
-	BulletChip1	1
-	BulletChip2	1
-	BulletChip3	1
-	BulletChip4	1
-	BulletChip5	1
-}
-
-decal BigBulletChip1
+///////////////////////////////////////////
+// For heavy bullets, ie rifles.
+///////////////////////////////////////////
+decal BiggerBulletChip
 {
 	pic CHIP1
 	shade "00 00 00"
@@ -112,57 +72,17 @@ decal BigBulletChip1
 	randomflipy
 }
 
-decal BigBulletChip2
+decal BulletChipBig
 {
-	pic CHIP2
-	shade "00 00 00"
-	x-scale 0.75
-	y-scale 0.75
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decal BigBulletChip3
-{
-	pic CHIP3
-	shade "00 00 00"
-	x-scale 0.75
-	y-scale 0.75
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decal BigBulletChip4
-{
-	pic CHIP4
-	shade "00 00 00"
-	x-scale 0.75
-	y-scale 0.75
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decal BigBulletChip5
-{
-	pic CHIP5
-	shade "00 00 00"
-	x-scale 0.75
-	y-scale 0.75
-	animator DecalFade
-	randomflipx
-	randomflipy
-}
-
-decalgroup BigBulletChip
-{
-	BigBulletChip1	1
-	BigBulletChip2	1
-	BigBulletChip3	1
-	BigBulletChip4	1
-	BigBulletChip5	1
+	Pic PUFFA0
+	Add 1.0
+	FullBright
+	Animator GoAway
+	X-scale 0.57
+	Y-scale 0.57
+	LowerDecal BiggerBulletChip
+	RandomFlipx
+	RandomFlipy
 }
 
 decal PulseScorch
@@ -465,7 +385,7 @@ Generator GatlingGun BulletChip
 Generator MachineGun BulletChip
 Generator LaserRifle BulletChip
 Generator LaserChaingun BulletChip
-Generator Rifle BigBulletChip
-Generator SniperRifle BigBulletChip
-Generator SniperRifleWeak BigBulletChip
-Generator AdvancedSniperRifle BigBulletChip
+Generator Rifle BulletChipBig
+Generator SniperRifle BulletChipBig
+Generator SniperRifleWeak BulletChipBig
+Generator AdvancedSniperRifle BulletChipBig
