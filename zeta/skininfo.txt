@@ -161,6 +161,13 @@ sprite = PBIC
 CrouchSprite=PBCC
 }
 
+
+{
+	name = "MarineAutoShotty"
+	sprite = PASG
+	CrouchSprite = PASC
+}
+
 /* // [SG] Mech classes have +NOSKIN, these only cause problems
 /////////////////////////////////////////MECHS
 {

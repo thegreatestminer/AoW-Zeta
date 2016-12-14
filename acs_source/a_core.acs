@@ -297,6 +297,7 @@ script SC_SERVERSETTINGS OPEN
 	
 	// [Cata] Set air control so ladders are not glitchy.
 	if(getcvar("sv_aircontrol") == 0) ConsoleCommand ("sv_aircontrol 0.00390625");
+	if(getcvar("sv_nocrouch") == 1) ConsoleCommand ("sv_nocrouch false");
 	
 	// TODO: get rid of these variables and replace with direct GetCVAR calls
 	intHolder[i_CreditFragAward] = GetCVAR("zeta_creditfrag");

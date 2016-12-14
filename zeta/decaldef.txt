@@ -385,6 +385,7 @@ Generator GatlingGun BulletChip
 Generator MachineGun BulletChip
 Generator LaserRifle BulletChip
 Generator LaserChaingun BulletChip
+Generator AutoShotgun BulletChip
 Generator Rifle BulletChipBig
 Generator SniperRifle BulletChipBig
 Generator SniperRifleWeak BulletChipBig

@@ -1,3 +1,21 @@
+//[Cata] Mortar launcher
+BARLFIRE BARLFIRE
+BARLRELD BARLRELD
+
+MORLODE1 MORLODE1
+MORLODE2 MORLODE2
+MORLODE3 MORLODE3
+MORLODE4 MORLODE4
+$RANDOM 40mm/grenexplode { MORLODE1 MORLODE2 MORLODE3 MORLODE4 }
+
+
+//[Cata] auto shotty
+dsasgfir dsasgfir
+dsasgout dsasgout
+dsasgin dsasgin
+dsasgld1 dsasgld1
+$LIMIT dsasgfir 999
+
 // [Cata] Spree announcer stuff
 double double
 multi multi

@@ -89,6 +89,9 @@ str Items_Str[MAX_ITEMS][MAX_ITEMKEYS_str] = {
 	{"Chrono Bow", "ChronoBow", "ChronoBolt", ""},
 	{"Karasawa", "Karasawa", "KarasawaAmmo", ""},
 	{"Advanced Sniper Rifle", "AdvancedSniperRifle", "RifleAmmo", ""},
+	
+	{"Automatic Shotgun", "AutoShotgun", "autoshellammo", "shotgunammo"},
+	{"Mortar Launcher", "MortarLauncher", "MortarAmmo", ""},
 };
 
 int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] = 
@@ -142,6 +145,9 @@ int Items_Int[MAX_ITEMS][MAX_ITEMKEYS_int] =
 	{1, 25, 0, 300}, //chrono bow
 	{1, 50, 0, 125}, // karasawa
 	{1, 40, 0, 0}, //adv sniper rifle
+	
+	{1, 50, 8, 100}, //auto shottie
+	{1, 50, 50, 70}, //mortar launcher
 };
 
 /*============================================================================
@@ -366,6 +372,16 @@ function void InitClasses (void) {
 		-1, ARMOD_NOCHANGE,
 		2, 1, CF_IsSniper,
 		ITEM_ADVANCEDSNIPER, 0, 0, 0, 0, 0);
+		
+	AddClass (CLASS_AutoShotgunner, "Auto Shotgunner", 650, 0.75, DEP_BARRACKS,
+		1, ARMOD_BULLET,
+		2, 1, 0,
+		ITEM_AutoShotgunner, 0, 0, 0, 0, 0);
+		
+	AddClass (CLASS_MortarLauncher, "Mortarier", 500, 0.65, DEP_BARRACKS,
+		1, ARMOD_EXPLO,
+		3, 2, 0,
+		ITEM_MortarLauncher, 0, 0, 0, 0, 0);
 }
 
 #define RESEARCH_ENHANCEDREFINING 0
